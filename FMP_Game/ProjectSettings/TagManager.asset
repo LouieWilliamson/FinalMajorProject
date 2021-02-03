@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Powerup
+  - Enemy
+  - Environment
   layers:
   - Default
   - TransparentFX

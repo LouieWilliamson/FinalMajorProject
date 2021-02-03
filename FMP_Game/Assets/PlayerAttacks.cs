@@ -5,10 +5,19 @@ using UnityEngine;
 public class PlayerAttacks : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject bullet;
+    public Transform EndOfGun;
+    public GameObject bulletPrefab;
+    private GameObject bullet;
     PlayerAnimations p_Anim;
+    private bool hasGun;
+    private int bulletCount;
+    public int maxBullets;
     void Start()
     {
+        bulletCount = 0;
+        maxBullets = 3;
+
+        hasGun = false;
         p_Anim = GetComponent<PlayerAnimations>();
     }
 
@@ -17,14 +26,29 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Shoot();
+            if(hasGun && bulletCount < maxBullets) Shoot();
         }
-
     }
 
     private void Shoot()
     {
-        //Instantiate(bullet, transform);
-        print("SHOOT");
+        bullet = Instantiate(bulletPrefab, EndOfGun.position, EndOfGun.rotation);
+        bullet.GetComponent<bullet>().SetDirection(!p_Anim.isFacingLeft);
+        ChangeBulletCount(1);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Powerup")
+        {
+            p_Anim.SetGun(true);
+            Destroy(collision.gameObject);
+            hasGun = true;
+        }
+    }
+
+    public void ChangeBulletCount(int change)
+    {
+        bulletCount += change;
     }
 }

@@ -21,29 +21,6 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Is he moving?
-        //if (m_rb.velocity.x != 0 || m_rb.velocity.y != 0)
-        //{
-        //    m_Anim.SetTrigger("isMoving");
-        //    print("MOVE");
-        //}
-        //else
-        //{
-        //    m_Anim.SetTrigger("isIdle");
-        //    print("IDLE");
-        //}
-
-        //if (m_rb.velocity.x < 0.1 && m_rb.velocity.x > -0.1)
-        //{
-        //    m_Anim.SetTrigger("isIdle");
-        //    print("IDLE");
-        //}
-        //else
-        //{
-        //    m_Anim.SetTrigger("isMoving");
-        //    print("MOVE");
-        //}
-
         //Is he moving to the left
         if (m_rb.velocity.x < 0)
         {
@@ -62,7 +39,6 @@ public class PlayerAnimations : MonoBehaviour
                 isFacingLeft = false;
             }
         }
-        print(m_rb.velocity.x);
     }
 
     private void FlipSprite()

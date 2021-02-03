@@ -69,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        //m_rb.AddForce(new Vector2(0, jumpHeight));
+        m_rb.AddForce(new Vector2(0, jumpHeight));
         p_Anim.SetJumpAnim();
     }
 
@@ -78,14 +78,5 @@ public class PlayerMovement : MonoBehaviour
         speed += acceleration;
 
         if (speed > 1.25f) speed = 1.25f;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Powerup")
-        {
-            p_Anim.SetGun(true);
-            Destroy(collision.gameObject);
-        }
     }
 }
