@@ -8,7 +8,7 @@ public class PlayerAnimations : MonoBehaviour
     Animator m_Anim;
     Rigidbody2D m_rb;
 
-    bool isFacingLeft;
+    internal bool isFacingLeft;
 
     void Start()
     {
