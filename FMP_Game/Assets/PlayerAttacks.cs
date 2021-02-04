@@ -12,6 +12,7 @@ public class PlayerAttacks : MonoBehaviour
     private bool hasGun;
     private int bulletCount;
     public int maxBullets;
+    private int GunDamage;
     void Start()
     {
         bulletCount = 0;
@@ -19,6 +20,7 @@ public class PlayerAttacks : MonoBehaviour
 
         hasGun = false;
         p_Anim = GetComponent<PlayerAnimations>();
+        GunDamage = 50;
     }
 
     // Update is called once per frame
@@ -50,5 +52,10 @@ public class PlayerAttacks : MonoBehaviour
     public void ChangeBulletCount(int change)
     {
         bulletCount += change;
+    }
+
+    public int GetGunDamage()
+    {
+        return GunDamage;
     }
 }

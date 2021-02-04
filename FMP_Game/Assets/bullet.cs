@@ -57,7 +57,7 @@ public class bullet : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             RemoveBullet();
-            //Damage Enemy
+            collision.gameObject.GetComponent<EnemyHealth>().ApplyDamage(p_Attacks.GetGunDamage());
         }
         if (collision.tag == "Environment")
         {

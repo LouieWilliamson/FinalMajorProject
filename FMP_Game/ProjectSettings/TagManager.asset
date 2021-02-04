@@ -16,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
@@ -50,7 +50,7 @@ TagManager:
   - name: BG2
     uniqueID: 2598911039
     locked: 0
-  - name: Objects
+  - name: ObjectsBehind
     uniqueID: 2995652609
     locked: 0
   - name: Characters
@@ -58,4 +58,7 @@ TagManager:
     locked: 0
   - name: Environment
     uniqueID: 409588039
+    locked: 0
+  - name: ObjectsInFront
+    uniqueID: 2921279995
     locked: 0
