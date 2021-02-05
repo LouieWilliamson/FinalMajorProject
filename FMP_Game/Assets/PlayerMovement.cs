@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
         speed = 1.25f;
 
-        jumpHeight = 180;
+        jumpHeight = 215;
 
         maxSpeed = 1.25f;
         acceleration = 0.1f;
@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         //Accelerate();
         m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
         p_Anim.SetMove();
+        p_Anim.isMovingLeft = true;
     }
 
     private void MoveRight()
@@ -69,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         // m_rb.AddForce(new Vector2(1, m_rb.velocity.y));
         m_rb.velocity = new Vector2(speed, m_rb.velocity.y);
         p_Anim.SetMove();
+        p_Anim.isMovingLeft = false;
     }
 
     private void Jump()

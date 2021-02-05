@@ -22,17 +22,13 @@ public class MovingPlatform : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        print("Collided");
-
         if (collision.gameObject == node1.gameObject)
         {
             target = node2;
-            print("Hit 1");
         }
         if (collision.gameObject == node2.gameObject)
         {
             target = node1;
-            print("Hit 2");
         }
     }
 }

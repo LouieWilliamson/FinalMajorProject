@@ -9,29 +9,47 @@ public class PlayerAnimations : MonoBehaviour
     Rigidbody2D m_rb;
 
     internal bool isFacingLeft;
-
+    internal bool isMovingLeft;
     void Start()
     {
         m_Anim = GetComponent<Animator>();
         m_rb = GetComponent<Rigidbody2D>();
         m_rb.velocity = Vector2.zero;
         isFacingLeft = false;
+        isMovingLeft = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Is he moving to the left
-        if (m_rb.velocity.x < 0)
+        ////Is he moving to the left
+        //if (m_rb.velocity.x < 0)
+        //{
+        //    //is he already facing left?
+        //    if (!isFacingLeft)
+        //    {
+        //        FlipSprite();
+        //        isFacingLeft = true;
+        //    }
+        //}
+        //else if (m_rb.velocity.x > 0)
+        //{
+        //    if (isFacingLeft)
+        //    {
+        //        FlipSprite();
+        //        isFacingLeft = false;
+        //    }
+        //}
+
+        if (isMovingLeft)
         {
-            //is he already facing left?
             if (!isFacingLeft)
             {
                 FlipSprite();
                 isFacingLeft = true;
             }
         }
-        else if (m_rb.velocity.x > 0)
+        else
         {
             if (isFacingLeft)
             {
