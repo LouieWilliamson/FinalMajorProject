@@ -83,4 +83,9 @@ public class PlayerAnimations : MonoBehaviour
     {
         m_Anim.SetTrigger("isIdle");
     }
+
+    public void SetCrouched()
+    {
+        m_Anim.SetTrigger("isCrouched");
+    }
 }

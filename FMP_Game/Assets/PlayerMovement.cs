@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     public float rayLength;
     public LayerMask groundLayer;
+
+    internal bool hasGun;
+    private bool isCrouched;
+    public Sprite crouchSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +35,15 @@ public class PlayerMovement : MonoBehaviour
         acceleration = 0.1f;
 
         rayLength = 0.5f;
+
+        isCrouched = false;
+        hasGun = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+
         if (Input.GetKey(KeyCode.D))
         {
             MoveRight();
@@ -47,29 +55,45 @@ public class PlayerMovement : MonoBehaviour
         else if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
         {
             p_Anim.SetIdle();
-            //speed = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!isCrouched)
         {
-            Jump();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
+        }
+
+
+        if (Input.GetKey(KeyCode.S) && hasGun)
+        {
+            isCrouched = true;
+            p_Anim.SetCrouched();
+        }
+        else
+        {
+            isCrouched = false;
         }
     }
 
     private void MoveLeft()
     {
-        //Accelerate();
-        m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
-        p_Anim.SetMove();
+        if (!isCrouched)
+        {
+            m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
+            p_Anim.SetMove();
+        }
         p_Anim.isMovingLeft = true;
     }
 
     private void MoveRight()
     {
-        //Accelerate();
-        // m_rb.AddForce(new Vector2(1, m_rb.velocity.y));
-        m_rb.velocity = new Vector2(speed, m_rb.velocity.y);
-        p_Anim.SetMove();
+        if (!isCrouched)
+        {
+            m_rb.velocity = new Vector2(speed, m_rb.velocity.y);
+            p_Anim.SetMove();
+        }
         p_Anim.isMovingLeft = false;
     }
 
@@ -81,14 +105,6 @@ public class PlayerMovement : MonoBehaviour
             p_Anim.SetJumpAnim();
         }
     }
-
-    private void Accelerate()
-    {
-        speed += acceleration;
-
-        if (speed > maxSpeed) speed = maxSpeed;
-    }
-
     private bool isGrounded()
     {
         Vector2 direction = Vector2.down;

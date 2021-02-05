@@ -9,6 +9,7 @@ public class PlayerAttacks : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject bullet;
     PlayerAnimations p_Anim;
+    PlayerMovement p_Mvmt;
     private bool hasGun;
     private int bulletCount;
     public int maxBullets;
@@ -20,6 +21,7 @@ public class PlayerAttacks : MonoBehaviour
 
         hasGun = false;
         p_Anim = GetComponent<PlayerAnimations>();
+        p_Mvmt = GetComponent<PlayerMovement>();
         GunDamage = 50;
     }
 
@@ -46,6 +48,7 @@ public class PlayerAttacks : MonoBehaviour
             p_Anim.SetGun(true);
             Destroy(collision.gameObject);
             hasGun = true;
+            p_Mvmt.hasGun = true;
         }
     }
 
