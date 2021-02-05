@@ -6,9 +6,11 @@ public class EnemyHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     public int health;
+    private HitEffect hitEffect;
     void Start()
     {
         health = 100;
+        hitEffect = GetComponent<HitEffect>();
     }
 
     // Update is called once per frame
@@ -23,5 +25,6 @@ public class EnemyHealth : MonoBehaviour
     public void ApplyDamage(int damage)
     {
         health += -damage;
+        hitEffect.Enable();
     }
 }

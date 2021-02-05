@@ -14,6 +14,9 @@ public class bullet : MonoBehaviour
     private float killTimer;
     public float killTime = 1;
 
+    public GameObject impactPrefab;
+    private GameObject impact;
+
     void Start()
     {
         p_Anim = GameObject.Find("Player").GetComponent<PlayerAnimations>();
@@ -47,6 +50,7 @@ public class bullet : MonoBehaviour
     {
         Destroy(gameObject);
         p_Attacks.ChangeBulletCount(-1);
+        impact = Instantiate(impactPrefab, transform.position, transform.rotation);
     }
     public void SetDirection(bool LeftifTrue)
     {
