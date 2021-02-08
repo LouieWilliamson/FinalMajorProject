@@ -24,16 +24,18 @@ public class LevelGeneration : MonoBehaviour
 
     private float moveTimer;
     public float spawnTime;
-    private bool stopBuilding;
+    internal bool stopBuilding;
     public LayerMask roomLayer;
 
     private int UpCounter;
+
+    public Transform CriticalParent;
     void Start()
     {
         UpCounter = 0;
         stopBuilding = false;
         moveTimer = 0;
-        spawnTime = 0.25f;
+        spawnTime = 0.5f;
 
         int randomStart = Random.Range(0, startPositions.Length);
         transform.position = startPositions[randomStart].position;
@@ -227,7 +229,8 @@ public class LevelGeneration : MonoBehaviour
     //Spawns a room in the current spawner position
     void SpawnRoom()
     {
-        Instantiate(currentRoom, transform.position, Quaternion.identity);
+        GameObject roomInstance = (GameObject)Instantiate(currentRoom, transform.position, Quaternion.identity);
+        roomInstance.transform.parent = CriticalParent;
     }
 
     void CheckPreviousRoomBeforeMovingUp()
@@ -241,13 +244,15 @@ public class LevelGeneration : MonoBehaviour
             if (UpCounter >= 2)
             {
                 rType.DestroyRoom();
-                Instantiate(roomTypes[3], transform.position, Quaternion.identity);
+                GameObject roomInstance = (GameObject)Instantiate(roomTypes[3], transform.position, Quaternion.identity);
+                roomInstance.transform.parent = CriticalParent;
             }
             else
             {
                 rType.DestroyRoom();
                 int randUpRoom = Random.Range(2, 4); // 2 - 3
-                Instantiate(roomTypes[randUpRoom], transform.position, Quaternion.identity);
+                GameObject roomInstance = (GameObject)Instantiate(roomTypes[randUpRoom], transform.position, Quaternion.identity);
+                roomInstance.transform.parent = CriticalParent;
             }
         }
     }
