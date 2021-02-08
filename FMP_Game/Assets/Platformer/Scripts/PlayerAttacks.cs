@@ -5,7 +5,12 @@ using UnityEngine;
 public class PlayerAttacks : MonoBehaviour
 {
     // Start is called before the first frame update
-    public Transform EndOfGun;
+    private Transform EndOfGun;
+
+    public Transform normalGun;
+    public Transform crouchGun;
+    private bool isCrouched;
+
     public GameObject bulletPrefab;
     private GameObject bullet;
     PlayerAnimations p_Anim;
@@ -16,6 +21,7 @@ public class PlayerAttacks : MonoBehaviour
     private int GunDamage;
     void Start()
     {
+        isCrouched = false;
         bulletCount = 0;
         maxBullets = 3;
 
@@ -36,6 +42,14 @@ public class PlayerAttacks : MonoBehaviour
 
     private void Shoot()
     {
+        if(isCrouched)
+        {
+            EndOfGun = crouchGun;
+        }
+        else
+        {
+            EndOfGun = normalGun;
+        }
         bullet = Instantiate(bulletPrefab, EndOfGun.position, EndOfGun.rotation);
         bullet.GetComponent<bullet>().SetDirection(!p_Anim.isFacingLeft);
         ChangeBulletCount(1);
@@ -51,7 +65,10 @@ public class PlayerAttacks : MonoBehaviour
             p_Mvmt.hasGun = true;
         }
     }
-
+    public void SetCrouched(bool trueIfCrouched)
+    {
+        isCrouched = trueIfCrouched;
+    }
     public void ChangeBulletCount(int change)
     {
         bulletCount += change;

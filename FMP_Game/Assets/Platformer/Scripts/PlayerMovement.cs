@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 left;
     Vector2 right;
     PlayerAnimations p_Anim;
+    PlayerAttacks p_Attack;
 
     private float speed;
     public int jumpHeight;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody2D>();
         p_Anim = GetComponent<PlayerAnimations>();
+        p_Attack = GetComponent<PlayerAttacks>();
 
         speed = 1.25f;
 
@@ -70,10 +72,12 @@ public class PlayerMovement : MonoBehaviour
         {
             isCrouched = true;
             p_Anim.SetCrouched();
+            p_Attack.SetCrouched(true);
         }
         else
         {
             isCrouched = false;
+            p_Attack.SetCrouched(false);
         }
     }
 
