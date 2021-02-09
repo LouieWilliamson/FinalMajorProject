@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         speed = 1.25f;
 
-        jumpHeight = 215;
+        jumpHeight = 245;
 
         maxSpeed = 1.25f;
         acceleration = 0.1f;

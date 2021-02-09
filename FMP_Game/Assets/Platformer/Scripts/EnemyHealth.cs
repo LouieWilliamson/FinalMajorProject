@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     private GameObject deathFX;
     void Start()
     {
-        health = 100;
+        health = 200;
         hitEffect = GetComponent<HitEffect>();
     }
 

@@ -29,6 +29,7 @@ public class HitEffect : MonoBehaviour
             {
                 beenHit = false;
                 sr.color = Color.white;
+                effectTimer = 0;
             }
         }
     }
