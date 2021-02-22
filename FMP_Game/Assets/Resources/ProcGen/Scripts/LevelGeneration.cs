@@ -40,7 +40,6 @@ public class LevelGeneration : MonoBehaviour
         UpCounter = 0;
         stopBuilding = false;
         moveTimer = 0;
-        spawnTime = 0.2f;
 
         int randomStart = Random.Range(0, startPositions.Length);
         transform.position = startPositions[randomStart].position;

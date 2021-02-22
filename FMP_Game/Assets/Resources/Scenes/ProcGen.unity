@@ -1714,7 +1714,7 @@ MonoBehaviour:
   minX: 10
   maxX: 70
   maxY: 55
-  spawnTime: 0.25
+  spawnTime: 0.5
   roomLayer:
     serializedVersion: 2
     m_Bits: 512
