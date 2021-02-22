@@ -30,8 +30,13 @@ public class LevelGeneration : MonoBehaviour
     private int UpCounter;
 
     public Transform CriticalParent;
+
+    public GameObject player;
+    private Cinemachine.CinemachineVirtualCamera cam;
+
     void Start()
     {
+        cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         UpCounter = 0;
         stopBuilding = false;
         moveTimer = 0;
@@ -39,7 +44,7 @@ public class LevelGeneration : MonoBehaviour
 
         int randomStart = Random.Range(0, startPositions.Length);
         transform.position = startPositions[randomStart].position;
-        //Instantiate(roomTypes[0], transform.position, Quaternion.identity);
+
         GetNewRoomType();
         SpawnRoom();
         GetNewDirection();
@@ -58,6 +63,11 @@ public class LevelGeneration : MonoBehaviour
             {
                 moveTimer += Time.deltaTime;
             }
+        }
+        //if it's finished building spawn the player
+        else
+        {
+            SpawnPlayer();
         }
     }
 
@@ -255,5 +265,18 @@ public class LevelGeneration : MonoBehaviour
                 roomInstance.transform.parent = CriticalParent;
             }
         }
+    }
+
+    void SpawnPlayer()
+    {
+        GameObject playerInstance;
+        playerInstance = (GameObject)Instantiate(player, transform.position, Quaternion.identity);
+        cam.Follow = playerInstance.transform;
+
+        //setting the player values for suitable testing in the proc gen world
+        playerInstance.transform.localScale = new Vector3(3, 3, 3);
+        playerInstance.GetComponent<PlayerMovement>().speed = 5;
+        playerInstance.GetComponent<PlayerMovement>().jumpHeight = 500;
+        playerInstance.GetComponent<Rigidbody2D>().gravityScale = 1.7f;
     }
 }

@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerAnimations p_Anim;
     PlayerAttacks p_Attack;
 
-    private float speed;
+    public float speed;
     public int jumpHeight;
     public Transform jumpFrom;
     private float maxSpeed;
@@ -29,9 +29,9 @@ public class PlayerMovement : MonoBehaviour
         p_Anim = GetComponent<PlayerAnimations>();
         p_Attack = GetComponent<PlayerAttacks>();
 
-        speed = 1.25f;
+       // speed = 1.25f;
 
-        jumpHeight = 245;
+       // jumpHeight = 245;
 
         maxSpeed = 1.25f;
         acceleration = 0.1f;
