@@ -5,12 +5,13 @@ using UnityEngine;
 public class StartingRoom : MonoBehaviour
 {
     //spawn the player
-    //spawn gun powerup
     private GameObject playerPrefab;
     private Cinemachine.CinemachineVirtualCamera cam;
     private LevelGeneration lvlGenerator;
     private bool spawnedPlayer;
+    private GameObject[] enemies; 
 
+    //spawn gun powerup
     private Vector3 gunSpawn;
     private float gunX;
     private float gunY;
@@ -24,13 +25,14 @@ public class StartingRoom : MonoBehaviour
         lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
         cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
-
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
         gunYoffset = 2.5f;
         gunX = transform.position.x + Random.Range(-6, 7);
         gunY = transform.position.y - gunYoffset;
         gunSpawn = new Vector3(gunX, gunY, transform.position.z);
+
     }
 
     // Update is called once per frame
@@ -56,6 +58,14 @@ public class StartingRoom : MonoBehaviour
         player.GetComponent<PlayerMovement>().speed = 5;
         player.GetComponent<PlayerMovement>().jumpHeight = 500;
         player.GetComponent<Rigidbody2D>().gravityScale = 1.7f;
+
+        //set enemies to ignore player
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            enemies[i].GetComponent<EnemyMovement>().SetIgnorePlayer(player);
+            print("Set Player Ignore");
+            print(enemies[i].name);
+        }
     }
 
     void SpawnGun()

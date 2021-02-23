@@ -63,7 +63,6 @@ public class LevelGeneration : MonoBehaviour
                 moveTimer += Time.deltaTime;
             }
         }
-        print(roomCount);
     }
 
     //Moves the spawner in a given direction and spawns a room in it

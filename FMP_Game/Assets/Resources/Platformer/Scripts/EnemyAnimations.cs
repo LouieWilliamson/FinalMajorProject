@@ -41,4 +41,38 @@ public class EnemyAnimations : MonoBehaviour
     {
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
+
+    public void Idle()
+    {
+        m_Anim.SetTrigger("isIdle");
+    }
+    public void Walk()
+    {
+        m_Anim.SetTrigger("isWalking");
+    }
+    public void Run()
+    {
+        m_Anim.SetTrigger("isRunning");
+    }
+    public void Jump()
+    {
+        m_Anim.SetTrigger("isJumping");
+    }
+    public void Hit()
+    {
+        m_Anim.SetTrigger("isHit");
+    }
+    public void Dead()
+    {
+        m_Anim.SetBool("isDead", true);
+
+    }
+    public void LightAttack()
+    {
+        m_Anim.SetTrigger("LightAttack");
+    }
+    public void HeavyAttack()
+    {
+        m_Anim.SetTrigger("HeavyAttack");
+    }
 }
