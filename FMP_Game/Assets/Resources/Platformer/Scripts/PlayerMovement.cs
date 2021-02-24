@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
 
+
         if (isDPressed)
         {
             MoveRight();

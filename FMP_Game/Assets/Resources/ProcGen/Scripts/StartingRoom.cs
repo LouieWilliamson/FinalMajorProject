@@ -48,12 +48,12 @@ public class StartingRoom : MonoBehaviour
 
     void SpawnPlayer()
     {
-        spawnedPlayer = true;
         GameObject player;
         player = (GameObject)Instantiate(playerPrefab, transform.position, Quaternion.identity);
         cam.Follow = player.transform;
+        spawnedPlayer = true;
 
-        //setting the player values for suitable testing in the proc gen world
+        //setting the player values for suitable testing in the proc gen world  ---- SET THESE LATER IN THE PREFAB INSPECTOR
         player.transform.localScale = new Vector3(3, 3, 3);
         player.GetComponent<PlayerMovement>().speed = 5;
         player.GetComponent<PlayerMovement>().jumpHeight = 500;
@@ -63,8 +63,6 @@ public class StartingRoom : MonoBehaviour
         for (int i = 0; i < enemies.Length; i++)
         {
             enemies[i].GetComponent<EnemyMovement>().SetIgnorePlayer(player);
-            print("Set Player Ignore");
-            print(enemies[i].name);
         }
     }
 
