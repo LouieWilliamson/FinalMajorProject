@@ -54,11 +54,11 @@ TagManager:
   - name: ObjectsBehind
     uniqueID: 2995652609
     locked: 0
-  - name: Characters
-    uniqueID: 3998726441
-    locked: 0
   - name: Environment
     uniqueID: 409588039
+    locked: 0
+  - name: Characters
+    uniqueID: 3998726441
     locked: 0
   - name: ObjectsInFront
     uniqueID: 2921279995

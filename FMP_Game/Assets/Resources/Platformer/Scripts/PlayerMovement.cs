@@ -22,9 +22,20 @@ public class PlayerMovement : MonoBehaviour
     internal bool hasGun;
     private bool isCrouched;
     public Sprite crouchSprite;
+
+    bool isAPressed;
+    bool isSPressed;
+    bool isDPressed;
+    bool isSpacePressed;
+    
     // Start is called before the first frame update
     void Start()
     {
+        isAPressed = false;
+        isSPressed = false;
+        isDPressed = false;
+        isSpacePressed = false;
+
         m_rb = GetComponent<Rigidbody2D>();
         p_Anim = GetComponent<PlayerAnimations>();
         p_Attack = GetComponent<PlayerAttacks>();
@@ -45,30 +56,32 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetInput();
 
-        if (Input.GetKey(KeyCode.D))
+        if (isDPressed)
         {
             MoveRight();
         }
-        else if (Input.GetKey(KeyCode.A))
+        else if (isAPressed)
         {
             MoveLeft();
         }
-        else if (!Input.GetKey(KeyCode.D) && !Input.GetKey(KeyCode.A))
+        else if ((!isDPressed && !isAPressed) || (isDPressed && isAPressed))
         {
             p_Anim.SetIdle();
+            StopHorizontal();
         }
 
         if (!isCrouched)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (isSpacePressed)
             {
                 Jump();
             }
         }
 
 
-        if (Input.GetKey(KeyCode.S) && hasGun)
+        if (isSPressed && hasGun)
         {
             isCrouched = true;
             p_Anim.SetCrouched();
@@ -79,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
             isCrouched = false;
             p_Attack.SetCrouched(false);
         }
+
+        
     }
 
     private void MoveLeft()
@@ -108,6 +123,18 @@ public class PlayerMovement : MonoBehaviour
             m_rb.AddForce(new Vector2(0, jumpHeight));
             p_Anim.SetJumpAnim();
         }
+    }
+    private void StopHorizontal()
+    {
+        Vector2 stopHor = new Vector2( 0, m_rb.velocity.y);
+        m_rb.velocity = stopHor;
+    }
+    private void GetInput()
+    {
+        isAPressed = Input.GetKey(KeyCode.A);
+        isSPressed = Input.GetKey(KeyCode.S);
+        isDPressed = Input.GetKey(KeyCode.D);
+        isSpacePressed = Input.GetKeyDown(KeyCode.Space);
     }
     private bool isGrounded()
     {
