@@ -17,8 +17,6 @@ public class Inventory : MonoBehaviour
         health = baseHealth * healthMultiplier;
         maxHealth = health;
         DarkOrbs = 0;
-        print("Health: " + health);
-
     }
 
     // Update is called once per frame
@@ -36,13 +34,11 @@ public class Inventory : MonoBehaviour
             hitEffect.Enable();
         }
         health += amount;
-        print("Health: " + health);
         print("Hit");
     }
     public void ChangeDarkOrbs(int amount)
     {
         DarkOrbs += amount;
-        print("Dark Orbs: " + DarkOrbs);
     }
     private void Kill()
     {
