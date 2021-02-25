@@ -6,20 +6,46 @@ public class Inventory : MonoBehaviour
 {
     // Start is called before the first frame update
     int DarkOrbs;
-
+    public int baseHealth;
+    public int maxHealth;
+    public int healthMultiplier;
+    int health;
+    private HitEffect hitEffect;
     void Start()
     {
-        DarkOrbs = 0;   
+        hitEffect = GetComponent<HitEffect>();
+        health = baseHealth * healthMultiplier;
+        maxHealth = health;
+        DarkOrbs = 0;
+        print("Health: " + health);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (health <= 0)
+        {
+            Kill();
+        }
+    }
+    public void ChangeHealth(int amount)
+    {
+        if (amount < 0)
+        {
+            hitEffect.Enable();
+        }
+        health += amount;
+        print("Health: " + health);
+        print("Hit");
     }
     public void ChangeDarkOrbs(int amount)
     {
         DarkOrbs += amount;
         print("Dark Orbs: " + DarkOrbs);
+    }
+    private void Kill()
+    {
+        print("You dead bro");
     }
 }

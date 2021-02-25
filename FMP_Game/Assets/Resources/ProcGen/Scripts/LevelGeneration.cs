@@ -233,11 +233,11 @@ public class LevelGeneration : MonoBehaviour
         if (roomCount < 1)
         {
             RoomType rtype = currentRoom.GetComponent<RoomType>();
-            if (rtype.type == 1)
+            if (rtype.type == RoomType.RType.LRB)
             {
                 currentRoom = roomTypes[0];
             }
-            else if (rtype.type == 3)
+            else if (rtype.type == RoomType.RType.LRTB)
             {
                 currentRoom = roomTypes[2];
             }
@@ -265,7 +265,7 @@ public class LevelGeneration : MonoBehaviour
         Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, roomLayer);
         RoomType rType = roomDetection.gameObject.GetComponent<RoomType>();
 
-        if (rType.type != 2 && rType.type != 3) //if room type does not have a top opening, destroy it and spawn one with a top opening
+        if (rType.type != RoomType.RType.LRT && rType.type != RoomType.RType.LRTB) //if room type does not have a top opening, destroy it and spawn one with a top opening
         { 
             //if the spawner has move up at least twice, make sure to replace it with a room with all four exit directions
             if (UpCounter >= 2)

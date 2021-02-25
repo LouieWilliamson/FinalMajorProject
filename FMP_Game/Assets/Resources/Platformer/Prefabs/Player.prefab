@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1206567245536803305}
   - component: {fileID: 1206567245536803318}
   - component: {fileID: 1206567245536803304}
+  - component: {fileID: -2792064914633204091}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -250,6 +251,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e818592544803d44393d1e141b00b4df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 100
+  maxHealth: 100
+  healthMultiplier: 1
 --- !u!114 &1206567245536803305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,3 +302,15 @@ MonoBehaviour:
   crouchGun: {fileID: 1206567245519746288}
   bulletPrefab: {fileID: 556935481877827688, guid: af1175c41ecbabc4b82f03f260c420b6, type: 3}
   maxBullets: 3
+--- !u!114 &-2792064914633204091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206567245536803312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1650c167a313a53458fa61750cd0ef7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

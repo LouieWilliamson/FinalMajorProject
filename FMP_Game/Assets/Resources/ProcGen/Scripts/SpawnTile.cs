@@ -8,7 +8,6 @@ public class SpawnTile : MonoBehaviour
 
     // Start is called before the first frame update
     public TileType tType;
-    
     public GameObject[] floor;
     public GameObject FloorEdgeL;
     public GameObject FloorEdgeR;
