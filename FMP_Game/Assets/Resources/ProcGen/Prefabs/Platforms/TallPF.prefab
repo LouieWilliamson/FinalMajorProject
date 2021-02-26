@@ -503,6 +503,7 @@ GameObject:
   - component: {fileID: 6744038173576279828}
   - component: {fileID: 6744038173576279829}
   - component: {fileID: 6744038173576279830}
+  - component: {fileID: 8047812502248423983}
   m_Layer: 10
   m_Name: TallPF
   m_TagString: Environment
@@ -577,6 +578,22 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &8047812502248423983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6744038173576279831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3470255112ce946a21d94e3589c66d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  colliderSize: 0.1
 --- !u!1 &6744038173692615581
 GameObject:
   m_ObjectHideFlags: 0
