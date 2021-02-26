@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float rayLength;
     public LayerMask groundLayer;
-
+    public LayerMask platformLayer;
     internal bool hasGun;
     private bool isCrouched;
     public Sprite crouchSprite;
@@ -142,9 +142,11 @@ public class PlayerMovement : MonoBehaviour
         Vector2 direction = Vector2.down;
 
         RaycastHit2D hit = Physics2D.Raycast(jumpFrom.position, direction, rayLength, groundLayer);
+        RaycastHit2D hit2 = Physics2D.Raycast(jumpFrom.position, direction, rayLength, platformLayer);
+
         Debug.DrawRay(jumpFrom.position, direction, Color.green, 10);
 
-        if (hit.collider != null)
+        if (hit.collider != null || hit2.collider != null)
         {
             return true;
         }

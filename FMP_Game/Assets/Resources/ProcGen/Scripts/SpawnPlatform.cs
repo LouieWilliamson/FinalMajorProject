@@ -10,7 +10,7 @@ public class SpawnPlatform : MonoBehaviour
     public int PercentSpawnChance;
 
     private int rand;
-
+    private GameObject platformInstance;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,10 +25,14 @@ public class SpawnPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void Spawn()
     {
-
+        int randomPlatform = Random.Range(0, Platforms.Length);
+        
+        platformInstance = (GameObject)Instantiate(Platforms[randomPlatform], transform.position, Quaternion.identity);
+        platformInstance.transform.parent = transform; //parent the spawned tile to this
+        Physics2D.IgnoreLayerCollision(10, 10);
     }
 }

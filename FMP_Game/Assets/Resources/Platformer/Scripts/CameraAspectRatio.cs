@@ -6,15 +6,29 @@ public class CameraAspectRatio : MonoBehaviour
 {
     // Start is called before the first frame update
     // Use this for initialization
+    public float targetWidth;
+    public float targetHeight;
+    float targetaspect;
+    float windowaspect;
     void Start()
     {
-        // set the desired aspect ratio (the values in this example are
-        // hard-coded for 16:9, but you could make them into public
-        // variables instead so you can set them at design time)
-        float targetaspect = 16.0f / 10.0f;
+        targetaspect = targetWidth / targetHeight;
+        windowaspect = (float)Screen.width / (float)Screen.height;
 
+        SetBorders();
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (windowaspect != (float)Screen.width / (float)Screen.height)
+        {
+            SetBorders();
+        }
+    }
+    void SetBorders()
+    {
         // determine the game window's current aspect ratio
-        float windowaspect = (float)Screen.width / (float)Screen.height;
+        windowaspect = (float)Screen.width / (float)Screen.height;
 
         // current viewport height should be scaled by this amount
         float scaleheight = windowaspect / targetaspect;
@@ -47,10 +61,5 @@ public class CameraAspectRatio : MonoBehaviour
 
             camera.rect = rect;
         }
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

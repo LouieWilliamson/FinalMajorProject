@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612eca025051cd044b60efce3b3278fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceHeight: 8
+  bounceHeight: 10
   bounceHorizontal: 5
   damage: 10
-  bounceTime: 0.2
+  bounceTime: 0.1
