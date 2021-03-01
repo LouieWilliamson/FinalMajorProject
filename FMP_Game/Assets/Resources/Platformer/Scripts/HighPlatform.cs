@@ -12,6 +12,7 @@ public class HighPlatform : MonoBehaviour
     {
         onGround = false;
 
+        //move the platform down until it hits the floor
         do
         {
             Collider2D tileDetection = Physics2D.OverlapCircle(transform.position, colliderSize, groundLayer);
@@ -19,6 +20,8 @@ public class HighPlatform : MonoBehaviour
             if (tileDetection != null)
             {
                 onGround = true;
+                //this makes it 1 below the floor so its not too high
+                transform.position = new Vector2(transform.position.x, transform.position.y - 1);
             }
             else
             {

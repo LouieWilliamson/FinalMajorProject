@@ -11,12 +11,17 @@ public class Inventory : MonoBehaviour
     public int healthMultiplier;
     int health;
     private HitEffect hitEffect;
+    private HUDManager HUD;
     void Start()
     {
         hitEffect = GetComponent<HitEffect>();
+        HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         health = baseHealth * healthMultiplier;
         maxHealth = health;
         DarkOrbs = 0;
+
+        HUD.ChangeHealth(health);
+        HUD.ChangeMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -26,6 +31,15 @@ public class Inventory : MonoBehaviour
         {
             Kill();
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ChangeMaxHealth(maxHealth + 100);
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            ChangeHealth(100);
+        }
     }
     public void ChangeHealth(int amount)
     {
@@ -33,12 +47,25 @@ public class Inventory : MonoBehaviour
         {
             hitEffect.Enable();
         }
+
         health += amount;
-        print("Hit");
+
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        HUD.ChangeHealth(health);
+    }
+    public void ChangeMaxHealth(int newMaxHealth)
+    {
+        maxHealth = newMaxHealth;
+        HUD.ChangeMaxHealth(maxHealth);
     }
     public void ChangeDarkOrbs(int amount)
     {
         DarkOrbs += amount;
+        HUD.ChangeOrbCount(DarkOrbs);
     }
     private void Kill()
     {

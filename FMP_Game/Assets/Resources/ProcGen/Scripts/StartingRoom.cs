@@ -9,7 +9,8 @@ public class StartingRoom : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera cam;
     private LevelGeneration lvlGenerator;
     private bool spawnedPlayer;
-    private GameObject[] enemies; 
+    private GameObject[] enemies;
+    private HUDManager HUD;
 
     //spawn gun powerup
     private Vector3 gunSpawn;
@@ -26,6 +27,8 @@ public class StartingRoom : MonoBehaviour
         cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
+
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
         gunYoffset = 2.5f;
@@ -64,6 +67,7 @@ public class StartingRoom : MonoBehaviour
         {
             enemies[i].GetComponent<EnemyMovement>().SetIgnorePlayer(player);
         }
+        HUD.SetRunning(true);
     }
 
     void SpawnGun()
