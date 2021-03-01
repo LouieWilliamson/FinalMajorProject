@@ -19,8 +19,10 @@ public class PlayerAttacks : MonoBehaviour
     private int bulletCount;
     public int maxBullets;
     private int GunDamage;
+    private AudioManager audio;
     void Start()
     {
+        audio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         isCrouched = false;
         bulletCount = 0;
         maxBullets = 3;
@@ -52,6 +54,7 @@ public class PlayerAttacks : MonoBehaviour
         }
         bullet = Instantiate(bulletPrefab, EndOfGun.position, EndOfGun.rotation);
         bullet.GetComponent<bullet>().SetDirection(!p_Anim.isFacingLeft);
+        audio.PlaySFX(AudioManager.SFX.Shoot);
         ChangeBulletCount(1);
     }
 
