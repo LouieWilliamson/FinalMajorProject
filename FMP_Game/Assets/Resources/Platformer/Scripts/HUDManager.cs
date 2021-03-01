@@ -165,10 +165,8 @@ public class HUDManager : MonoBehaviour
         if(NumberOfEnemies > 0)
         {
             float percent = ((float)EnemiesKilled / (float)NumberOfEnemies) * 100;
-            print(EnemiesKilled + "/" + NumberOfEnemies + " = " + percent/100);
-            print("Raw:" + percent);
             percent = Mathf.Round(percent);
-            print("Rounded:" + percent);
+
             EnemyPercentTxt.text = percent + " %";
             EnemyCountSlider.value = percent;
         }
