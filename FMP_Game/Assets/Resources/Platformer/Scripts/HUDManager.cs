@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,8 +22,20 @@ public class HUDManager : MonoBehaviour
 
     public Text DarkOrbCount;
 
+    public Text EnemyPercentTxt;
+    public Slider EnemyCountSlider;
+
+    private int NumberOfEnemies;
+    private int EnemiesKilled;
+    
+    private bool LevelLoaded;
+    private bool EnemiesCounted;
     void Start()
     {
+        EnemiesKilled = 0;
+        LevelLoaded = false;
+        EnemiesCounted = false;
+
         SS = 0;
         MM = 0;
         HH = 0;
@@ -35,12 +48,17 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(LevelLoaded && !EnemiesCounted)
+        {
+            CountEnemies();
+        }
         if (isRunning)
         {
             AddtoTimer();
             BuildTimerText();
         }
     }
+
     private void AddtoTimer()
     {
         RunTimer += Time.deltaTime;
@@ -116,5 +134,47 @@ public class HUDManager : MonoBehaviour
     public void SetRunning(bool running)
     {
         isRunning = running;
+    }
+    public void SetLevelLoaded()
+    {
+        LevelLoaded = true;
+    }
+    public void IncreaseEnemiesKilled()
+    {
+        EnemiesKilled++;
+        GetEnemyPercent();
+        print("Enemies Killed:" + EnemiesKilled);
+    }
+    private void CountEnemies()
+    {
+        GameObject[] enemies;
+
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            NumberOfEnemies++;
+        }
+
+        EnemiesCounted = true;
+
+        GetEnemyPercent();
+    }
+    private void GetEnemyPercent()
+    {
+        if(NumberOfEnemies > 0)
+        {
+            float percent = ((float)EnemiesKilled / (float)NumberOfEnemies) * 100;
+            print(EnemiesKilled + "/" + NumberOfEnemies + " = " + percent/100);
+            print("Raw:" + percent);
+            percent = Mathf.Round(percent);
+            print("Rounded:" + percent);
+            EnemyPercentTxt.text = percent + " %";
+            EnemyCountSlider.value = percent;
+        }
+        else
+        {
+            print("Error: No Enemies Found");
+        }
     }
 }

@@ -18,6 +18,7 @@ public class StartingRoom : MonoBehaviour
     private float gunY;
     private float gunYoffset;
     private GameObject gunPowerup;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +36,6 @@ public class StartingRoom : MonoBehaviour
         gunX = transform.position.x + Random.Range(-6, 7);
         gunY = transform.position.y - gunYoffset;
         gunSpawn = new Vector3(gunX, gunY, transform.position.z);
-
     }
 
     // Update is called once per frame
@@ -44,6 +44,7 @@ public class StartingRoom : MonoBehaviour
         //if the level is built and the player hasn't been spawned
         if (lvlGenerator.stopBuilding && !spawnedPlayer)
         {
+            HUD.SetLevelLoaded();
             SpawnPlayer();
             SpawnGun();
         }

@@ -41,7 +41,6 @@ public class Spikes : MonoBehaviour
             player = collision.gameObject;
             playerHit = true;
             AlreadyHit = true;
-            print("col");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

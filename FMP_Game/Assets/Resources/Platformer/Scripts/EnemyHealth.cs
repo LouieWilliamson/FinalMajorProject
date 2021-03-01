@@ -6,6 +6,7 @@ public class EnemyHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     public int health;
+    private bool isDead;
     public bool ShouldExplode;
     private HitEffect hitEffect;
     public GameObject deathFXPrefab;
@@ -14,8 +15,11 @@ public class EnemyHealth : MonoBehaviour
     private CapsuleCollider2D collider;
     private Rigidbody2D rb;
     public float deathYchange;
+    private HUDManager hud;
     void Start()
     {
+        isDead = false;
+        hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
         rb = GetComponent<Rigidbody2D>();
         collider = GetComponent<CapsuleCollider2D>();
         anim = GetComponent<EnemyAnimations>();
@@ -28,7 +32,11 @@ public class EnemyHealth : MonoBehaviour
     {
         if (health <= 0)
         {
-            Kill();
+            if (!isDead)
+            {
+                Kill();
+                isDead = true;
+            }
         }
     }
 
@@ -52,6 +60,6 @@ public class EnemyHealth : MonoBehaviour
             rb.gravityScale = 0;
             transform.position = new Vector3(transform.position.x, transform.position.y - deathYchange, transform.position.z);
         }
-
+        hud.IncreaseEnemiesKilled();
     }
 }
