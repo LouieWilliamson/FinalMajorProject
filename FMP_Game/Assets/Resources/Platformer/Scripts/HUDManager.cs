@@ -143,7 +143,6 @@ public class HUDManager : MonoBehaviour
     {
         EnemiesKilled++;
         GetEnemyPercent();
-        print("Enemies Killed:" + EnemiesKilled);
     }
     private void CountEnemies()
     {
