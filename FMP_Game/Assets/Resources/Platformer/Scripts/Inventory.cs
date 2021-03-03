@@ -12,10 +12,10 @@ public class Inventory : MonoBehaviour
     int health;
     private HitEffect hitEffect;
     private HUDManager HUD;
-    private GameObject deathScreen;
+    private GamestateManager gsManager;
     void Start()
     {
-        deathScreen = GameObject.Find("Canvas").transform.Find("Deathscreen").gameObject;
+        gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
         hitEffect = GetComponent<HitEffect>();
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -72,8 +72,6 @@ public class Inventory : MonoBehaviour
     }
     private void Kill()
     {
-        Time.timeScale = 0.5f;
-        deathScreen.SetActive(true);
-        print("You dead bro");
+        gsManager.GameOver();
     }
 }

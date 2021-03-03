@@ -11,6 +11,7 @@ public class StartingRoom : MonoBehaviour
     private bool spawnedPlayer;
     private GameObject[] enemies;
     private HUDManager HUD;
+    private GamestateManager gsManager;
 
     //spawn gun powerup
     private Vector3 gunSpawn;
@@ -29,6 +30,7 @@ public class StartingRoom : MonoBehaviour
         playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
+        gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
@@ -58,10 +60,7 @@ public class StartingRoom : MonoBehaviour
         spawnedPlayer = true;
 
         //setting the player values for suitable testing in the proc gen world  ---- SET THESE LATER IN THE PREFAB INSPECTOR
-        player.transform.localScale = new Vector3(3, 3, 3);
-        player.GetComponent<PlayerMovement>().speed = 5;
-        player.GetComponent<PlayerMovement>().jumpHeight = 500;
-        player.GetComponent<Rigidbody2D>().gravityScale = 1.7f;
+
 
         //set enemies to ignore player
         for (int i = 0; i < enemies.Length; i++)
@@ -69,6 +68,7 @@ public class StartingRoom : MonoBehaviour
             enemies[i].GetComponent<EnemyMovement>().SetIgnorePlayer(player);
         }
         HUD.SetRunning(true);
+        gsManager.SetPlayerSpawned();
     }
 
     void SpawnGun()

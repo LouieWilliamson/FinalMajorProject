@@ -5,16 +5,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D m_rb;
-    Vector2 left;
-    Vector2 right;
     PlayerAnimations p_Anim;
     PlayerAttacks p_Attack;
 
     public float speed;
     public int jumpHeight;
     public Transform jumpFrom;
-    private float maxSpeed;
-    private float acceleration;
 
     public float rayLength;
     public LayerMask groundLayer;
@@ -22,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     internal bool hasGun;
     private bool isCrouched;
     public Sprite crouchSprite;
+    private int TimesJumped;
 
     bool isAPressed;
     bool isSPressed;
@@ -31,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        TimesJumped = 0;
         isAPressed = false;
         isSPressed = false;
         isDPressed = false;
@@ -40,15 +38,6 @@ public class PlayerMovement : MonoBehaviour
         p_Anim = GetComponent<PlayerAnimations>();
         p_Attack = GetComponent<PlayerAttacks>();
 
-       // speed = 1.25f;
-
-       // jumpHeight = 245;
-
-        maxSpeed = 1.25f;
-        acceleration = 0.1f;
-
-        rayLength = 0.5f;
-
         isCrouched = false;
         hasGun = false;
     }
@@ -57,30 +46,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         GetInput();
-
-
-        if (isDPressed)
-        {
-            MoveRight();
-        }
-        else if (isAPressed)
-        {
-            MoveLeft();
-        }
-        else if ((!isDPressed && !isAPressed) || (isDPressed && isAPressed))
-        {
-            p_Anim.SetIdle();
-            StopHorizontal();
-        }
-
-        if (!isCrouched)
-        {
-            if (isSpacePressed)
-            {
-                Jump();
-            }
-        }
-
 
         if (isSPressed && hasGun)
         {
@@ -94,9 +59,30 @@ public class PlayerMovement : MonoBehaviour
             p_Attack.SetCrouched(false);
         }
 
-        
+        if (!isCrouched)
+        {
+            if (isSpacePressed)
+            {
+                Jump();
+            }
+        }
     }
-
+    private void FixedUpdate()
+    {
+        if (isDPressed)
+        {
+            MoveRight();
+        }
+        else if (isAPressed)
+        {
+            MoveLeft();
+        }
+        else if ((!isDPressed && !isAPressed) || (isDPressed && isAPressed))
+        {
+            p_Anim.SetIdle();
+            StopHorizontal();
+        }
+    }
     private void MoveLeft()
     {
         if (!isCrouched)
@@ -119,11 +105,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (isGrounded())
+        if (isGrounded() || TimesJumped < 2)
         {
-            m_rb.AddForce(new Vector2(0, jumpHeight));
+            m_rb.velocity = Vector2.up * jumpHeight;
             p_Anim.SetJumpAnim();
+            TimesJumped++;
         }
+
     }
     private void StopHorizontal()
     {
@@ -148,6 +136,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (hit.collider != null || hit2.collider != null)
         {
+            TimesJumped = 0;
             return true;
         }
         else

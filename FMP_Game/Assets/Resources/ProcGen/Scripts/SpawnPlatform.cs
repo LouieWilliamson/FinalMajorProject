@@ -12,9 +12,13 @@ public class SpawnPlatform : MonoBehaviour
     private int rand;
     private GameObject platformInstance;
     private SpawnDarkOrb darkOrb;
+    private int randomPlatform;
+    private float orbYoffset;
     // Start is called before the first frame update
     void Start()
     {
+        orbYoffset = 1;
+
         darkOrb = GetComponent<SpawnDarkOrb>();
 
         rand = Random.Range(1, 101); // 1 - 100
@@ -32,18 +36,26 @@ public class SpawnPlatform : MonoBehaviour
     }
     private void Spawn()
     {
-        int randomPlatform = Random.Range(0, Platforms.Length);
-        float orbYoffset = 1;
+        randomPlatform = Random.Range(0, Platforms.Length);
 
         platformInstance = (GameObject)Instantiate(Platforms[randomPlatform], transform.position, Quaternion.identity);
         platformInstance.transform.parent = transform; //parent the spawned tile to this
         Physics2D.IgnoreLayerCollision(10, 10);
-        if(randomPlatform == 1)
-        {
-            orbYoffset *= 0.5f;
-        }
+
+        PlatformChecks();
 
         Vector2 darkOrbPos = new Vector2(transform.position.x, transform.position.y + orbYoffset);
         darkOrb.SpawnOrb(darkOrbPos);
+    }
+    private void PlatformChecks()
+    {
+        if(randomPlatform == 0)
+        {
+            orbYoffset *= 2;
+        }
+        else if (randomPlatform == 1)
+        {
+             orbYoffset *= 0.5f;
+        }
     }
 }

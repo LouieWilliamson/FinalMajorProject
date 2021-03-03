@@ -27,12 +27,17 @@ public class HUDManager : MonoBehaviour
 
     private int NumberOfEnemies;
     private int EnemiesKilled;
-    
+    private float enemyPercent;
+
     private bool LevelLoaded;
     private bool EnemiesCounted;
+
+    private GamestateManager gsManager;
     void Start()
     {
+
         EnemiesKilled = 0;
+        enemyPercent = 0;
         LevelLoaded = false;
         EnemiesCounted = false;
 
@@ -42,7 +47,8 @@ public class HUDManager : MonoBehaviour
 
         isRunning = false; //start this after player is spawned
         ChangeOrbCount(0);
-        //set health and maxhealth in inventory start
+
+        gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
     }
 
     // Update is called once per frame
@@ -142,7 +148,7 @@ public class HUDManager : MonoBehaviour
     public void IncreaseEnemiesKilled()
     {
         EnemiesKilled++;
-        GetEnemyPercent();
+        CalculateEnemyPercent();
     }
     private void CountEnemies()
     {
@@ -157,21 +163,26 @@ public class HUDManager : MonoBehaviour
 
         EnemiesCounted = true;
 
-        GetEnemyPercent();
+        CalculateEnemyPercent();
     }
-    private void GetEnemyPercent()
+    private void CalculateEnemyPercent()
     {
         if(NumberOfEnemies > 0)
         {
-            float percent = ((float)EnemiesKilled / (float)NumberOfEnemies) * 100;
-            percent = Mathf.Round(percent);
+            enemyPercent = ((float)EnemiesKilled / (float)NumberOfEnemies) * 100;
+            enemyPercent = Mathf.Round(enemyPercent);
 
-            EnemyPercentTxt.text = percent + " %";
-            EnemyCountSlider.value = percent;
+            EnemyPercentTxt.text = enemyPercent + " %";
+            EnemyCountSlider.value = enemyPercent;
         }
         else
         {
             print("Error: No Enemies Found");
         }
+        if(enemyPercent == 100)
+        {
+            gsManager.GameWon();
+        }
     }
+    public float GetEnemyPercent() { return enemyPercent; }
 }

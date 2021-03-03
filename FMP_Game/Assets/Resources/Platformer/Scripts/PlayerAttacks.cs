@@ -22,7 +22,7 @@ public class PlayerAttacks : MonoBehaviour
     private AudioManager audio;
     void Start()
     {
-        audio = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        audio = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         isCrouched = false;
         bulletCount = 0;
         maxBullets = 3;
@@ -76,7 +76,10 @@ public class PlayerAttacks : MonoBehaviour
     {
         bulletCount += change;
     }
-
+    public void SetGunDamage(int newDamage)
+    {
+        GunDamage = newDamage;
+    }
     public int GetGunDamage()
     {
         return GunDamage;
