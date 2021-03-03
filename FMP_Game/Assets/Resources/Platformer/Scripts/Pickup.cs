@@ -18,13 +18,13 @@ public class Pickup : MonoBehaviour
     private int damageMultiplier;
 
     public Color orbColor;
-    public Color orbHighlight;
+    //public Color orbHighlight;
     public Color healthColor;
-    public Color healthHighlight;
+    //public Color healthHighlight;
     public Color speedColor;
-    public Color speedHighlight;
+    //public Color speedHighlight;
     public Color damageColor;
-    public Color damageHighlight;
+    //public Color damageHighlight;
 
     private void Start()
     {
@@ -43,13 +43,11 @@ public class Pickup : MonoBehaviour
         {
             case PickupType.darkorb:
                 icon.sprite = icons[0];
-                icon.color = orbColor;
                 icon.gameObject.transform.localScale = new Vector3(23, 23, 23);
                 //highlight.color = orbHighlight;
                 break;
             case PickupType.health:
                 icon.sprite = icons[1];
-                icon.color = healthColor;
                 //highlight.color = healthHighlight;
 
                 break;
@@ -69,6 +67,7 @@ public class Pickup : MonoBehaviour
                 print("Error: No Pickup Type");
                 break;
         }
+        icon.color = new Color(icon.color.r, icon.color.g, icon.color.b, 1);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

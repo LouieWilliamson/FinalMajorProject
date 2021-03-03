@@ -4263,6 +4263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1397900318}
   - component: {fileID: 1397900317}
+  - component: {fileID: 1397900319}
   - component: {fileID: 1397900316}
   m_Layer: 0
   m_Name: Pickup
@@ -4284,15 +4285,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pType: 1
-  icons: []
-  orbColor: {r: 0.48443222, g: 0, b: 1, a: 0.49803922}
-  orbHighlight: {r: 0, g: 0, b: 0, a: 0.49803922}
-  healthColor: {r: 1, g: 0, b: 0, a: 0.49803922}
-  healthHighlight: {r: 0.76470596, g: 0.19607845, b: 0.1764706, a: 0.49803922}
+  icons:
+  - {fileID: 21300000, guid: e2f21d8d244a4794fbd4a87bf4fb03a0, type: 3}
+  - {fileID: 21300000, guid: 66b43a0d2af2e8e4d9ae819ab4b78a6c, type: 3}
+  - {fileID: 21300000, guid: c5bf912cbf3cdc3498e6f99d09a816ed, type: 3}
+  - {fileID: 21300000, guid: 2bd08b6ea704d7648839fa1f65c5e636, type: 3}
+  orbColor: {r: 1, g: 1, b: 1, a: 0.49803922}
+  healthColor: {r: 1, g: 1, b: 1, a: 0.49803922}
   speedColor: {r: 1, g: 0.7400185, b: 0, a: 0.49803922}
-  speedHighlight: {r: 0.8113208, g: 0.40906316, b: 0.14925243, a: 0.49803922}
   damageColor: {r: 0.26118433, g: 1, b: 0, a: 0.49803922}
-  damageHighlight: {r: 0.07008721, g: 0.4245283, b: 0.09034094, a: 0.49803922}
 --- !u!212 &1397900317
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4334,7 +4335,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ea0191521aa1aa4fbb6eaca317811a1, type: 3}
-  m_Color: {r: 0.764151, g: 0.19423878, b: 0.17661981, a: 0.49803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4352,13 +4353,29 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1397900315}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.8, y: 8.68, z: 0}
+  m_LocalPosition: {x: 22.91, y: 4.13, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 1637797260}
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1397900319
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1397900315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.4999998
 --- !u!1 &1472184807
 GameObject:
   m_ObjectHideFlags: 0
@@ -5090,7 +5107,7 @@ SpriteRenderer:
   m_SortingLayer: 6
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e9fb116a3dcc9f14c981ff7dc7626fad, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 0.49803922}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49803922}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
