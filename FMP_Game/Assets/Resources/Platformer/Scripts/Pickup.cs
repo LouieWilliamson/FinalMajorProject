@@ -14,8 +14,13 @@ public class Pickup : MonoBehaviour
 
     private int OrbValue;
     private int healthValue;
-    private int speedMultiplier;
-    private int damageMultiplier;
+    private float speedMultiplier;
+    private float damageMultiplier;
+    private float rawDamage;
+
+    private bool effectActive;
+    private float effectTimer;
+    private float effectDuration;
 
     public Color orbColor;
     //public Color orbHighlight;
@@ -26,16 +31,37 @@ public class Pickup : MonoBehaviour
     public Color damageColor;
     //public Color damageHighlight;
 
+    private CircleCollider2D col;
+
     private void Start()
     {
+        effectActive = false;
+        effectTimer = 0;
+        effectDuration = 2;
+
+        rawDamage = 0;
         OrbValue = 1;
         healthValue = 50;
-        speedMultiplier = 2;
-        damageMultiplier = 2;
+        speedMultiplier = 1.5f;
+        damageMultiplier = 1.113f;
 
         highlight = GetComponent<SpriteRenderer>();
         icon = transform.GetChild(0).GetComponent<SpriteRenderer>();
+        col = GetComponent<CircleCollider2D>();
         AppearanceSwitch();
+    }
+    private void Update()
+    {
+        if (effectActive)
+        {
+            effectTimer += Time.deltaTime;
+
+            if (effectTimer >= effectDuration)
+            {
+                DisableEffect();
+                effectTimer = 0;
+            }
+        }
     }
     private void AppearanceSwitch()
     {
@@ -75,9 +101,18 @@ public class Pickup : MonoBehaviour
         {
             player = collision.gameObject;
             BehaviourSwitch();
-
-            //dont destroy, start effect timer, disable collider, disable both sprite renderers
-            Destroy(this.gameObject);
+            
+            //if it doesnt have a timed effect, then destroy it
+            if (pType == PickupType.health || pType == PickupType.darkorb)
+            {
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                icon.enabled = false;
+                highlight.enabled = false;
+                col.enabled = false;
+            }
         }
     }
     private void BehaviourSwitch()
@@ -92,14 +127,30 @@ public class Pickup : MonoBehaviour
                 break;
             case PickupType.speed:
                 player.GetComponent<PlayerMovement>().speed *= speedMultiplier;
+                effectActive = true;
                 break;
             case PickupType.damage:
-                int damage = player.GetComponent<PlayerAttacks>().GetGunDamage();
-                player.GetComponent<PlayerAttacks>().SetGunDamage(damage *= damageMultiplier);
+                float damage = player.GetComponent<PlayerAttacks>().GetGunDamage();
+                rawDamage = damage *= damageMultiplier;
+                player.GetComponent<PlayerAttacks>().SetGunDamage((int)Mathf.Round(rawDamage));
+                effectActive = true;
                 break;
             default:
                 print("Error: No Pickup Type");
                 break;
         }
+    }
+    private void DisableEffect()
+    {
+        if(pType == PickupType.speed)
+        {
+            player.GetComponent<PlayerMovement>().speed /= speedMultiplier;
+        }
+        else if (pType == PickupType.damage)
+        {
+            player.GetComponent<PlayerAttacks>().SetGunDamage((int)Mathf.Round(rawDamage /= damageMultiplier));
+        }
+        effectActive = false;
+        Destroy(this.gameObject);
     }
 }
