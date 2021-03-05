@@ -24,22 +24,27 @@ public class EnemyAnimations : MonoBehaviour
             //is he already facing left?
             if (!isFacingLeft)
             {
-                FlipSprite();
-                isFacingLeft = true;
+                FlipEnemy();
+                //isFacingLeft = true;
             }
         }
         else if (m_rb.velocity.x > 0)
         {
             if (isFacingLeft)
             {
-                FlipSprite();
-                isFacingLeft = false;
+                FlipEnemy();
+                //isFacingLeft = false;
             }
         }
+        else if(m_rb.velocity.x == 0)
+        {
+            Idle();
+        }
     }
-    private void FlipSprite()
+    public void FlipEnemy()
     {
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        isFacingLeft = !isFacingLeft;
     }
 
     public void Idle()

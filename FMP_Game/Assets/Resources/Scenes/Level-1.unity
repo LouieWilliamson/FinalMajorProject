@@ -3921,7 +3921,7 @@ MonoBehaviour:
   minX: 10
   maxX: 70
   maxY: 55
-  spawnTime: 0.5
+  spawnTime: 0.1
   roomLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -5567,25 +5567,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -4697866845028007109, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
-      propertyPath: seeDistance
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -4697866845028007109, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
-      propertyPath: attackDistance
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 6015399661572552840, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
       propertyPath: m_Name
       value: Skele_Sword
       objectReference: {fileID: 0}
     - target: {fileID: 6015399661572552847, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.9
+      value: 24.86
       objectReference: {fileID: 0}
     - target: {fileID: 6015399661572552847, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.58
+      value: 7.92
       objectReference: {fileID: 0}
     - target: {fileID: 6015399661572552847, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
       propertyPath: m_LocalPosition.z

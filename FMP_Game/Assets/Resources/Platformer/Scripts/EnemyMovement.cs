@@ -28,18 +28,18 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.K))
         {
-            Move(true);
+            Move(false);
         }
         if (Input.GetKey(KeyCode.L))
         {
-            Move(false);
+            Move(true);
         }
 
-        if(!Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.Space))
-        {
-            anim.Idle();
-            StopHorizontal();
-        }
+        //if(!Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.Space))
+        //{
+        //    anim.Idle();
+        //    StopHorizontal();
+        //}
 
         if (Input.GetKeyDown(KeyCode.O))
         {
@@ -51,7 +51,7 @@ public class EnemyMovement : MonoBehaviour
     {
         walking = isWalking;
     }
-    void Move(bool LeftifTrue)
+    public void Move(bool RightIfTrue)
     {
         if (walking)
         {
@@ -64,13 +64,13 @@ public class EnemyMovement : MonoBehaviour
             speed = runSpeed;
         }
 
-        if(LeftifTrue)
+        if(RightIfTrue)
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         else
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
     }
     void Jump()
@@ -78,7 +78,7 @@ public class EnemyMovement : MonoBehaviour
         rb.AddForce(new Vector2(0, jumpHeight));
         anim.Jump();
     }
-    void StopHorizontal()
+    public void StopHorizontal()
     {
         Vector2 stopHor = new Vector2(0, rb.velocity.y);
         rb.velocity = stopHor;
