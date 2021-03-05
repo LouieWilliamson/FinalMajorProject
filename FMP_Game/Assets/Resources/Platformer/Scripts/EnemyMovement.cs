@@ -12,12 +12,10 @@ public class EnemyMovement : MonoBehaviour
     private int runSpeed;
     public int jumpHeight;
 
-    private bool movingLeft;
     private bool walking;
     
     void Start()
     {
-        movingLeft = true;
         walking = true;
         anim = GetComponent<EnemyAnimations>();
         rb = GetComponent<Rigidbody2D>();
@@ -49,7 +47,10 @@ public class EnemyMovement : MonoBehaviour
         }
         
     }
-
+    public void SetWalking(bool isWalking)
+    {
+        walking = isWalking;
+    }
     void Move(bool LeftifTrue)
     {
         if (walking)
@@ -85,5 +86,6 @@ public class EnemyMovement : MonoBehaviour
     public void SetIgnorePlayer(GameObject player)
     {
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        GetComponent<EnemyAI>().SetPlayer(player);
     }
 }

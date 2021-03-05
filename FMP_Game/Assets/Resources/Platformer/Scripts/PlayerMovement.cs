@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(jumpFrom.position, direction, rayLength, groundLayer);
         RaycastHit2D hit2 = Physics2D.Raycast(jumpFrom.position, direction, rayLength, platformLayer);
-
+        
         Debug.DrawRay(jumpFrom.position, direction, Color.green, 10);
 
         if (hit.collider != null || hit2.collider != null)

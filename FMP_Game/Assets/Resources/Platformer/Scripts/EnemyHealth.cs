@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     private Rigidbody2D rb;
     public float deathYchange;
     private HUDManager hud;
+    private EnemyAI ai;
     void Start()
     {
         isDead = false;
@@ -25,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
         anim = GetComponent<EnemyAnimations>();
         health = 200;
         hitEffect = GetComponent<HitEffect>();
+        ai = GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
@@ -61,5 +63,6 @@ public class EnemyHealth : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y - deathYchange, transform.position.z);
         }
         hud.IncreaseEnemiesKilled();
+        ai.SetDead();
     }
 }

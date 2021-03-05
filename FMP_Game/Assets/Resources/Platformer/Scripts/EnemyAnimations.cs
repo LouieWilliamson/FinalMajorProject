@@ -75,4 +75,5 @@ public class EnemyAnimations : MonoBehaviour
     {
         m_Anim.SetTrigger("HeavyAttack");
     }
+    public bool GetFacingLeft() { return isFacingLeft; }
 }
