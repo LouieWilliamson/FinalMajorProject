@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
     {
         health += -damage;
         hitEffect.Enable();
-        anim.Hit();
+        anim.HitAnim();
     }
     private void Kill()
     {
@@ -57,7 +57,7 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
-            anim.Dead();
+            anim.DeadAnim();
             collider.enabled = false;
             rb.gravityScale = 0;
             transform.position = new Vector3(transform.position.x, transform.position.y - deathYchange, transform.position.z);

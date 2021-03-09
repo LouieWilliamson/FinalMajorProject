@@ -24,10 +24,14 @@ public class PlayerMovement : MonoBehaviour
     bool isSPressed;
     bool isDPressed;
     bool isSpacePressed;
-    
+
+    bool beenHit;
+    float hitTimer;
     // Start is called before the first frame update
     void Start()
     {
+        hitTimer = 0;
+        beenHit = false;
         TimesJumped = 0;
         isAPressed = false;
         isSPressed = false;
@@ -66,6 +70,17 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
             }
         }
+
+        if (beenHit)
+        {
+            hitTimer += Time.deltaTime;
+
+            if(hitTimer > 1)
+            {
+                beenHit = false;
+                hitTimer = 0;
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -79,8 +94,11 @@ public class PlayerMovement : MonoBehaviour
         }
         else if ((!isDPressed && !isAPressed) || (isDPressed && isAPressed))
         {
-            p_Anim.SetIdle();
-            StopHorizontal();
+            if(!beenHit)
+            {
+                p_Anim.SetIdle();
+                StopHorizontal();
+            }
         }
     }
     private void MoveLeft()
@@ -143,5 +161,21 @@ public class PlayerMovement : MonoBehaviour
         {
             return false;
         }
+    }
+    public void Knockback(float strength, bool left)
+    {
+        float knockX = strength;
+        float knockY = 5;
+
+        if(left)
+        {
+            knockX *= -1;
+        }
+
+        beenHit = true;
+
+        Vector2 knock = new Vector2(knockX, knockY);
+
+        m_rb.AddForce(knock, ForceMode2D.Impulse);
     }
 }

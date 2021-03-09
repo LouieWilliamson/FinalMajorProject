@@ -31,14 +31,16 @@ public class EnemyAI : MonoBehaviour
     private float attackTimer;
     private float attackTime;
     public int HeavyAttackChance;
+    private float attackToChaseTimer;
 
     //Movements
     private bool walkingRight;
     public LayerMask groundLayer;
-
+    public LayerMask platformLayer;
     void Start()
     {
-        attackTime = 1;
+        attackToChaseTimer = 0;
+        attackTime = 2;
         attackTimer = 0;
         walkingRight = true;
         playerSet = false;
@@ -46,6 +48,7 @@ public class EnemyAI : MonoBehaviour
         inAttackRange = false;
         eMovement = GetComponent<EnemyMovement>();
         anim = GetComponent<EnemyAnimations>();
+        eAttacks = GetComponent<EnemyAttacks>();
         state = EnemyState.patrolling;
     }
 
@@ -62,20 +65,37 @@ public class EnemyAI : MonoBehaviour
             attackTimer = 0;
         }
 
-        if (inAttackRange)
+        //this adds a delay in between enemy attacks and chases
+        if (state == EnemyState.attacking)
         {
-            state = EnemyState.attacking;
-            eMovement.SetWalking(false);
-        }
-        else if (canSeePlayer)
-        {
-            state = EnemyState.chasing;
-            eMovement.SetWalking(false);
+            if (!inAttackRange)
+            {
+                attackToChaseTimer += Time.deltaTime;
+                if (attackToChaseTimer > 1)
+                {
+                    state = EnemyState.chasing;
+                    attackToChaseTimer = 0;
+                }
+            }
         }
         else
         {
-            state = EnemyState.patrolling;
-            eMovement.SetWalking(true);
+            //sets the ai state depending on their distance with the player
+            if (inAttackRange)
+            {
+                state = EnemyState.attacking;
+                eMovement.SetWalking(false);
+            }
+            else if (canSeePlayer)
+            {
+                state = EnemyState.chasing;
+                eMovement.SetWalking(false);
+            }
+            else
+            {
+                state = EnemyState.patrolling;
+                eMovement.SetWalking(true);
+            }
         }
 
         if (playerSet)
@@ -106,13 +126,11 @@ public class EnemyAI : MonoBehaviour
             if (hit.distance < attackDistance)
             {
                 inAttackRange = true;
-                print("ATTACK");
             }
             else if (hit.distance < seeDistance && CheckFacingPlayer())
             {
                 canSeePlayer = true;
                 inAttackRange = false;
-                print("CHASE");
             }
             else if (hit.distance < seeDistance && canSeePlayer)
             {
@@ -171,10 +189,14 @@ public class EnemyAI : MonoBehaviour
         }
 
         RaycastHit2D floorRay = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, groundLayer);
+        RaycastHit2D floorRay2 = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, platformLayer);
+
         RaycastHit2D wallRay = Physics2D.Raycast(walkCheck.position, wallVect, 0.1f, groundLayer);
 
+        bool atEdge = (floorRay.collider == null && floorRay2.collider == null);
+        bool atWall = wallRay.collider != null;
 
-        if (floorRay.collider == null || wallRay.collider != null)
+        if (atEdge || atWall)
         {
             walkingRight = !walkingRight;
         }
@@ -198,11 +220,11 @@ public class EnemyAI : MonoBehaviour
 
             if(attackType <= HeavyAttackChance)
             {
-                anim.HeavyAttack();
+                anim.HeavyAttackAnim();
             }
             else
             {
-                anim.LightAttack();
+                anim.LightAttackAnim();
             }
 
             attackTimer = 0;
@@ -255,11 +277,28 @@ public class EnemyAI : MonoBehaviour
             wallVect = Vector2.left;
         }
 
+        //RaycastHit2D floorRay = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, groundLayer);
+        //RaycastHit2D wallRay = Physics2D.Raycast(walkCheck.position, wallVect, 0.1f, groundLayer);
+
+
+        //if (floorRay.collider == null || wallRay.collider != null)
+        //{
+        //    return false;
+        //}
+        //else
+        //{
+        //    return true;
+        //}
+
         RaycastHit2D floorRay = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, groundLayer);
+        RaycastHit2D floorRay2 = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, platformLayer);
+
         RaycastHit2D wallRay = Physics2D.Raycast(walkCheck.position, wallVect, 0.1f, groundLayer);
 
+        bool atEdge = (floorRay.collider == null && floorRay2.collider == null);
+        bool atWall = wallRay.collider != null;
 
-        if (floorRay.collider == null || wallRay.collider != null)
+        if (atEdge || atWall)
         {
             return false;
         }

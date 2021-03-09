@@ -16,6 +16,12 @@ public class RoomType : MonoBehaviour
     private int NumOfEnemies;
     private int NumOfPickups;
     private int NumOfHazards;
+
+    private int MaxPlatforms;
+    private int MaxEnemies;
+    private int MaxPickups;
+    private int MaxHazards;
+
     private void Start()
     {
         NumOfEnemies = 0;
@@ -23,7 +29,30 @@ public class RoomType : MonoBehaviour
         NumOfPickups = 0;
         NumOfPlatforms = 0;
 
+        //SetSpawnLimits();
+        MaxEnemies = 2;
+        MaxPlatforms = 3;
+        MaxPickups = 1;
+    }
+    private void SetSpawnLimits()
+    {
+        switch (type)
+        {
+            case RType.LR:
 
+                break;
+            case RType.LRB:
+
+                break;
+            case RType.LRT:
+
+                break;
+            case RType.LRTB:
+
+                break;
+            default:
+                break;
+        }
     }
     public void DestroyRoom()
     {
@@ -44,5 +73,17 @@ public class RoomType : MonoBehaviour
     public void AddHazard()
     {
         NumOfHazards++;
+    }
+    public bool RoomForPlatform()
+    {
+        return (NumOfPlatforms < MaxPlatforms);
+    }
+    public bool RoomForEnemy()
+    {
+        return (NumOfEnemies < MaxEnemies);
+    }
+    public bool RoomForPickup()
+    {
+        return (NumOfPickups < MaxPickups);
     }
 }

@@ -38,7 +38,7 @@ public class EnemyAnimations : MonoBehaviour
         }
         else if(m_rb.velocity.x == 0)
         {
-            Idle();
+            IdleAnim();
         }
     }
     public void FlipEnemy()
@@ -47,36 +47,36 @@ public class EnemyAnimations : MonoBehaviour
         isFacingLeft = !isFacingLeft;
     }
 
-    public void Idle()
+    public void IdleAnim()
     {
         m_Anim.SetTrigger("isIdle");
     }
-    public void Walk()
+    public void WalkAnim()
     {
         m_Anim.SetTrigger("isWalking");
     }
-    public void Run()
+    public void RunAnim()
     {
         m_Anim.SetTrigger("isRunning");
     }
-    public void Jump()
+    public void JumpAnim()
     {
         m_Anim.SetTrigger("isJumping");
     }
-    public void Hit()
+    public void HitAnim()
     {
         m_Anim.SetTrigger("isHit");
     }
-    public void Dead()
+    public void DeadAnim()
     {
         m_Anim.SetBool("isDead", true);
 
     }
-    public void LightAttack()
+    public void LightAttackAnim()
     {
         m_Anim.SetTrigger("LightAttack");
     }
-    public void HeavyAttack()
+    public void HeavyAttackAnim()
     {
         m_Anim.SetTrigger("HeavyAttack");
     }

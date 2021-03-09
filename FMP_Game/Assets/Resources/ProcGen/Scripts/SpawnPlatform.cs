@@ -14,9 +14,13 @@ public class SpawnPlatform : MonoBehaviour
     private SpawnDarkOrb darkOrb;
     private int randomPlatform;
     private float orbYoffset;
+    private RoomType Room;
+
     // Start is called before the first frame update
     void Start()
     {
+        Room = GetComponentInParent<RoomType>();
+
         orbYoffset = 1;
 
         darkOrb = GetComponent<SpawnDarkOrb>();
@@ -28,26 +32,30 @@ public class SpawnPlatform : MonoBehaviour
             Spawn();
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     private void Spawn()
+    {
+        if (Room.RoomForPlatform())
+        {
+            SpawnPform();
+            SpawnOrb();
+        }
+    }
+    private void SpawnPform()
     {
         randomPlatform = Random.Range(0, Platforms.Length);
 
         platformInstance = (GameObject)Instantiate(Platforms[randomPlatform], transform.position, Quaternion.identity);
         platformInstance.transform.parent = transform; //parent the spawned tile to this
         Physics2D.IgnoreLayerCollision(10, 10);
-
-        PlatformChecks();
-
+        Room.AddPlatform();
+    }
+    private void SpawnOrb()
+    {
+        CheckOrbSpawnOffset();
         Vector2 darkOrbPos = new Vector2(transform.position.x, transform.position.y + orbYoffset);
         darkOrb.SpawnOrb(darkOrbPos);
     }
-    private void PlatformChecks()
+    private void CheckOrbSpawnOffset()
     {
         if(randomPlatform == 0)
         {

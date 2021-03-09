@@ -7,21 +7,22 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     Rigidbody2D rb;
     EnemyAnimations anim;
-    public int speed;
-    private int walkSpeed;
-    private int runSpeed;
+    public float speed;
+    public float runMultiplier;
+    private float walkSpeed;
+    private float runSpeed;
     public int jumpHeight;
 
     private bool walking;
-    
+    private float gravity;
     void Start()
     {
         walking = true;
         anim = GetComponent<EnemyAnimations>();
         rb = GetComponent<Rigidbody2D>();
-        runSpeed = speed * 2;
+        runSpeed = speed * runMultiplier;
         walkSpeed = speed;
-
+        gravity = 1.7f;
     }
     // Update is called once per frame
     void Update()
@@ -55,12 +56,12 @@ public class EnemyMovement : MonoBehaviour
     {
         if (walking)
         {
-            anim.Walk();
+            anim.WalkAnim();
             speed = walkSpeed;
         }
         else
         {
-            anim.Run();
+            anim.RunAnim();
             speed = runSpeed;
         }
 
@@ -76,7 +77,7 @@ public class EnemyMovement : MonoBehaviour
     void Jump()
     {
         rb.AddForce(new Vector2(0, jumpHeight));
-        anim.Jump();
+        anim.JumpAnim();
     }
     public void StopHorizontal()
     {
@@ -87,5 +88,9 @@ public class EnemyMovement : MonoBehaviour
     {
         Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         GetComponent<EnemyAI>().SetPlayer(player);
+    }
+    public void ActivateGravity()
+    {
+        rb.gravityScale = gravity;
     }
 }

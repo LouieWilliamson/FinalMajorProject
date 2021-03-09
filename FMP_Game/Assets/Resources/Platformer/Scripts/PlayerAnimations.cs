@@ -78,7 +78,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         m_Anim.SetTrigger("isMoving");
     }
-
+    public void SetHit()
+    {
+        m_Anim.SetTrigger("isHit");
+    }
     public void SetIdle()
     {
         m_Anim.SetTrigger("isIdle");

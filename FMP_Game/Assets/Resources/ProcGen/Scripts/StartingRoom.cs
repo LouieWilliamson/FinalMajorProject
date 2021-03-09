@@ -28,7 +28,6 @@ public class StartingRoom : MonoBehaviour
         lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
         cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
@@ -61,11 +60,13 @@ public class StartingRoom : MonoBehaviour
 
         //setting the player values for suitable testing in the proc gen world  ---- SET THESE LATER IN THE PREFAB INSPECTOR
 
-
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
         //set enemies to ignore player
         for (int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].GetComponent<EnemyMovement>().SetIgnorePlayer(player);
+            EnemyMovement eMove = enemies[i].GetComponent<EnemyMovement>();
+            eMove.SetIgnorePlayer(player);
+            eMove.ActivateGravity();
         }
         HUD.SetRunning(true);
         gsManager.SetPlayerSpawned();

@@ -8,21 +8,27 @@ public class MovingPlatform : MonoBehaviour
     
     public float speed;
     public LayerMask boundaryLayer;
-    public Transform Upper;
-    public Transform Lower;
+    public Transform UpperA;
+    public Transform UpperB;
+
+    public Transform LowerA;
+    public Transform LowerB;
+
     public float ColliderSize;
 
-    private Transform currentTransform;
+    private Transform currentTransformA;
+    private Transform currentTransformB;
+
     private bool movingUp;
     private Rigidbody2D rb;
     private Vector2 upVelocity;
-    private Vector2 downVelocity;
     void Start()
     {
         upVelocity = new Vector2(0, speed);
         rb = GetComponent<Rigidbody2D>();
         movingUp = true;
-        currentTransform = Upper;
+        currentTransformA = UpperA;
+        currentTransformB = UpperB;
     }
 
     // Update is called once per frame
@@ -53,18 +59,24 @@ public class MovingPlatform : MonoBehaviour
 
         if (movingUp)
         {
-            currentTransform = Upper;
+            currentTransformA = UpperA;
+            currentTransformB = UpperB;
         }
         else
         {
-            currentTransform = Lower;
+            currentTransformA = LowerA;
+            currentTransformB = LowerB;
         }
     }
     private void CheckMove()
     {
-        Collider2D tileDetection = Physics2D.OverlapCircle(currentTransform.position, ColliderSize, boundaryLayer);
-        
-        if(tileDetection != null && tileDetection.gameObject != this.gameObject)
+        Collider2D tileDetectionA = Physics2D.OverlapCircle(currentTransformA.position, ColliderSize, boundaryLayer);
+        Collider2D tileDetectionB = Physics2D.OverlapCircle(currentTransformB.position, ColliderSize, boundaryLayer);
+
+        bool hitBoundaryA = (tileDetectionA != null && tileDetectionA.gameObject != this.gameObject);
+        bool hitBoundaryB = (tileDetectionB != null && tileDetectionB.gameObject != this.gameObject);
+
+        if (hitBoundaryA || hitBoundaryB)
         {
             ChangeDirection();
         }

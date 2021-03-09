@@ -11,12 +11,14 @@ public class Inventory : MonoBehaviour
     public int healthMultiplier;
     int health;
     private HitEffect hitEffect;
+    private PlayerAnimations anim;
     private HUDManager HUD;
     private GamestateManager gsManager;
     void Start()
     {
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
+        anim = GetComponent<PlayerAnimations>();
         hitEffect = GetComponent<HitEffect>();
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         health = baseHealth * healthMultiplier;
@@ -34,21 +36,13 @@ public class Inventory : MonoBehaviour
         {
             Kill();
         }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            ChangeMaxHealth(maxHealth + 100);
-        }
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            ChangeHealth(100);
-        }
     }
     public void ChangeHealth(int amount)
     {
         if (amount < 0)
         {
             hitEffect.Enable();
+            anim.SetHit();
         }
 
         health += amount;

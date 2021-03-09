@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PickupType { darkorb, health, speed, damage };
+
 public class Pickup : MonoBehaviour
 {
-    public enum PickupType { darkorb, health, speed, damage };
 
     public PickupType pType;
+    private PickupType currentType;
+
     public Sprite[] icons;
     private SpriteRenderer icon;
     private SpriteRenderer highlight;
@@ -17,6 +20,7 @@ public class Pickup : MonoBehaviour
     private float speedMultiplier;
     private float damageMultiplier;
     private float rawDamage;
+    private float normalScale;
 
     private bool effectActive;
     private float effectTimer;
@@ -35,6 +39,8 @@ public class Pickup : MonoBehaviour
 
     private void Start()
     {
+        currentType = pType;
+
         effectActive = false;
         effectTimer = 0;
         effectDuration = 2;
@@ -44,6 +50,7 @@ public class Pickup : MonoBehaviour
         healthValue = 50;
         speedMultiplier = 1.5f;
         damageMultiplier = 1.113f;
+        normalScale = 0.6528f;
 
         highlight = GetComponent<SpriteRenderer>();
         icon = transform.GetChild(0).GetComponent<SpriteRenderer>();
@@ -52,6 +59,12 @@ public class Pickup : MonoBehaviour
     }
     private void Update()
     {
+        if (currentType != pType)
+        {
+            AppearanceSwitch();
+            currentType = pType;
+        }
+
         if (effectActive)
         {
             effectTimer += Time.deltaTime;
@@ -69,23 +82,28 @@ public class Pickup : MonoBehaviour
         {
             case PickupType.darkorb:
                 icon.sprite = icons[0];
+                icon.color = orbColor;
                 icon.gameObject.transform.localScale = new Vector3(23, 23, 23);
                 //highlight.color = orbHighlight;
                 break;
             case PickupType.health:
                 icon.sprite = icons[1];
+                icon.color = healthColor;
+                icon.gameObject.transform.localScale = new Vector3(normalScale, normalScale, normalScale);
                 //highlight.color = healthHighlight;
 
                 break;
             case PickupType.speed:
                 icon.sprite = icons[2];
                 icon.color = speedColor;
+                icon.gameObject.transform.localScale = new Vector3(normalScale, normalScale, normalScale);
                 //highlight.color = speedHighlight;
 
                 break;
             case PickupType.damage:
                 icon.sprite = icons[3];
                 icon.color = damageColor;
+                icon.gameObject.transform.localScale = new Vector3(normalScale, normalScale, normalScale);
                 //highlight.color = damageHighlight;
 
                 break;
