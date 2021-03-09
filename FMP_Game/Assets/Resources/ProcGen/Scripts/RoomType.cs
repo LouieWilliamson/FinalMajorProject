@@ -30,7 +30,7 @@ public class RoomType : MonoBehaviour
         NumOfPlatforms = 0;
 
         //SetSpawnLimits();
-        MaxEnemies = 2;
+        MaxEnemies = 1;
         MaxPlatforms = 3;
         MaxPickups = 1;
     }
@@ -56,6 +56,21 @@ public class RoomType : MonoBehaviour
     }
     public void DestroyRoom()
     {
+        //destroy enemies, platforms and pickups
+        EnemyAI[] roomEnemies  = GetComponentsInChildren<EnemyAI>();
+        Pickup[] roomPickups = GetComponentsInChildren<Pickup>();
+        //GameObject[] env = GameObject.FindGameObjectsWithTag("Environment");
+
+        for (int i = 0; i < roomEnemies.Length; i++)
+        {
+            Destroy(roomEnemies[i].gameObject);
+        }
+
+        for (int i = 0; i < roomPickups.Length; i++)
+        {
+            Destroy(roomPickups[i].gameObject);
+        }
+
         Destroy(gameObject);
     }
     public void AddEnemy()

@@ -9,10 +9,11 @@ public class StartingRoom : MonoBehaviour
     private Cinemachine.CinemachineVirtualCamera cam;
     private LevelGeneration lvlGenerator;
     private bool spawnedPlayer;
+    private bool levelLoaded;
     private GameObject[] enemies;
     private HUDManager HUD;
     private GamestateManager gsManager;
-
+    
     //spawn gun powerup
     private Vector3 gunSpawn;
     private float gunX;
@@ -25,7 +26,7 @@ public class StartingRoom : MonoBehaviour
     {
         //player spawning
         spawnedPlayer = false;
-        lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
+        levelLoaded = false;
         cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
         playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -43,7 +44,7 @@ public class StartingRoom : MonoBehaviour
     void Update()
     {
         //if the level is built and the player hasn't been spawned
-        if (lvlGenerator.stopBuilding && !spawnedPlayer)
+        if (levelLoaded && !spawnedPlayer)
         {
             HUD.SetLevelLoaded();
             SpawnPlayer();
@@ -58,8 +59,6 @@ public class StartingRoom : MonoBehaviour
         cam.Follow = player.transform;
         spawnedPlayer = true;
 
-        //setting the player values for suitable testing in the proc gen world  ---- SET THESE LATER IN THE PREFAB INSPECTOR
-
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
         //set enemies to ignore player
         for (int i = 0; i < enemies.Length; i++)
@@ -67,6 +66,7 @@ public class StartingRoom : MonoBehaviour
             EnemyMovement eMove = enemies[i].GetComponent<EnemyMovement>();
             eMove.SetIgnorePlayer(player);
             eMove.ActivateGravity();
+            print("Enemy:" + i);
         }
         HUD.SetRunning(true);
         gsManager.SetPlayerSpawned();

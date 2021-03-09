@@ -4092,9 +4092,9 @@ MonoBehaviour:
   - {fileID: 1755971570}
   roomTypes:
   - {fileID: 3366045164142536175, guid: 6e37cf8a87240874e97268e628a0e2c4, type: 3}
-  - {fileID: 3366045164142536175, guid: dd63b10c106a43040b601b85acf9523d, type: 3}
-  - {fileID: 3366045164142536175, guid: bb8e795e8a7b4e04ea79fcc14cc30bba, type: 3}
-  - {fileID: 3366045164142536175, guid: 566199f4fe91319448187048102f7a72, type: 3}
+  - {fileID: 3366045164142536175, guid: 9b1b616519ac05540b66c2390d841ac5, type: 3}
+  - {fileID: 3366045164142536175, guid: cb9830167ca25994383e0bd63afb2695, type: 3}
+  - {fileID: 3366045164142536175, guid: c94d07ca05bae4c4baacb8a49d4f9012, type: 3}
   horizontalMoveAmount: 20
   verticalMoveAmount: 10
   minX: 10
