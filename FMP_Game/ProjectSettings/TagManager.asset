@@ -9,6 +9,7 @@ TagManager:
   - Environment
   - Camera
   - Manager
+  - EnemyJump
   layers:
   - Default
   - TransparentFX
