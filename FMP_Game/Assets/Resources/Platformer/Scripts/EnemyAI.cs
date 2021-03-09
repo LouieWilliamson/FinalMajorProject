@@ -195,10 +195,15 @@ public class EnemyAI : MonoBehaviour
 
         bool atEdge = (floorRay.collider == null && floorRay2.collider == null);
         bool atWall = wallRay.collider != null;
-
-        if (atEdge || atWall)
+        
+        if (!atEdge && !atWall)
         {
-            walkingRight = !walkingRight;
+            eMovement.isJumping = false;
+        }
+
+        if ((atEdge || atWall) && !eMovement.isJumping)
+        {
+             walkingRight = !walkingRight;
         }
     }
     private void Attack()

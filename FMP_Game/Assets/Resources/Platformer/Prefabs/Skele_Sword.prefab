@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   runMultiplier: 1.5
-  jumpHeight: 250
+  jumpHeight: 375
 --- !u!114 &6015399661572552835
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ public class RoomType : MonoBehaviour
         NumOfPlatforms = 0;
 
         //SetSpawnLimits();
-        MaxEnemies = 1;
+        MaxEnemies = 2;
         MaxPlatforms = 3;
         MaxPickups = 1;
     }
@@ -76,6 +76,7 @@ public class RoomType : MonoBehaviour
     public void AddEnemy()
     {
         NumOfEnemies++;
+        print(NumOfEnemies);
     }
     public void AddPlatform()
     {

@@ -25,6 +25,7 @@ public class SpawnOtherRoom : MonoBehaviour
             int randomRoom = Random.Range(0, levelGenerator.roomTypes.Length);
             GameObject roomInstance = (GameObject)Instantiate(levelGenerator.roomTypes[randomRoom], transform.position, Quaternion.identity);
             roomInstance.transform.parent = FillerParent;
+            levelGenerator.AddToRoomDoneCount();
             Destroy(gameObject);
         }
     }

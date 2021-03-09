@@ -36,7 +36,9 @@ public class SpawnEnemy : MonoBehaviour
         int randomEnemy = Random.Range(0, Enemies.Length); // 0 - 4
 
         enemyInstance = Instantiate(Enemies[randomEnemy], transform.position, Quaternion.identity);
-        enemyInstance.transform.parent = EnemyParent.transform;
-
+        //enemyInstance.transform.parent = EnemyParent.transform;
+        enemyInstance.transform.parent = transform;
+        Room.AddEnemy();
+        Destroy(this);
     }
 }

@@ -12,11 +12,14 @@ public class EnemyMovement : MonoBehaviour
     private float walkSpeed;
     private float runSpeed;
     public int jumpHeight;
+    internal bool isJumping;
 
     private bool walking;
     private float gravity;
     void Start()
     {
+        isJumping = false;
+        Physics2D.IgnoreLayerCollision(11, 11);
         walking = true;
         anim = GetComponent<EnemyAnimations>();
         rb = GetComponent<Rigidbody2D>();
@@ -48,6 +51,13 @@ public class EnemyMovement : MonoBehaviour
         }
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "EnemyJump")
+        {
+            Jump();
+        }
+    }
     public void SetWalking(bool isWalking)
     {
         walking = isWalking;
@@ -76,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
     }
     void Jump()
     {
+        isJumping = true;
         rb.AddForce(new Vector2(0, jumpHeight));
         anim.JumpAnim();
     }

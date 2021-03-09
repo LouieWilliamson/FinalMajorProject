@@ -584,7 +584,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - {fileID: 6015399661572552840, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
-  PercentSpawnChance: 60
+  PercentSpawnChance: 100
 --- !u!1 &1638292940056383629
 GameObject:
   m_ObjectHideFlags: 0
@@ -5251,7 +5251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemies:
   - {fileID: 6015399661572552840, guid: 15fa1b14bdb081c45894f2577ca4a73d, type: 3}
-  PercentSpawnChance: 60
+  PercentSpawnChance: 100
 --- !u!1 &7860533492987414550
 GameObject:
   m_ObjectHideFlags: 0

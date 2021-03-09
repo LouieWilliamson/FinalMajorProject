@@ -32,10 +32,18 @@ public class LevelGeneration : MonoBehaviour
     private bool StartRoomSet;
     private int roomCount;
     public Transform CriticalParent;
+
+    private SpawnOtherRoom[] rooms;
+    private bool LevelFinished;
+    private int RoomsDone;
+    private float LoadTimer;
     void Start()
     {
+        rooms = FindObjectsOfType<SpawnOtherRoom>();
         StartRoomSet = false;
+        LoadTimer = 0;
 
+        RoomsDone = 0;
         roomCount = 0;
         UpCounter = 0;
         stopBuilding = false;
@@ -61,6 +69,16 @@ public class LevelGeneration : MonoBehaviour
             else
             {
                 moveTimer += Time.deltaTime;
+            }
+        }
+
+        if (RoomsDone == rooms.Length)
+        {
+            LoadTimer += Time.deltaTime;
+
+            if (LoadTimer > 1 && !LevelFinished)
+            {
+                LevelFinished = true;
             }
         }
     }
@@ -119,7 +137,6 @@ public class LevelGeneration : MonoBehaviour
         {
             spawnerDirection = direction.up;
         }
-
 
         CheckPreviousDirection();
         CheckEdge();
@@ -249,6 +266,7 @@ public class LevelGeneration : MonoBehaviour
     {
         GameObject roomInstance = (GameObject)Instantiate(currentRoom, transform.position, Quaternion.identity);
         roomInstance.transform.parent = CriticalParent;
+        AddToRoomDoneCount();
 
         //sets the first spawned room as the starting room
         if (!StartRoomSet)
@@ -294,4 +312,6 @@ public class LevelGeneration : MonoBehaviour
             }
         }
     }
+    public bool GetLevelFinished() { return LevelFinished; }
+    public void AddToRoomDoneCount() { RoomsDone++; }
 }

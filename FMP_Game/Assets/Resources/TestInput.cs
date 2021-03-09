@@ -16,7 +16,7 @@ public class TestInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene("ProcGen");
+            SceneManager.LoadScene("Level-1");
         }
     }
 }

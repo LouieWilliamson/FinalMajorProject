@@ -31,7 +31,7 @@ public class StartingRoom : MonoBehaviour
         playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
-
+        lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
         gunYoffset = 2.5f;
@@ -43,6 +43,8 @@ public class StartingRoom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        levelLoaded = lvlGenerator.GetLevelFinished();
+
         //if the level is built and the player hasn't been spawned
         if (levelLoaded && !spawnedPlayer)
         {
@@ -66,7 +68,6 @@ public class StartingRoom : MonoBehaviour
             EnemyMovement eMove = enemies[i].GetComponent<EnemyMovement>();
             eMove.SetIgnorePlayer(player);
             eMove.ActivateGravity();
-            print("Enemy:" + i);
         }
         HUD.SetRunning(true);
         gsManager.SetPlayerSpawned();
