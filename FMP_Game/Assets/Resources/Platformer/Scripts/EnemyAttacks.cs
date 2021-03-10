@@ -55,10 +55,6 @@ public class EnemyAttacks : MonoBehaviour
                 hit.GetComponent<PlayerMovement>().Knockback(-playerKnockBack, false);
             }
         }
-        else
-        {
-            print("Light Missed");
-        }
     }
     public void HeavyAttack()
     {
@@ -76,10 +72,6 @@ public class EnemyAttacks : MonoBehaviour
             {
                 hit.GetComponent<PlayerMovement>().Knockback(-playerKnockBack * 2, false);
             }
-        }
-        else
-        {
-            print("Heavy Missed");
         }
     }
     private void OnDrawGizmosSelected()

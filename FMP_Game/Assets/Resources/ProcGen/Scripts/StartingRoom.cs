@@ -13,7 +13,7 @@ public class StartingRoom : MonoBehaviour
     private GameObject[] enemies;
     private HUDManager HUD;
     private GamestateManager gsManager;
-    
+    private Parallax parallax;
     //spawn gun powerup
     private Vector3 gunSpawn;
     private float gunX;
@@ -32,6 +32,8 @@ public class StartingRoom : MonoBehaviour
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
         lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
+        parallax = GameObject.Find("Parallax").GetComponent<Parallax>();
+
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
         gunYoffset = 2.5f;
@@ -71,6 +73,7 @@ public class StartingRoom : MonoBehaviour
         }
         HUD.SetRunning(true);
         gsManager.SetPlayerSpawned();
+        //parallax.SetLoaded();
     }
 
     void SpawnGun()

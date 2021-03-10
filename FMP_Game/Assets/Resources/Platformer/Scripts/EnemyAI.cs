@@ -60,6 +60,7 @@ public class EnemyAI : MonoBehaviour
             CheckPlayerRange();
         }
 
+        //resets attack timer if the stance is changed from attack
         if(state != EnemyState.attacking && attackTimer > 0)
         {
             attackTimer = 0;
@@ -119,20 +120,20 @@ public class EnemyAI : MonoBehaviour
     //Checks distance to player and whether the enemy is facing the player to set state to attacking or chasing.
     private void CheckPlayerRange()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.transform.position - transform.position, rayLength, playerLayer);
+        RaycastHit2D rayToPlayer = Physics2D.Raycast(transform.position, player.transform.position - transform.position, rayLength, playerLayer);
 
-        if (hit.collider != null)
+        if (rayToPlayer.collider != null)
         {
-            if (hit.distance < attackDistance)
+            if (rayToPlayer.distance < attackDistance)
             {
                 inAttackRange = true;
             }
-            else if (hit.distance < seeDistance && CheckFacingPlayer())
+            else if (rayToPlayer.distance < seeDistance && CheckFacingPlayer())
             {
                 canSeePlayer = true;
                 inAttackRange = false;
             }
-            else if (hit.distance < seeDistance && canSeePlayer)
+            else if (rayToPlayer.distance < seeDistance && canSeePlayer)
             {
                 canSeePlayer = true;
                 inAttackRange = false;

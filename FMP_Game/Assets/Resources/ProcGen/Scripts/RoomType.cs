@@ -76,7 +76,6 @@ public class RoomType : MonoBehaviour
     public void AddEnemy()
     {
         NumOfEnemies++;
-        print(NumOfEnemies);
     }
     public void AddPlatform()
     {
