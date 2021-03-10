@@ -936,11 +936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cea6581efad32954a8898e9469714c0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bg: {fileID: 2122119826}
-  fg: {fileID: 937329330}
+  fg_rb: {fileID: 937329332}
   speed: 0.3
-  leftBound: {fileID: 0}
-  rightBound: {fileID: 0}
   cam: {fileID: 894553357}
 --- !u!1 &311827373
 GameObject:
