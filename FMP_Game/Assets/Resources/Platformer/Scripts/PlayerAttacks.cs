@@ -20,8 +20,14 @@ public class PlayerAttacks : MonoBehaviour
     public int maxBullets;
     private int GunDamage;
     private AudioManager sound;
+
+    //upgrades
+    private Upgrade activeUpgrade;
+    
     void Start()
     {
+        activeUpgrade = Upgrade.None;
+        
         sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         isCrouched = false;
         bulletCount = 0;
@@ -84,4 +90,6 @@ public class PlayerAttacks : MonoBehaviour
     {
         return GunDamage;
     }
+    public Upgrade GetActiveUpgrade() { return activeUpgrade; }
+    public void SetActiveUpgrade(Upgrade newUpgrade) { activeUpgrade = newUpgrade; }
 }

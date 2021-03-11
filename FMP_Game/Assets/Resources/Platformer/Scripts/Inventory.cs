@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Upgrade { None, Cooldown, Laser, Grenade };
+
 public class Inventory : MonoBehaviour
 {
+    //Upgrades
+
+    private Upgrade storedUpgrade;
+    private Upgrade activeUpgrade;
+
     // Start is called before the first frame update
     int DarkOrbs;
     public int baseHealth;
@@ -16,6 +23,9 @@ public class Inventory : MonoBehaviour
     private GamestateManager gsManager;
     void Start()
     {
+        storedUpgrade = Upgrade.None;
+        activeUpgrade = Upgrade.None;
+
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
         anim = GetComponent<PlayerAnimations>();
@@ -67,5 +77,18 @@ public class Inventory : MonoBehaviour
     private void Kill()
     {
         gsManager.GameOver();
+    }
+    public void StoreUpgrade(Upgrade newUpgrade)
+    {
+        storedUpgrade = newUpgrade;
+    }
+    public void UseUpgrade()
+    {
+        if (storedUpgrade != Upgrade.None)
+        {
+            activeUpgrade = storedUpgrade;
+            storedUpgrade = Upgrade.None;
+            //activate effect
+        }
     }
 }

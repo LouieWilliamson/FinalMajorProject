@@ -64,7 +64,6 @@ public class HUDManager : MonoBehaviour
             BuildTimerText();
         }
     }
-
     private void AddtoTimer()
     {
         RunTimer += Time.deltaTime;
