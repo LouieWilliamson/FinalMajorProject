@@ -44,7 +44,23 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if(hasGun && bulletCount < maxBullets) Shoot();
+            switch (activeUpgrade)
+            {
+                case Upgrade.None:
+                    if(hasGun && bulletCount < maxBullets) Shoot();
+                    break;
+                case Upgrade.Cooldown:
+                    //disable cooldown
+                    break;
+                case Upgrade.Laser:
+                    //shoot laser
+                    break;
+                case Upgrade.Grenade:
+                    //shoot grenade
+                    break;
+                default:
+                    break;
+            }
         }
     }
 

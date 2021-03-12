@@ -12,34 +12,13 @@ public class WeaponUpgrade : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-
-        switch (type)
-        {
-            case Upgrade.Cooldown:
-
-                break;
-            case Upgrade.Laser:
-
-                break;
-            case Upgrade.Grenade:
-
-                break;
-            default:
-                print("Error: No Upgrade Type Selected");
-                break;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        sr.sprite = UpgradeSprites[(int)type];
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            collision.gameObject.GetComponent<Inventory>().StoreUpgrade(type);
+            collision.gameObject.GetComponent<Inventory>().StoreUpgrade(type, sr.sprite);
             Destroy(this.gameObject);
         }
     }

@@ -6,13 +6,13 @@ using UnityEngine.UI;
 
 public class HUDManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Health
     public Slider HealthBar;
     public Text HealthText;
-    
     private int maxHealth;
     private int Health;
-
+    
+    //Run Timer
     public Text RunTime;
     private float RunTimer;
     private bool isRunning;
@@ -20,17 +20,24 @@ public class HUDManager : MonoBehaviour
     private int MM;
     private int HH;
 
+    //Dark Orb Counter
     public Text DarkOrbCount;
 
+    //Enemy Kill Counter
     public Text EnemyPercentTxt;
     public Slider EnemyCountSlider;
-
     private int NumberOfEnemies;
     private int EnemiesKilled;
     private float enemyPercent;
+    private bool EnemiesCounted;
+
+    //Inventory
+    public Image storedImage;
+    public Image activeImage;
+    private bool hasUpgrade;
+    private bool hasActiveUpgrade;
 
     private bool LevelLoaded;
-    private bool EnemiesCounted;
 
     private GamestateManager gsManager;
     void Start()
@@ -184,4 +191,15 @@ public class HUDManager : MonoBehaviour
         }
     }
     public float GetEnemyPercent() { return enemyPercent; }
+
+    public void AddStoredUpgrade(Sprite upgradeSprite)
+    {
+        storedImage.sprite = upgradeSprite;
+    }
+    public void UseStoredUpgrade()
+    {
+        activeImage.sprite = storedImage.sprite;
+        storedImage.sprite = null;
+        //start timer
+    }
 }

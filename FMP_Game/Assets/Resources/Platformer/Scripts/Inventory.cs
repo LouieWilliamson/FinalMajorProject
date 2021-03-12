@@ -78,9 +78,10 @@ public class Inventory : MonoBehaviour
     {
         gsManager.GameOver();
     }
-    public void StoreUpgrade(Upgrade newUpgrade)
+    public void StoreUpgrade(Upgrade newUpgrade, Sprite upgradeSprite)
     {
         storedUpgrade = newUpgrade;
+        HUD.AddStoredUpgrade(upgradeSprite);
     }
     public void UseUpgrade()
     {
