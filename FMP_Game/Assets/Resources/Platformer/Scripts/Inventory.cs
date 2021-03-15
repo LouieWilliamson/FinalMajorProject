@@ -10,6 +10,9 @@ public class Inventory : MonoBehaviour
 
     private Upgrade storedUpgrade;
     private Upgrade activeUpgrade;
+    private bool inRangeOfUpgrade;
+    private WeaponUpgrade upgradeInRange;
+
 
     // Start is called before the first frame update
     int DarkOrbs;
@@ -25,6 +28,7 @@ public class Inventory : MonoBehaviour
     {
         storedUpgrade = Upgrade.None;
         activeUpgrade = Upgrade.None;
+        inRangeOfUpgrade = false;
 
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
@@ -45,6 +49,11 @@ public class Inventory : MonoBehaviour
         if (health <= 0)
         {
             Kill();
+        }
+
+        if (inRangeOfUpgrade && Input.GetKey(KeyCode.E))
+        {
+            upgradeInRange.PickupUpgrade();
         }
     }
     public void ChangeHealth(int amount)
@@ -91,5 +100,18 @@ public class Inventory : MonoBehaviour
             storedUpgrade = Upgrade.None;
             //activate effect
         }
+    }
+    public void InUnpgradeRange(WeaponUpgrade upgrade)
+    {
+        inRangeOfUpgrade = true;
+        upgradeInRange = upgrade;
+        print(upgrade.name + " in range");
+    }
+    public void OutofRange()
+    {
+        inRangeOfUpgrade = false;
+        print(upgradeInRange.name + " out of range");
+
+        upgradeInRange = null;
     }
 }
