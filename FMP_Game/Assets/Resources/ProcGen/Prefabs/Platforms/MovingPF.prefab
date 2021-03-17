@@ -371,6 +371,7 @@ GameObject:
   - component: {fileID: 3718852794885636906}
   - component: {fileID: 7263201929787139537}
   - component: {fileID: 926340347009711222}
+  - component: {fileID: 1188144289700753594}
   m_Layer: 10
   m_Name: MovingPF
   m_TagString: Environment
@@ -411,10 +412,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 1
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00038528442, y: -0.014379978}
+  m_Offset: {x: 0.011681557, y: 0.19083059}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -425,7 +426,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.93505096, y: 0.24971294}
+  m_Size: {x: 0.8446827, y: 0.21582484}
   m_EdgeRadius: 0
 --- !u!251 &3718852794885636906
 PlatformEffector2D:
@@ -488,6 +489,23 @@ MonoBehaviour:
   LowerA: {fileID: 6409176249698119358}
   LowerB: {fileID: 8758644962393763300}
   ColliderSize: 0.1
+  isActive: 0
+--- !u!70 &1188144289700753594
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3718852794885636907}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0000000015161565, y: -0.012718445}
+  m_Size: {x: 0.9430735, y: 0.2542555}
+  m_Direction: 1
 --- !u!1 &3718852795281440078
 GameObject:
   m_ObjectHideFlags: 0

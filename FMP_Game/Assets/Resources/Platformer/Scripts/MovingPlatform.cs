@@ -22,8 +22,12 @@ public class MovingPlatform : MonoBehaviour
     private bool movingUp;
     private Rigidbody2D rb;
     private Vector2 upVelocity;
+    private bool isActive;
+    private bool playerInRange;
     void Start()
     {
+        playerInRange = false;
+        isActive = true;
         upVelocity = new Vector2(0, speed);
         rb = GetComponent<Rigidbody2D>();
         movingUp = true;
@@ -34,13 +38,28 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (movingUp)
+        if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            MoveUp();
+            isActive = !isActive;
+        }
+
+        if (isActive)
+        {
+            if (movingUp)
+            {
+                MoveUp();
+            }
+            else
+            {
+                MoveDown();
+            }
         }
         else
         {
-            MoveDown();
+            if (rb.velocity.y != 0)
+            {
+                ZeroVelocity();
+            }
         }
     }
     private void MoveUp()
@@ -52,6 +71,10 @@ public class MovingPlatform : MonoBehaviour
     {
         CheckMove();
         rb.velocity = -upVelocity;
+    }
+    private void ZeroVelocity()
+    {
+        rb.velocity = Vector2.zero;
     }
     private void ChangeDirection()
     {
@@ -79,6 +102,20 @@ public class MovingPlatform : MonoBehaviour
         if (hitBoundaryA || hitBoundaryB)
         {
             ChangeDirection();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            playerInRange = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            playerInRange = false;
         }
     }
 }
