@@ -8,19 +8,47 @@ public class WallFace : MonoBehaviour
     public Animator FaceAnim;
     bool faceActive;
     bool playerTeleported;
+
+    private LevelGeneration levelGen;
+    private StartingRoom startRoom;
+    private Transform roomSpawn;
+    private GameObject player;
+    private HUDManager HUD;
+    private Parallax parallax;
+    private GameObject vCam;
+    private GameObject mainCam;
+    private Vector3 centred = new Vector3(0, 0, 1);
+
+    private bool startRoomSaved;
     private void Start()
     {
+        levelGen = GameObject.FindObjectOfType<LevelGeneration>();
+        parallax = GameObject.Find("Parallax").GetComponent<Parallax>();
+        vCam = GameObject.Find("VirtualCamera");
+        mainCam = GameObject.Find("Main Camera");
+
+        startRoomSaved = false;
+
         faceActive = false;
         playerTeleported = false;
 
     }
     void Update()
     {
-        if(faceActive && !playerTeleported)
+        if (levelGen.GetLevelFinished() && !startRoomSaved)
+        {
+            startRoomSaved = true;
+            startRoom = GameObject.FindObjectOfType<StartingRoom>();
+            HUD = startRoom.HUD;
+            roomSpawn = startRoom.transform;
+            player = startRoom.player;
+        }
+
+        if(faceActive && !playerTeleported && startRoomSaved)
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                print("TELEPORT");
+                TeleportToStart();
                 playerTeleported = true;
             }
         }
@@ -40,5 +68,18 @@ public class WallFace : MonoBehaviour
             FaceAnim.SetTrigger("Out");
             faceActive = false;
         }
+    }
+    private void TeleportToStart()
+    {
+        //move player
+        player.transform.position = roomSpawn.position;
+        //move cams
+        vCam.transform.position = player.transform.position;
+        mainCam.transform.position = player.transform.position;
+        //move parallax
+        parallax.fg.transform.position = player.transform.position;
+
+        startRoom.EnableHUD();
+        parallax.SetTeleported();
     }
 }

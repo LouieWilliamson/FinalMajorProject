@@ -10,6 +10,7 @@ public class LevelGeneration : MonoBehaviour
     public StartState state;
     //------------------------------------------------
     private enum direction { left, right, up };
+    public Transform startRoomSpawn;
 
     public Transform[] startPositions;
     public GameObject[] roomTypes;

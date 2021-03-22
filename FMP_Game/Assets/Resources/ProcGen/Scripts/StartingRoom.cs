@@ -8,14 +8,16 @@ public class StartingRoom : MonoBehaviour
 
     //spawn the player
     private GameObject playerPrefab;
+    internal GameObject player;
     private Cinemachine.CinemachineVirtualCamera cam;
     private LevelGeneration lvlGenerator;
     private bool spawnedPlayer;
     private bool levelLoaded;
     private GameObject[] enemies;
-    private HUDManager HUD;
+    internal HUDManager HUD;
     private GamestateManager gsManager;
-
+    private Transform startSpawn;
+    private Parallax parallax;
     //spawn gun powerup
     private Vector3 gunSpawn;
     private float gunX;
@@ -30,11 +32,14 @@ public class StartingRoom : MonoBehaviour
         spawnedPlayer = false;
         levelLoaded = false;
         cam = GameObject.FindGameObjectWithTag("Camera").GetComponent<Cinemachine.CinemachineVirtualCamera>();
-        playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Player");
+        playerPrefab = (GameObject)Resources.Load("Platformer/Prefabs/Characters/Player");
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
         lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
         state = lvlGenerator.state;
+        startSpawn = lvlGenerator.startRoomSpawn;
+        parallax = GameObject.Find("Parallax").GetComponent<Parallax>();
+
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
         gunYoffset = 2.5f;
@@ -51,17 +56,25 @@ public class StartingRoom : MonoBehaviour
         //if the level is built and the player hasn't been spawned
         if (levelLoaded && !spawnedPlayer)
         {
-            HUD.SetLevelLoaded();
-            SpawnPlayer();
-            SpawnGun();
+            if (state == StartState.testing)
+            {
+                EnableHUD();
+                SpawnPlayer(transform);
+                SetCameraFollowPlayer();
+                parallax.SetTeleported();
+                SpawnGun();
+            }
+            else if (state == StartState.fullgameflow)
+            {
+                SpawnPlayer(startSpawn);
+                SetCameraFollowPlayer();
+            }
         }
     }
 
-    void SpawnPlayer()
+    void SpawnPlayer(Transform spawnTransform)
     {
-        GameObject player;
-        player = (GameObject)Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        cam.Follow = player.transform;
+        player = (GameObject)Instantiate(playerPrefab, spawnTransform.position, Quaternion.identity);
         spawnedPlayer = true;
 
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -72,7 +85,6 @@ public class StartingRoom : MonoBehaviour
             eMove.SetIgnorePlayer(player);
             eMove.ActivateGravity();
         }
-        HUD.SetRunning(true);
         gsManager.SetPlayerSpawned();
     }
 
@@ -81,5 +93,15 @@ public class StartingRoom : MonoBehaviour
         GameObject gun;
         gun = (GameObject)Instantiate(gunPowerup, gunSpawn, Quaternion.identity);
         gun.transform.localScale = new Vector3(3, 3, 3);
+    }
+    public void SetCameraFollowPlayer()
+    {
+        cam.Follow = player.transform;
+    }
+    public void EnableHUD()
+    {
+        HUD.EnableHUD();
+        HUD.SetLevelLoaded();
+        HUD.SetRunning(true);
     }
 }

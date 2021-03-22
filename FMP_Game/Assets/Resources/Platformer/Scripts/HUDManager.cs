@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour
 {
     //Health
+    public GameObject HUD;
     public Slider HealthBar;
     public Text HealthText;
     private int maxHealth;
@@ -42,7 +43,6 @@ public class HUDManager : MonoBehaviour
     private GamestateManager gsManager;
     void Start()
     {
-
         EnemiesKilled = 0;
         enemyPercent = 0;
         LevelLoaded = false;
@@ -151,6 +151,7 @@ public class HUDManager : MonoBehaviour
     {
         LevelLoaded = true;
     }
+    public void EnableHUD() { HUD.SetActive(true); }
     public void IncreaseEnemiesKilled()
     {
         EnemiesKilled++;
