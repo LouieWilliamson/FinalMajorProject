@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StartingRoom : MonoBehaviour
 {
+    private StartState state;
+
     //spawn the player
     private GameObject playerPrefab;
     private Cinemachine.CinemachineVirtualCamera cam;
@@ -13,6 +15,7 @@ public class StartingRoom : MonoBehaviour
     private GameObject[] enemies;
     private HUDManager HUD;
     private GamestateManager gsManager;
+
     //spawn gun powerup
     private Vector3 gunSpawn;
     private float gunX;
@@ -31,7 +34,7 @@ public class StartingRoom : MonoBehaviour
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
         lvlGenerator = GameObject.Find("LevelGenerator").GetComponent<LevelGeneration>();
-
+        state = lvlGenerator.state;
         //gun spawning
         gunPowerup = (GameObject)Resources.Load("Platformer/Prefabs/GunPowerup");
         gunYoffset = 2.5f;

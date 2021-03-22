@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum StartState { testing, fullgameflow };
 
 public class LevelGeneration : MonoBehaviour
 {
+    //---------------THIS IS FOR TESTING--------------
+    public StartState state;
+    //------------------------------------------------
     private enum direction { left, right, up };
 
     public Transform[] startPositions;

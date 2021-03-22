@@ -6,29 +6,39 @@ public class WallFace : MonoBehaviour
 {
     // Start is called before the first frame update
     public Animator FaceAnim;
-    
-    void Start()
+    bool faceActive;
+    bool playerTeleported;
+    private void Start()
     {
-        
-    }
+        faceActive = false;
+        playerTeleported = false;
 
-    // Update is called once per frame
+    }
     void Update()
     {
-        
+        if(faceActive && !playerTeleported)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                print("TELEPORT");
+                playerTeleported = true;
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            print("Move Face In");
+            FaceAnim.SetTrigger("In");
+            faceActive = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
-            print("Move Face Out");
+            FaceAnim.SetTrigger("Out");
+            faceActive = false;
         }
     }
 }
