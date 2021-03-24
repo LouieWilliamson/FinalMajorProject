@@ -67,7 +67,6 @@ public class WallFace : MonoBehaviour
         if (collision.tag == "Player")
         {
             FaceAnim.SetTrigger("In");
-            print("In");
             faceActive = true;
         }
     }
@@ -76,7 +75,6 @@ public class WallFace : MonoBehaviour
         if (collision.tag == "Player")
         {
                 FaceAnim.SetTrigger("Out");
-                print("Out");
                 faceActive = false;
         }
     }
