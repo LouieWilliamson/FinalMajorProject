@@ -105,13 +105,10 @@ public class Inventory : MonoBehaviour
     {
         inRangeOfUpgrade = true;
         upgradeInRange = upgrade;
-        print(upgrade.name + " in range");
     }
     public void OutofRange()
     {
         inRangeOfUpgrade = false;
-        print(upgradeInRange.name + " out of range");
-
         upgradeInRange = null;
     }
 }

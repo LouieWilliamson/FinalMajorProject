@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public LayerMask platformLayer;
     internal bool hasGun;
-    private bool isCrouched;
+    internal bool isCrouched;
     public Sprite crouchSprite;
     private int TimesJumped;
 
@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     bool beenHit;
     float hitTimer;
+
+    CapsuleCollider2D capsuleCol;
+    BoxCollider2D boxCol;
+    WallFace wallFace;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +48,10 @@ public class PlayerMovement : MonoBehaviour
 
         isCrouched = false;
         hasGun = false;
+
+        capsuleCol = GetComponent<CapsuleCollider2D>();
+        boxCol = GetComponentInChildren<BoxCollider2D>();
+        wallFace = GameObject.Find("FaceMoveTrigger").GetComponent<WallFace>();
     }
 
     // Update is called once per frame
@@ -51,16 +59,31 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInput();
 
-        if (isSPressed && hasGun)
+        //if the player has the gun, presses "S" and isn't crouched already then crouch
+        if (isSPressed && hasGun && !isCrouched)
         {
             isCrouched = true;
-            p_Anim.SetCrouched();
+            p_Anim.SetCrouched(true);
             p_Attack.SetCrouched(true);
+
+            if(wallFace.playerTeleported)
+            {
+                boxCol.enabled = true;
+                capsuleCol.enabled = false;
+            }
         }
-        else
+        //else if the player is crouched (and they're not pressing "S")
+        else if (isCrouched && !isSPressed)
         {
             isCrouched = false;
             p_Attack.SetCrouched(false);
+            p_Anim.SetCrouched(false);
+
+            if(wallFace.playerTeleported)
+            {
+                capsuleCol.enabled = true;
+                boxCol.enabled = false;
+            }
         }
 
         if (!isCrouched)
@@ -69,6 +92,10 @@ public class PlayerMovement : MonoBehaviour
             {
                 Jump();
             }
+        }
+        else
+        {
+            p_Anim.ClearTrigger("isHit");
         }
 
         if (beenHit)

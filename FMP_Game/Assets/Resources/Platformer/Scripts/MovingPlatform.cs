@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class MovingPlatform : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+
     public float speed;
     public LayerMask boundaryLayer;
     public Transform UpperA;
@@ -24,6 +25,8 @@ public class MovingPlatform : MonoBehaviour
     private Vector2 upVelocity;
     private bool isActive;
     private bool playerInRange;
+    public Light2D leftLight;
+    public Light2D rightLight;
     void Start()
     {
         playerInRange = false;
@@ -41,6 +44,8 @@ public class MovingPlatform : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             isActive = !isActive;
+            leftLight.enabled = isActive;
+            rightLight.enabled = isActive;
         }
 
         if (isActive)

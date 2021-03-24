@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5492608038444564485}
   - component: {fileID: 530462921298961040}
   m_Layer: 0
-  m_Name: Point Light 2D
+  m_Name: LeftLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -563,6 +563,8 @@ MonoBehaviour:
   LowerA: {fileID: 6409176249698119358}
   LowerB: {fileID: 8758644962393763300}
   ColliderSize: 0.1
+  leftLight: {fileID: 530462921298961040}
+  rightLight: {fileID: 10764070409896336}
 --- !u!70 &1188144289700753594
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -702,7 +704,7 @@ GameObject:
   - component: {fileID: 5141459911980015595}
   - component: {fileID: 10764070409896336}
   m_Layer: 0
-  m_Name: Point Light 2D (1)
+  m_Name: RightLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -14,6 +14,7 @@ public class Spikes : MonoBehaviour
     private float bounceTimer;
     public float bounceTime;
     private bool AlreadyHit;
+
     void Start()
     {
         AlreadyHit = false;
@@ -52,17 +53,21 @@ public class Spikes : MonoBehaviour
     }
     private void BouncePlayer()
     {
+
         //apply bounce
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
+        if (rb == null) rb = player.GetComponentInParent<Rigidbody2D>();
+
         float velocityX = rb.velocity.x;
-        
+        float bounceX = 0;
+
         if(velocityX < 0)
         {
-            velocityX = -bounceHorizontal;
+            bounceX = -bounceHorizontal;
         }
         else if (velocityX > 0)
         {
-            velocityX = bounceHorizontal;
+            bounceX = bounceHorizontal;
         }
         else if (velocityX == 0)
         {
@@ -70,19 +75,21 @@ public class Spikes : MonoBehaviour
 
             if(randDirection == 1)
             {
-                velocityX = bounceHorizontal;
+                bounceX = bounceHorizontal;
             }
             else
             {
-                velocityX = -bounceHorizontal;
+                bounceX = -bounceHorizontal;
             }
         }
-
-        Vector2 bounce = new Vector2(bounceHorizontal, bounceHeight);
+        Vector2 bounce = new Vector2(bounceX, bounceHeight);
+        print(bounce);
         rb.AddForce(bounce, ForceMode2D.Impulse);
 
         //apply damage
         Inventory inv = player.GetComponent<Inventory>();
+        if (inv == null) inv = player.GetComponentInParent<Inventory>();
+
         inv.ChangeHealth(-damage);
 
         playerHit = false;

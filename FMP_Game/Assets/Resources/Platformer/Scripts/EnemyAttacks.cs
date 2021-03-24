@@ -44,15 +44,21 @@ public class EnemyAttacks : MonoBehaviour
 
         if (hit != null)
         {
-            hit.GetComponent<Inventory>().ChangeHealth(-LightDamage);
+            Inventory inv = hit.GetComponent<Inventory>();
+            if (inv == null) inv = hit.GetComponentInParent<Inventory>();
+
+            inv.ChangeHealth(-LightDamage);
+
+            PlayerMovement pMove = hit.GetComponent<PlayerMovement>();
+            if (pMove == null) pMove = hit.GetComponentInParent<PlayerMovement>();
 
             if (PlayerToTheRight(hit.gameObject))
             {
-                hit.GetComponent<PlayerMovement>().Knockback(playerKnockBack, false);
+                pMove.Knockback(playerKnockBack, false);
             }
             else
             {
-                hit.GetComponent<PlayerMovement>().Knockback(-playerKnockBack, false);
+                pMove.Knockback(-playerKnockBack, false);
             }
         }
     }
@@ -62,15 +68,22 @@ public class EnemyAttacks : MonoBehaviour
 
         if (hit != null)
         {
-            hit.GetComponent<Inventory>().ChangeHealth(-HeavyDamage);
+            //hit.GetComponent<Inventory>().ChangeHealth(-HeavyDamage);
+            Inventory inv = hit.GetComponent<Inventory>();
+            if (inv == null) inv = hit.GetComponentInParent<Inventory>();
+
+            inv.ChangeHealth(-HeavyDamage);
+
+            PlayerMovement pMove = hit.GetComponent<PlayerMovement>();
+            if (pMove == null) pMove = hit.GetComponentInParent<PlayerMovement>();
 
             if (PlayerToTheRight(hit.gameObject))
             {
-                hit.GetComponent<PlayerMovement>().Knockback(playerKnockBack * 2, false);
+                pMove.Knockback(playerKnockBack * 2, false);
             }
             else
             {
-                hit.GetComponent<PlayerMovement>().Knockback(-playerKnockBack * 2, false);
+                pMove.Knockback(-playerKnockBack * 2, false);
             }
         }
     }

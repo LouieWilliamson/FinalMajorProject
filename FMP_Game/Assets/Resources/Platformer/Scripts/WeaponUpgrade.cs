@@ -33,6 +33,7 @@ public class WeaponUpgrade : MonoBehaviour
             if (!playerSet)
             {
                 inv = collision.gameObject.GetComponent<Inventory>();
+                if (inv == null) inv = collision.gameObject.GetComponentInParent<Inventory>();
                 playerSet = true;
             }
             inv.InUnpgradeRange(this);

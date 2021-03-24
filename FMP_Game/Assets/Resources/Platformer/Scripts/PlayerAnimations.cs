@@ -86,9 +86,12 @@ public class PlayerAnimations : MonoBehaviour
     {
         m_Anim.SetTrigger("isIdle");
     }
-
-    public void SetCrouched()
+    public void ClearTrigger(string triggerName)
     {
-        m_Anim.SetTrigger("isCrouched");
+        m_Anim.ResetTrigger(triggerName);
+    }
+    public void SetCrouched(bool isCrouched)
+    {
+        m_Anim.SetBool("isCrouched", isCrouched);
     }
 }

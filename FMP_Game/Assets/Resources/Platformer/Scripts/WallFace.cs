@@ -7,7 +7,7 @@ public class WallFace : MonoBehaviour
     // Start is called before the first frame update
     public Animator FaceAnim;
     bool faceActive;
-    bool playerTeleported;
+    internal bool playerTeleported;
 
     private LevelGeneration levelGen;
     private StartingRoom startRoom;
@@ -20,6 +20,8 @@ public class WallFace : MonoBehaviour
     private Vector3 centred = new Vector3(0, 0, 1);
 
     private bool startRoomSaved;
+
+    private PlayerMovement pMove;
     private void Start()
     {
         levelGen = GameObject.FindObjectOfType<LevelGeneration>();
@@ -31,7 +33,6 @@ public class WallFace : MonoBehaviour
 
         faceActive = false;
         playerTeleported = false;
-
     }
     void Update()
     {
@@ -42,14 +43,22 @@ public class WallFace : MonoBehaviour
             HUD = startRoom.HUD;
             roomSpawn = startRoom.transform;
             player = startRoom.player;
+            pMove = player.GetComponent<PlayerMovement>();
         }
 
         if(faceActive && !playerTeleported && startRoomSaved)
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
-                TeleportToStart();
-                playerTeleported = true;
+                if(pMove.hasGun)
+                {
+                    TeleportToStart();
+                    playerTeleported = true;
+                }
+                else
+                {
+                    print("YOU NEED YOUR GUN");
+                }
             }
         }
     }
@@ -58,6 +67,7 @@ public class WallFace : MonoBehaviour
         if (collision.tag == "Player")
         {
             FaceAnim.SetTrigger("In");
+            print("In");
             faceActive = true;
         }
     }
@@ -65,8 +75,9 @@ public class WallFace : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            FaceAnim.SetTrigger("Out");
-            faceActive = false;
+                FaceAnim.SetTrigger("Out");
+                print("Out");
+                faceActive = false;
         }
     }
     private void TeleportToStart()

@@ -37,6 +37,8 @@ public class Pickup : MonoBehaviour
 
     private CircleCollider2D col;
 
+    private PlayerMovement pMove;
+    private PlayerAttacks pAttacks;
     private void Start()
     {
         currentType = pType;
@@ -135,19 +137,29 @@ public class Pickup : MonoBehaviour
     }
     private void BehaviourSwitch()
     {
+        Inventory inv = player.GetComponent<Inventory>();
+        if (inv == null) inv = player.GetComponentInParent<Inventory>();
+
         switch (pType)
         {
             case PickupType.darkorb:
-                player.GetComponent<Inventory>().ChangeDarkOrbs(OrbValue);
+                inv.ChangeDarkOrbs(OrbValue);
                 break;
             case PickupType.health:
-                player.GetComponent<Inventory>().ChangeHealth(healthValue);
+                inv.ChangeHealth(healthValue);
                 break;
             case PickupType.speed:
-                player.GetComponent<PlayerMovement>().speed *= speedMultiplier;
+
+                pMove = player.GetComponent<PlayerMovement>();
+                if (pMove == null) pMove = player.GetComponentInParent<PlayerMovement>();
+
+                pMove.speed *= speedMultiplier;
                 effectActive = true;
                 break;
             case PickupType.damage:
+                pAttacks = player.GetComponent<PlayerAttacks>();
+                if (pAttacks == null) pAttacks = player.GetComponentInParent<PlayerAttacks>();
+
                 float damage = player.GetComponent<PlayerAttacks>().GetGunDamage();
                 rawDamage = damage *= damageMultiplier;
                 player.GetComponent<PlayerAttacks>().SetGunDamage((int)Mathf.Round(rawDamage));
@@ -162,11 +174,11 @@ public class Pickup : MonoBehaviour
     {
         if(pType == PickupType.speed)
         {
-            player.GetComponent<PlayerMovement>().speed /= speedMultiplier;
+            pMove.speed /= speedMultiplier;
         }
         else if (pType == PickupType.damage)
         {
-            player.GetComponent<PlayerAttacks>().SetGunDamage((int)Mathf.Round(rawDamage /= damageMultiplier));
+            pAttacks.SetGunDamage((int)Mathf.Round(rawDamage /= damageMultiplier));
         }
         effectActive = false;
         Destroy(this.gameObject);

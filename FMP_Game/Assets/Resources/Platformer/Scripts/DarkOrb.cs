@@ -10,6 +10,8 @@ public class DarkOrb : MonoBehaviour
         if (collision.tag == "Player")
         {
             Inventory inv = collision.gameObject.GetComponent<Inventory>();
+            if (inv == null) inv = collision.gameObject.GetComponentInParent<Inventory>();
+
             inv.ChangeDarkOrbs(OrbValue);
             Destroy(this.gameObject);
         }
