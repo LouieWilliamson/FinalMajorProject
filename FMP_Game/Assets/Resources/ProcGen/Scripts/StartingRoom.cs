@@ -68,6 +68,7 @@ public class StartingRoom : MonoBehaviour
             {
                 SpawnPlayer(startSpawn);
                 SetCameraFollowPlayer();
+                HUD.SetLevelLoaded();
             }
         }
     }

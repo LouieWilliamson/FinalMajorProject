@@ -41,6 +41,9 @@ public class HUDManager : MonoBehaviour
     private bool LevelLoaded;
 
     private GamestateManager gsManager;
+
+    public GameObject LoadingScreen;
+
     void Start()
     {
         EnemiesKilled = 0;
@@ -150,6 +153,8 @@ public class HUDManager : MonoBehaviour
     public void SetLevelLoaded()
     {
         LevelLoaded = true;
+        LoadingScreen.SetActive(false);
+        print("Loading Done");
     }
     public void EnableHUD() { HUD.SetActive(true); }
     public void IncreaseEnemiesKilled()
