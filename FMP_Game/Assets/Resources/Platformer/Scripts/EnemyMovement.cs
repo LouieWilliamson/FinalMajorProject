@@ -97,7 +97,7 @@ public class EnemyMovement : MonoBehaviour
     }
     public void SetIgnorePlayer(GameObject player)
     {
-        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(player.GetComponent<Collider2D>(), GetComponent<PolygonCollider2D>());
         GetComponent<EnemyAI>().SetPlayer(player);
     }
     public void ActivateGravity()

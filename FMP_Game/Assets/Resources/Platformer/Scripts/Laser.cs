@@ -11,6 +11,12 @@ public class Laser : MonoBehaviour
     public float laserFireSpeed;
 
     public Transform laserEndPoint;
+    public LayerMask enemiesLayer;
+    public LayerMask environmentLayer;
+
+    public GameObject GunFX;
+    public GameObject HitFX;
+
     void Start()
     {
 
@@ -25,6 +31,7 @@ public class Laser : MonoBehaviour
     {
         lineRenderer.enabled = true;
         fireLight.enabled = true;
+        GunFX.SetActive(true);
     }
     public void DeactivateLaser()
     {
@@ -32,6 +39,8 @@ public class Laser : MonoBehaviour
         fireLight.enabled = false;
         lineRenderer.SetPosition(1, Vector2.zero);
         laserEndPoint.localPosition = Vector2.zero;
+        HitFX.SetActive(false);
+        GunFX.SetActive(false);
     }
     public void UpdateLaser()
     {
@@ -43,7 +52,25 @@ public class Laser : MonoBehaviour
         lineRenderer.SetPosition(1, laserEnd);
 
         laserEndPoint.localPosition = laserEnd;
+        
+        Vector2 laserDirection = (Vector2)laserEndPoint.position - (Vector2)transform.position;
 
-        //Vector2 laserDirection = laserEnd
+        RaycastHit2D environmentRay = Physics2D.Raycast(transform.position, laserDirection, laserDirection.magnitude, environmentLayer);
+        RaycastHit2D enemyRay = Physics2D.Raycast(transform.position, laserDirection, laserDirection.magnitude, enemiesLayer);
+
+        //Debug.DrawLine(transform.position, laserEndPoint.position, Color.cyan);
+
+        if(enemyRay)
+        {
+            laserEndPoint.position = enemyRay.point;
+            lineRenderer.SetPosition(1, laserEndPoint.localPosition);
+            if (!HitFX.activeInHierarchy) HitFX.SetActive(true);
+        }
+        if (environmentRay)
+        {
+            laserEndPoint.position = environmentRay.point;
+            lineRenderer.SetPosition(1, laserEndPoint.localPosition);
+            if (!HitFX.activeInHierarchy) HitFX.SetActive(true);
+        }
     }
 }
