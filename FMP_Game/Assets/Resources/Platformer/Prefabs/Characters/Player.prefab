@@ -15,7 +15,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4802222548860252530
 Transform:
   m_ObjectHideFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 107956481881078955}
   - component: {fileID: 6810640171930303199}
   m_Layer: 14
-  m_Name: Particles
+  m_Name: GunParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,7 +80,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5307,7 +5307,7 @@ GameObject:
   - component: {fileID: 5483408206080074982}
   - component: {fileID: 8476768447161853727}
   m_Layer: 14
-  m_Name: BeamFlash
+  m_Name: GunBeamFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5343,7 +5343,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -10176,7 +10176,7 @@ GameObject:
   - component: {fileID: 5523384986180865994}
   - component: {fileID: 8719762106059954500}
   m_Layer: 14
-  m_Name: 'BeamFlash '
+  m_Name: 'HitBeamFlash '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10212,7 +10212,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -14991,7 +14991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1263597445890790578
 Transform:
   m_ObjectHideFlags: 0
@@ -15051,7 +15051,7 @@ GameObject:
   - component: {fileID: 3606923386831815132}
   - component: {fileID: 7808188671200117925}
   m_Layer: 14
-  m_Name: Particles
+  m_Name: HitParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15087,7 +15087,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -20054,3 +20054,7 @@ MonoBehaviour:
     m_Bits: 256
   GunFX: {fileID: 414405901781361229}
   HitFX: {fileID: 5062601840536231748}
+  GunFX1: {fileID: 5483408206080074982}
+  GunFX2: {fileID: 107956481881078955}
+  HitFX1: {fileID: 5523384986180865994}
+  HitFX2: {fileID: 3606923386831815132}

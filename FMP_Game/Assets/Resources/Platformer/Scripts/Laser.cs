@@ -14,37 +14,33 @@ public class Laser : MonoBehaviour
     public LayerMask enemiesLayer;
     public LayerMask environmentLayer;
 
-    public GameObject GunFX;
-    public GameObject HitFX;
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    public ParticleSystem GunFX1;
+    public ParticleSystem GunFX2;
+                              
+    public ParticleSystem HitFX1;
+    public ParticleSystem HitFX2;
     public void ActivateLaser()
     {
+        laserEndPoint.localPosition = Vector2.zero;
         lineRenderer.enabled = true;
         fireLight.enabled = true;
-        GunFX.SetActive(true);
+
+        GunFX1.Play();
+        GunFX2.Play();
     }
     public void DeactivateLaser()
     {
         lineRenderer.enabled = false;
         fireLight.enabled = false;
         lineRenderer.SetPosition(1, Vector2.zero);
-        laserEndPoint.localPosition = Vector2.zero;
-        HitFX.SetActive(false);
-        GunFX.SetActive(false);
+
+        GunFX1.Stop();
+        GunFX2.Stop();
+        HitFX1.Stop();
+        HitFX2.Stop();
     }
     public void UpdateLaser()
     {
-        //lineRenderer.SetPosition(0, transform.position);
 
         Vector2 laserEnd = new Vector2(lineRenderer.GetPosition(1).x, 0);
         laserEnd.x += laserFireSpeed * Time.deltaTime;
@@ -58,19 +54,22 @@ public class Laser : MonoBehaviour
         RaycastHit2D environmentRay = Physics2D.Raycast(transform.position, laserDirection, laserDirection.magnitude, environmentLayer);
         RaycastHit2D enemyRay = Physics2D.Raycast(transform.position, laserDirection, laserDirection.magnitude, enemiesLayer);
 
-        //Debug.DrawLine(transform.position, laserEndPoint.position, Color.cyan);
 
         if(enemyRay)
         {
             laserEndPoint.position = enemyRay.point;
             lineRenderer.SetPosition(1, laserEndPoint.localPosition);
-            if (!HitFX.activeInHierarchy) HitFX.SetActive(true);
+
+            if (!HitFX1.isPlaying) HitFX1.Play();
+            if (!HitFX2.isPlaying) HitFX2.Play();
         }
         if (environmentRay)
         {
             laserEndPoint.position = environmentRay.point;
             lineRenderer.SetPosition(1, laserEndPoint.localPosition);
-            if (!HitFX.activeInHierarchy) HitFX.SetActive(true);
+
+            if (!HitFX1.isPlaying) HitFX1.Play();
+            if (!HitFX2.isPlaying) HitFX2.Play();
         }
     }
 }

@@ -651,7 +651,7 @@ GameObject:
   m_Component:
   - component: {fileID: 46406992}
   - component: {fileID: 46406993}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EdgeFill (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 52741436}
   - component: {fileID: 52741437}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1611,7 +1611,7 @@ GameObject:
   - component: {fileID: 113521910}
   - component: {fileID: 113521909}
   - component: {fileID: 113521911}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1949,7 +1949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 144217347}
   - component: {fileID: 144217346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2229,7 +2229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 165172359}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mushroom-Small (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2776,7 +2776,7 @@ GameObject:
   - component: {fileID: 231454989}
   - component: {fileID: 231454990}
   - component: {fileID: 231454991}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2945,7 +2945,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 244665718}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3091,7 +3091,7 @@ GameObject:
   - component: {fileID: 258818783}
   - component: {fileID: 258818784}
   - component: {fileID: 258818785}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4196,7 +4196,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 338708573}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4693,7 +4693,7 @@ GameObject:
   - component: {fileID: 360991686}
   - component: {fileID: 360991687}
   - component: {fileID: 360991688}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5231,7 +5231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 418982974}
   - component: {fileID: 418982975}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5379,7 +5379,7 @@ GameObject:
   m_Component:
   - component: {fileID: 435960317}
   - component: {fileID: 435960318}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5542,7 +5542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 445375823}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6459,7 +6459,7 @@ GameObject:
   m_Component:
   - component: {fileID: 549207657}
   - component: {fileID: 549207658}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EdgeFill (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6628,7 +6628,7 @@ GameObject:
   m_Component:
   - component: {fileID: 559411678}
   - component: {fileID: 559411677}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_38
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6781,7 +6781,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 583542033}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mushroom-Big
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6815,7 +6815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 584234072}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Vine (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7152,7 +7152,7 @@ GameObject:
   - component: {fileID: 644085697}
   - component: {fileID: 644085696}
   - component: {fileID: 644085698}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7426,7 +7426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 662581496}
   - component: {fileID: 662581497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7951,7 +7951,7 @@ GameObject:
   - component: {fileID: 694109315}
   - component: {fileID: 694109316}
   - component: {fileID: 694109317}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9113,7 +9113,7 @@ GameObject:
   - component: {fileID: 811424421}
   - component: {fileID: 811424422}
   - component: {fileID: 811424423}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9638,6 +9638,10 @@ PrefabInstance:
     - target: {fileID: 1998225900671572940, guid: 1b80a322ef1532f44b07820d807854f8, type: 3}
       propertyPath: m_Name
       value: Floor2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446797244777588830, guid: 1b80a322ef1532f44b07820d807854f8, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b80a322ef1532f44b07820d807854f8, type: 3}
@@ -10262,7 +10266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 897221393}
   - component: {fileID: 897221394}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10966,7 +10970,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 974325169}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Filler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11067,7 +11071,7 @@ GameObject:
   m_Component:
   - component: {fileID: 977261396}
   - component: {fileID: 977261397}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11196,7 +11200,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 982262082}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mushroom-Big (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11856,7 +11860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1039746810}
   - component: {fileID: 1039746809}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_39
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12665,7 +12669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103351615}
   - component: {fileID: 1103351614}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12746,7 +12750,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1113665610}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13121,7 +13125,7 @@ GameObject:
   - component: {fileID: 1146974275}
   - component: {fileID: 1146974276}
   - component: {fileID: 1146974277}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13364,7 +13368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159870915}
   - component: {fileID: 1159870916}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_40
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13988,7 +13992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1214744517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mushroom-Small
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14151,7 +14155,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1224023275}
   - component: {fileID: 1224023274}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14315,7 +14319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225868232}
   - component: {fileID: 1225868233}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_37
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15200,7 +15204,7 @@ GameObject:
   - component: {fileID: 1322378407}
   - component: {fileID: 1322378406}
   - component: {fileID: 1322378408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_49
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16117,7 +16121,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1395555791}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16220,7 +16224,7 @@ GameObject:
   - component: {fileID: 1412456038}
   - component: {fileID: 1412456037}
   - component: {fileID: 1412456039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16396,7 +16400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1429988247}
   - component: {fileID: 1429988248}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_62
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16684,7 +16688,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1452223758}
   - component: {fileID: 1452223759}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16772,7 +16776,7 @@ GameObject:
   - component: {fileID: 1465019296}
   - component: {fileID: 1465019297}
   - component: {fileID: 1465019298}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17289,7 +17293,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1527723181}
   - component: {fileID: 1527723182}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18646,7 +18650,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1648987235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18880,6 +18884,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Floor2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2446797244777588830, guid: 1b80a322ef1532f44b07820d807854f8, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b80a322ef1532f44b07820d807854f8, type: 3}
 --- !u!4 &1739005709 stripped
@@ -18960,7 +18968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1753998878}
   - component: {fileID: 1753998877}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19284,7 +19292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1772876363}
   - component: {fileID: 1772876364}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_41
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20879,7 +20887,7 @@ GameObject:
   - component: {fileID: 1901877046}
   - component: {fileID: 1901877047}
   - component: {fileID: 1901877048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21502,7 +21510,7 @@ GameObject:
   - component: {fileID: 1960742207}
   - component: {fileID: 1960742208}
   - component: {fileID: 1960742209}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_51
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21723,7 +21731,7 @@ GameObject:
   - component: {fileID: 1965941554}
   - component: {fileID: 1965941553}
   - component: {fileID: 1965941555}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_53
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22210,7 +22218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987956695}
   - component: {fileID: 1987956696}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EdgeFill (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22835,7 +22843,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2036331345}
   - component: {fileID: 2036331346}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EdgeFill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23401,7 +23409,7 @@ GameObject:
   - component: {fileID: 2111175660}
   - component: {fileID: 2111175661}
   - component: {fileID: 2111175662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23558,7 +23566,7 @@ GameObject:
   - component: {fileID: 2113934586}
   - component: {fileID: 2113934587}
   - component: {fileID: 2113934588}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: tileset-sliced_52
   m_TagString: Untagged
   m_Icon: {fileID: 0}
