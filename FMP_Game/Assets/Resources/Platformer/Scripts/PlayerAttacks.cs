@@ -22,11 +22,12 @@ public class PlayerAttacks : MonoBehaviour
     private AudioManager sound;
 
     //upgrades
-    private Upgrade activeUpgrade;
-    
+    public Upgrade activeUpgrade;
+    public Laser laser;
+
     void Start()
     {
-        activeUpgrade = Upgrade.None;
+        activeUpgrade = Upgrade.Laser;
         
         sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         isCrouched = false;
@@ -42,24 +43,38 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (hasGun)
         {
-            switch (activeUpgrade)
+            if (Input.GetButtonDown("Fire1"))
             {
-                case Upgrade.None:
-                    if(hasGun && bulletCount < maxBullets) Shoot();
-                    break;
-                case Upgrade.Cooldown:
-                    //disable cooldown
-                    break;
-                case Upgrade.Laser:
-                    //shoot laser
-                    break;
-                case Upgrade.Grenade:
-                    //shoot grenade
-                    break;
-                default:
-                    break;
+                switch (activeUpgrade)
+                {
+                    case Upgrade.None:
+                        if (hasGun && bulletCount < maxBullets) Shoot();
+                        break;
+                    case Upgrade.Cooldown:
+                        //disable cooldown
+                        break;
+                    case Upgrade.Laser:
+                        laser.ActivateLaser();
+                        break;
+                    case Upgrade.Grenade:
+                        //shoot grenade
+                        break;
+                    default:
+                        break;
+                }
+            }
+            if (activeUpgrade == Upgrade.Laser)
+            {
+                if (Input.GetButton("Fire1"))
+                {
+                    laser.UpdateLaser();
+                }
+                if (Input.GetButtonUp("Fire1"))
+                {
+                    laser.DeactivateLaser();
+                }
             }
         }
     }

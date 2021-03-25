@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 164590835485631642}
   - component: {fileID: 164590835485631641}
   - component: {fileID: 6159866342747078922}
+  - component: {fileID: 7733731936247637059}
   m_Layer: 10
   m_Name: WidePF
   m_TagString: Environment
@@ -131,6 +132,22 @@ MonoBehaviour:
   ColliderSize: 0.1
   leftLight: {fileID: 7995554048135931792}
   rightLight: {fileID: 2067865514934200740}
+--- !u!70 &7733731936247637059
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164590835485631640}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0055252425, y: 0.7023285}
+  m_Size: {x: 1.8371096, y: 0.27020743}
+  m_Direction: 1
 --- !u!1 &164590835976538720
 GameObject:
   m_ObjectHideFlags: 0

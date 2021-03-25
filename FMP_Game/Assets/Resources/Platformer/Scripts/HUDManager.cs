@@ -154,7 +154,6 @@ public class HUDManager : MonoBehaviour
     {
         LevelLoaded = true;
         LoadingScreen.SetActive(false);
-        print("Loading Done");
     }
     public void EnableHUD() { HUD.SetActive(true); }
     public void IncreaseEnemiesKilled()

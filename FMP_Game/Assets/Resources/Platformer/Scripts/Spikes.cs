@@ -83,7 +83,6 @@ public class Spikes : MonoBehaviour
             }
         }
         Vector2 bounce = new Vector2(bounceX, bounceHeight);
-        print(bounce);
         rb.AddForce(bounce, ForceMode2D.Impulse);
 
         //apply damage
