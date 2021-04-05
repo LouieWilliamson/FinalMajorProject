@@ -44,6 +44,8 @@ public class HUDManager : MonoBehaviour
 
     public GameObject LoadingScreen;
 
+    public GameObject Pausemenu;
+
     void Start()
     {
         EnemiesKilled = 0;
@@ -72,6 +74,11 @@ public class HUDManager : MonoBehaviour
         {
             AddtoTimer();
             BuildTimerText();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
         }
     }
     private void AddtoTimer()
@@ -206,5 +213,19 @@ public class HUDManager : MonoBehaviour
         activeImage.sprite = storedImage.sprite;
         storedImage.sprite = null;
         //start timer
+    }
+    public void PauseGame()
+    {
+        //if it isnt paused
+        if (!Pausemenu.activeInHierarchy)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+
+        Pausemenu.SetActive(!Pausemenu.activeInHierarchy);
     }
 }
