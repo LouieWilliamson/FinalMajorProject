@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AudioManager" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAAACAQAAAAAAAAAAAEQAAAAQGAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\AudioManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="bullet" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAACCAAEAAQAQAAAAAAAEAAARABAACABCAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\bullet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraAspectRatio" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAACAACAAAAAAAAAAAIAAAgAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\CameraAspectRatio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DarkOrb" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\DarkOrb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeathScreen" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAgAAAAAAAAAAAAAAAAAAAAAAAAAAQAQA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\DeathScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAI" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="EnemyAI.EnemyState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Resources\Platformer\Scripts\EnemyAI.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>EAQUgQAAACACEBAAAMAAAAQIIYiBIAgFAaACDACAAQA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\EnemyAI.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="eHealth" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="EnemyAnimations" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUIAAIAAmAEAAAAIAAAAAAMAAgAABACAAAAAAABAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\EnemyAnimations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAttacks" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAgAgCIAAIAAAEAAAQAAwAABAAAAAQAAAgBAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\EnemyAttacks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyHealth" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAGABAAAECQAAAQAAAFAgACAAAQAABAAAAAg=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\EnemyHealth.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyMovement" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgAggAAqACAAAEABQAKAACAEAECQAAAQAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\EnemyMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GamestateManager" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAoAgAACAABAAAAAAAAAFAAAAAAQAEAAMAAAAAAIA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\GamestateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HighPlatform" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQCAAAAAAAAAAAAAAAQAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\HighPlatform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HitEffect" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAACAAAAAAACAAAAAgAAgAIAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\HitEffect.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HorizontalPlatform" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAACAACIAAQAkBAACBBAQBGAIASAIQECAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\HorizontalPlatform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HUDManager" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GQVACoIIAiJAgADIAEhBkAggCCAgMAEAgBAAACAAAAg=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\HUDManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="impact" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\impact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Inventory" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwSAAAJAGAACACAAAgCAAAgACAAAAAAAQAABgAAAAk=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laser" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAEAAEAAQAAAAAKAAQAIAAAAgAQgAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Laser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MovingPlatform" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIUAgACAADAAAAAkAAAABBAQBGAIASAAQEAAAAAAAAE=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\MovingPlatform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Parallax" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAACAAIAIAAAQAAAAAAACAAQAAAIAAAAAkAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Parallax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Pickup" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgFAAAoCQIAAAAAAQAAUIABEkQAACRAQBAQAABJAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Pickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAnimations" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAgAiAEIEAEAAAEACAAABgAAAAAQAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\PlayerAnimations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAttacks" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQxAgAAAKAABAAQAAAEgAAQAEIEBgAAABIIBABAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\PlayerAttacks.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerMovement" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQSAACAABiAIBAAAAJAAogAAAQCAARBIQQCADCBAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\PlayerMovement.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerSpawnRoom" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\PlayerSpawnRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Spikes" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAGAACQAwAAACAEAAAAAAEAAAAABAAAEAAAQAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Spikes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartScreen" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIABAAAAABAAEAAIAAAACAACADAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\StartScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WallFace" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAAQCAACAAAACAABAICAACAWAQIAABAEAAABAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\WallFace.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WeaponUpgrade" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIACAACAAEAAAAAAAAACAAEABAgAAAgAAAAAAABA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\WeaponUpgrade.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WinScreen" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAgAAAAIAAAAAAAAAAIAEAAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\WinScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LevelGeneration" Collapsed="true">
+    <Position X="13.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABWICEkIADABAACAAAIMBABAAACAAAAGAGBAALIUAgQ=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\LevelGeneration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomType" Collapsed="true">
+    <Position X="15" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAASCCIAEBAIAAAAYAABABAAIAIAAEAQAAAgA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\RoomType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnDarkOrb" Collapsed="true">
+    <Position X="16.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAEAABAAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnDarkOrb.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnEnemy" Collapsed="true">
+    <Position X="18.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAEAIAAACAAAAAAABEAAAAAAAEAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnEnemy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnHazard" Collapsed="true">
+    <Position X="13.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQQAAIAAACAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnHazard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnOtherRoom" Collapsed="true">
+    <Position X="15" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAACAAAAAAAACEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnOtherRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnPickup" Collapsed="true">
+    <Position X="16.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAhIAAACAAAAAAABEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnPickup.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnPlatform" Collapsed="true">
+    <Position X="18.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAAAIAQAKAAAQAAABEAAAABAQAAAAAACAAAAABAAAA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnPlatform.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpawnTile" Collapsed="true">
+    <Position X="13.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAFAAAAACAAAAABAAAIABAAAAAAAAAICAEABAAAAQA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\SpawnTile.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartingRoom" Collapsed="true">
+    <Position X="15" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABCABACAAEAAAAAggGAAAYCAAACgFAEAAIAAAQQA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\StartingRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="EnemyType" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAABAAAEAAAAAAAAAAQAAAAAAAAAAAQ=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\EnemyAI.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Upgrade" Collapsed="true">
+    <Position X="4" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAkAAAAAAEAAAA=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Inventory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PickupType" Collapsed="true">
+    <Position X="2.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAAAAAIAAAQAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Resources\Platformer\Scripts\Pickup.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="StartState" Collapsed="true">
+    <Position X="13.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Resources\ProcGen\Scripts\LevelGeneration.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

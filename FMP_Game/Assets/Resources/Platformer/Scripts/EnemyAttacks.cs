@@ -20,6 +20,7 @@ public class EnemyAttacks : MonoBehaviour
 
     public LayerMask playerLayer;
     // Start is called before the first frame update
+
     void Start()
     {
         anim = GetComponent<EnemyAnimations>();

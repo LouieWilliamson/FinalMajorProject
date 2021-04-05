@@ -283,19 +283,6 @@ public class EnemyAI : MonoBehaviour
             wallVect = Vector2.left;
         }
 
-        //RaycastHit2D floorRay = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, groundLayer);
-        //RaycastHit2D wallRay = Physics2D.Raycast(walkCheck.position, wallVect, 0.1f, groundLayer);
-
-
-        //if (floorRay.collider == null || wallRay.collider != null)
-        //{
-        //    return false;
-        //}
-        //else
-        //{
-        //    return true;
-        //}
-
         RaycastHit2D floorRay = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, groundLayer);
         RaycastHit2D floorRay2 = Physics2D.Raycast(walkCheck.position, Vector2.down, 1, platformLayer);
 

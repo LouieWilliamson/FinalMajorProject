@@ -20052,8 +20052,6 @@ MonoBehaviour:
   environmentLayer:
     serializedVersion: 2
     m_Bits: 256
-  GunFX: {fileID: 414405901781361229}
-  HitFX: {fileID: 5062601840536231748}
   GunFX1: {fileID: 5483408206080074982}
   GunFX2: {fileID: 107956481881078955}
   HitFX1: {fileID: 5523384986180865994}

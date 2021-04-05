@@ -27,7 +27,7 @@ public class PlayerAttacks : MonoBehaviour
 
     void Start()
     {
-        activeUpgrade = Upgrade.Laser;
+        //activeUpgrade = Upgrade.Laser;
         
         sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         isCrouched = false;

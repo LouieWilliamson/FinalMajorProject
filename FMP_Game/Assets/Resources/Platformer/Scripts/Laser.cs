@@ -62,6 +62,9 @@ public class Laser : MonoBehaviour
 
             if (!HitFX1.isPlaying) HitFX1.Play();
             if (!HitFX2.isPlaying) HitFX2.Play();
+
+            EnemyHealth eHealth = enemyRay.collider.gameObject.GetComponent<EnemyHealth>();
+            eHealth.ApplyDamage(eHealth.health);
         }
         if (environmentRay)
         {
