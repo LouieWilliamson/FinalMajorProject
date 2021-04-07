@@ -9,16 +9,4 @@ public class PauseMenu : MonoBehaviour
     {
         hud.PauseGame();
     }
-    public void Controls()
-    {
-        print("Controls");
-    }
-    public void Settings()
-    {
-        print("Settings");
-    }
-    public void Quit()
-    {
-        print("Quit");
-    }
 }

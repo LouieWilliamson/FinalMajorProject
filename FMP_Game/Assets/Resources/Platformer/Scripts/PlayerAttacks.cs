@@ -76,6 +76,10 @@ public class PlayerAttacks : MonoBehaviour
                     laser.DeactivateLaser();
                 }
             }
+            else if (laser.lineRenderer.enabled)
+            {
+                laser.DeactivateLaser();
+            }
         }
     }
 

@@ -35,10 +35,10 @@ public class HUDManager : MonoBehaviour
     //Inventory
     public Image storedImage;
     public Image activeImage;
-    private bool hasUpgrade;
-    private bool hasActiveUpgrade;
-
     private bool LevelLoaded;
+    public GameObject upgradeCounter;
+    private Text counterText;
+    public Sprite empty;
 
     private GamestateManager gsManager;
 
@@ -48,6 +48,8 @@ public class HUDManager : MonoBehaviour
 
     void Start()
     {
+        counterText = upgradeCounter.GetComponentInChildren<Text>();
+
         EnemiesKilled = 0;
         enemyPercent = 0;
         LevelLoaded = false;
@@ -211,9 +213,16 @@ public class HUDManager : MonoBehaviour
     public void UseStoredUpgrade()
     {
         activeImage.sprite = storedImage.sprite;
-        storedImage.sprite = null;
-        //start timer
+        storedImage.sprite = empty;
+        upgradeCounter.SetActive(true);
     }
+    public void DisableActiveUpgrade()
+    {
+        ChangeActiveCounter("5");
+        upgradeCounter.SetActive(false);
+        activeImage.sprite = empty;
+    }
+    public void ChangeActiveCounter(string number){ counterText.text = number; }
     public void PauseGame()
     {
         //if it isnt paused

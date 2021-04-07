@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject deathFXPrefab;
     private GameObject deathFX;
     private EnemyAnimations anim;
-    private CapsuleCollider2D col;
+    private PolygonCollider2D col;
     private Rigidbody2D rb;
     public float deathYchange;
     private HUDManager hud;
@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         isDead = false;
         hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
         rb = GetComponent<Rigidbody2D>();
-        col = GetComponent<CapsuleCollider2D>();
+        col = GetComponent<PolygonCollider2D>();
         anim = GetComponent<EnemyAnimations>();
         health = 200;
         hitEffect = GetComponent<HitEffect>();

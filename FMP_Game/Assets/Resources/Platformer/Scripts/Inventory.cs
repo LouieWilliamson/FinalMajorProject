@@ -12,7 +12,10 @@ public class Inventory : MonoBehaviour
     private Upgrade activeUpgrade;
     private bool inRangeOfUpgrade;
     private WeaponUpgrade upgradeInRange;
-
+    private bool upgradeActive;
+    private float UpgradeTimer;
+    private int UpgradeSeconds;
+    private PlayerAttacks pAttacks;
 
     // Start is called before the first frame update
     int DarkOrbs;
@@ -26,6 +29,9 @@ public class Inventory : MonoBehaviour
     private GamestateManager gsManager;
     void Start()
     {
+        UpgradeSeconds = 5;
+        upgradeActive = false;
+        UpgradeTimer = 0;
         storedUpgrade = Upgrade.None;
         activeUpgrade = Upgrade.None;
         inRangeOfUpgrade = false;
@@ -33,6 +39,7 @@ public class Inventory : MonoBehaviour
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
 
         anim = GetComponent<PlayerAnimations>();
+        pAttacks = GetComponent<PlayerAttacks>();
         hitEffect = GetComponent<HitEffect>();
         HUD = GameObject.Find("Canvas").GetComponent<HUDManager>();
         health = baseHealth * healthMultiplier;
@@ -51,9 +58,31 @@ public class Inventory : MonoBehaviour
             Kill();
         }
 
-        if (inRangeOfUpgrade && Input.GetKey(KeyCode.E))
+        if (inRangeOfUpgrade && Input.GetKeyDown(KeyCode.E))
         {
             upgradeInRange.PickupUpgrade();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            UseUpgrade();
+        }
+
+        if (upgradeActive)
+        {
+            UpgradeTimer += Time.deltaTime;
+
+            if (UpgradeTimer > 1)
+            {
+                UpgradeTimer = 0;
+                UpgradeSeconds--;
+                HUD.ChangeActiveCounter(UpgradeSeconds.ToString());
+
+                if (UpgradeSeconds <= 0)
+                {
+                    DisableUpgrade();
+                } 
+            }
         }
     }
     public void ChangeHealth(int amount)
@@ -96,10 +125,22 @@ public class Inventory : MonoBehaviour
     {
         if (storedUpgrade != Upgrade.None)
         {
+            upgradeActive = true;
             activeUpgrade = storedUpgrade;
             storedUpgrade = Upgrade.None;
-            //activate effect
+            pAttacks.activeUpgrade = activeUpgrade;
+            HUD.UseStoredUpgrade();
         }
+    }
+    private void DisableUpgrade()
+    {
+        upgradeActive = false;
+        UpgradeSeconds = 5;
+        UpgradeTimer = 0;
+
+        activeUpgrade = Upgrade.None;
+        pAttacks.activeUpgrade = activeUpgrade;
+        HUD.DisableActiveUpgrade();
     }
     public void InUnpgradeRange(WeaponUpgrade upgrade)
     {

@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class StartScreen : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int Level1;
     public Animator controls;
     public Animator settings;
+    public Animator quitCheck;
 
     public void PlayGame()
     {
@@ -16,26 +16,43 @@ public class StartScreen : MonoBehaviour
     }
     public void OpenControls()
     {
-        //controls.gameObject.SetActive(true);
         controls.SetTrigger("In");
     }
     public void CloseControls()
     {
-        //controls.gameObject.SetActive(false);
         controls.SetTrigger("Out");
     }
     public void OpenSettings()
     {
-        //settings.gameObject.SetActive(true);
         settings.SetTrigger("In");
     }
     public void CloseSettings()
     {
-        //settings.gameObject.SetActive(false);
         settings.SetTrigger("Out");
+    }
+    public void QuitCheck()
+    {
+        quitCheck.SetTrigger("In");
+    }
+    public void CloseQuitCheck()
+    {
+        quitCheck.SetTrigger("Out");
     }
     public void QuitGame()
     {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
+        {
 
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+         Application.Quit();
+#endif
+
+        }
+        else
+        {
+            SceneManager.LoadScene("StartScreen");
+        }
     }
 }
