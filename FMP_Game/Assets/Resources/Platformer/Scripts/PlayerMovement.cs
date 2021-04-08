@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     PlayerAnimations p_Anim;
     PlayerAttacks p_Attack;
 
+    internal bool playerActive;
+
     public float speed;
     public int jumpHeight;
     public Transform jumpFrom;
@@ -34,6 +36,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        playerActive = true;
+
         hitTimer = 0;
         beenHit = false;
         TimesJumped = 0;
@@ -57,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GetInput();
+        if (playerActive) GetInput();
 
         //if the player has the gun, presses "S" and isn't crouched already then crouch
         if (isSPressed && hasGun && !isCrouched)

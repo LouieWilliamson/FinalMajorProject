@@ -4952,6 +4952,7 @@ GameObject:
   - component: {fileID: 1206567245536803318}
   - component: {fileID: 1206567245536803304}
   - component: {fileID: -2792064914633204091}
+  - component: {fileID: 3416696441054630174}
   m_Layer: 12
   m_Name: Player
   m_TagString: Player
@@ -4998,7 +4999,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 8a490fcadc90b0f4899acffb80ccb07c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5166,6 +5167,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1650c167a313a53458fa61750cd0ef7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3416696441054630174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206567245536803312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a668c94750e7ad41b52186ce7cb2d81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportMat: {fileID: 2100000, guid: 8a490fcadc90b0f4899acffb80ccb07c, type: 2}
+  effectSpeed: 1
 --- !u!1 &2697876400633359956
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ public class WallFace : MonoBehaviour
     private bool startRoomSaved;
 
     private PlayerMovement pMove;
+    private TeleportEffect teleFX;
+    private bool teleportFXactive;
     private void Start()
     {
         levelGen = GameObject.FindObjectOfType<LevelGeneration>();
@@ -31,6 +33,7 @@ public class WallFace : MonoBehaviour
 
         startRoomSaved = false;
 
+        teleportFXactive = false;
         faceActive = false;
         playerTeleported = false;
     }
@@ -44,6 +47,7 @@ public class WallFace : MonoBehaviour
             roomSpawn = startRoom.transform;
             player = startRoom.player;
             pMove = player.GetComponent<PlayerMovement>();
+            teleFX = player.GetComponent<TeleportEffect>();
         }
 
         if(faceActive && !playerTeleported && startRoomSaved)
@@ -52,13 +56,21 @@ public class WallFace : MonoBehaviour
             {
                 if(pMove.hasGun)
                 {
-                    TeleportToStart();
-                    playerTeleported = true;
+                    StartTeleportFX();
                 }
                 else
                 {
                     print("YOU NEED YOUR GUN");
                 }
+            }
+        }
+
+        if (teleportFXactive)
+        {
+            if (teleFX.disappearFXFinished)
+            {
+                TeleportToStart();
+                teleportFXactive = false;
             }
         }
     }
@@ -78,6 +90,12 @@ public class WallFace : MonoBehaviour
                 faceActive = false;
         }
     }
+    //Dissapear, teleport player, reappear
+    private void StartTeleportFX()
+    {
+        teleFX.Dissapear();
+        teleportFXactive = true;
+    }
     private void TeleportToStart()
     {
         //move player
@@ -90,5 +108,9 @@ public class WallFace : MonoBehaviour
 
         startRoom.EnableHUD();
         parallax.SetTeleported();
+
+        teleFX.Reappear();
+
+        playerTeleported = true;
     }
 }

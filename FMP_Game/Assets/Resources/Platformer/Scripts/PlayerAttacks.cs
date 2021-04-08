@@ -27,8 +27,6 @@ public class PlayerAttacks : MonoBehaviour
 
     void Start()
     {
-        //activeUpgrade = Upgrade.Laser;
-        
         sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         isCrouched = false;
         bulletCount = 0;
@@ -43,7 +41,7 @@ public class PlayerAttacks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (hasGun)
+        if (hasGun && p_Mvmt.playerActive)
         {
             if (Input.GetButtonDown("Fire1"))
             {

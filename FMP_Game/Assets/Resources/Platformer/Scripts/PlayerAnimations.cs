@@ -22,25 +22,6 @@ public class PlayerAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ////Is he moving to the left
-        //if (m_rb.velocity.x < 0)
-        //{
-        //    //is he already facing left?
-        //    if (!isFacingLeft)
-        //    {
-        //        FlipSprite();
-        //        isFacingLeft = true;
-        //    }
-        //}
-        //else if (m_rb.velocity.x > 0)
-        //{
-        //    if (isFacingLeft)
-        //    {
-        //        FlipSprite();
-        //        isFacingLeft = false;
-        //    }
-        //}
-
         if (isMovingLeft)
         {
             if (!isFacingLeft)
