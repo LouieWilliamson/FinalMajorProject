@@ -10,6 +10,7 @@ TagManager:
   - Camera
   - Manager
   - EnemyJump
+  - Music
   layers:
   - Default
   - TransparentFX
