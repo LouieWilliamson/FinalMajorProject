@@ -33,9 +33,12 @@ public class PlayerMovement : MonoBehaviour
     CapsuleCollider2D capsuleCol;
     BoxCollider2D boxCol;
     WallFace wallFace;
+
+    HUDManager hud;
     // Start is called before the first frame update
     void Start()
     {
+        hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
         playerActive = true;
 
         hitTimer = 0;
@@ -61,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerActive) GetInput();
+        if (playerActive && !hud.isPaused) GetInput();
 
         //if the player has the gun, presses "S" and isn't crouched already then crouch
         if (isSPressed && hasGun && !isCrouched)

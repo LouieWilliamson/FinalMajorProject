@@ -35,7 +35,7 @@ public class AudioManager : MonoBehaviour
         Destroy(SoundEffect.gameObject, SFXDictionary[s].length);
     }
     //This function sets the music to the track given through a Music enum value
-    public void SetMusicSource(Music m)
+    public void SetMusicTrack(Music m)
     {
         MusicPlayer.clip = MusicDictionary[m];
         MusicPlayer.Play();
@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
     void Start()
     {
         MusicPlayer = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
-        print(MusicPlayer.name);
+
         //SFXDictionary.Add(SFX.PlayerDamage, SFXList[0]);
         for (int i = 0; i < 1 /*SFXList.Capacity*/; i++)
         {

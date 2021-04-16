@@ -6,9 +6,9 @@ public class DontDestroy : MonoBehaviour
 {
     void Awake()
     {
-        GameObject[] managers = GameObject.FindGameObjectsWithTag("Manager");
+        GameObject[] musicPlayers = GameObject.FindGameObjectsWithTag("Music");
         
-        if (managers.Length > 1) Destroy(this.gameObject);
+        if (musicPlayers.Length > 1) Destroy(this.gameObject);
 
         DontDestroyOnLoad(this.gameObject);
 

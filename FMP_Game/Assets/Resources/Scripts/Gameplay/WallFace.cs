@@ -24,12 +24,17 @@ public class WallFace : MonoBehaviour
     private PlayerMovement pMove;
     private TeleportEffect teleFX;
     private bool teleportFXactive;
+
+    private AudioManager aManager;
+
     private void Start()
     {
         levelGen = GameObject.FindObjectOfType<LevelGeneration>();
         parallax = GameObject.Find("Parallax").GetComponent<Parallax>();
         vCam = GameObject.Find("VirtualCamera");
         mainCam = GameObject.Find("Main Camera");
+
+        aManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
 
         startRoomSaved = false;
 
@@ -110,7 +115,8 @@ public class WallFace : MonoBehaviour
         parallax.SetTeleported();
 
         teleFX.Reappear();
-
         playerTeleported = true;
+
+        aManager.SetMusicTrack(AudioManager.Music.Level1);
     }
 }

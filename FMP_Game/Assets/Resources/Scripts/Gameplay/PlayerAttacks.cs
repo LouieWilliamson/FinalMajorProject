@@ -25,8 +25,11 @@ public class PlayerAttacks : MonoBehaviour
     public Upgrade activeUpgrade;
     public Laser laser;
     private Grenade grenade;
+
+    private HUDManager hud;
     void Start()
     {
+        hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
         //activeUpgrade = Upgrade.Grenade;
 
         sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
@@ -59,54 +62,56 @@ public class PlayerAttacks : MonoBehaviour
             print("cooldown activated");
         }
 
-        if (hasGun && p_Mvmt.playerActive)
+        if (!hud.isPaused)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (hasGun && p_Mvmt.playerActive)
             {
-                switch (activeUpgrade)
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    case Upgrade.None:
-                        Shoot();
-                        break;
-                    case Upgrade.Cooldown:
-                        Shoot();
-                        break;
-                    case Upgrade.Laser:
-                        laser.ActivateLaser();
-                        break;
-                    case Upgrade.Grenade:
-                        //shoot grenade
-                        grenade.Fire(p_Anim.isFacingLeft);
-                        break;
-                    default:
-                        break;
+                    switch (activeUpgrade)
+                    {
+                        case Upgrade.None:
+                            Shoot();
+                            break;
+                        case Upgrade.Cooldown:
+                            Shoot();
+                            break;
+                        case Upgrade.Laser:
+                            laser.ActivateLaser();
+                            break;
+                        case Upgrade.Grenade:
+                            grenade.Fire(p_Anim.isFacingLeft);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
-            if (activeUpgrade == Upgrade.Laser)
-            {
-                if (Input.GetButton("Fire1"))
+                if (activeUpgrade == Upgrade.Laser)
                 {
-                    laser.UpdateLaser();
+                    if (Input.GetButton("Fire1"))
+                    {
+                        laser.UpdateLaser();
+                    }
+                    if (Input.GetButtonUp("Fire1"))
+                    {
+                        laser.DeactivateLaser();
+                    }
                 }
-                if (Input.GetButtonUp("Fire1"))
+                else if (laser.lineRenderer.enabled)
                 {
                     laser.DeactivateLaser();
                 }
+                //print(overheatPercent);
             }
-            else if (laser.lineRenderer.enabled)
-            {
-                laser.DeactivateLaser();
-            }
-            //print(overheatPercent);
-        }
 
-        if (overheatPercent > 0)
-        {
-            overheatPercent -= cooldownAmount * Time.deltaTime;
-        }
-        else if (overheatPercent < 0)
-        {
-            //overheatPercent = 0;
+            if (overheatPercent > 0)
+            {
+                overheatPercent -= cooldownAmount * Time.deltaTime;
+            }
+            else if (overheatPercent < 0)
+            {
+                //overheatPercent = 0;
+            }
         }
     }
 

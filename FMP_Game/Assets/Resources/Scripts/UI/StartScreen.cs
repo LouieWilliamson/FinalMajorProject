@@ -10,6 +10,17 @@ public class StartScreen : MonoBehaviour
     public Animator settings;
     public Animator quitCheck;
 
+    private AudioSource MusicPlayer;
+    public AudioClip menumusic;
+    private void Start()
+    {
+        if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
+        {
+            MusicPlayer = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
+            MusicPlayer.clip = menumusic;
+            MusicPlayer.Play();
+        }
+    }
     public void PlayGame()
     {
         SceneManager.LoadScene("Level-1");
@@ -48,10 +59,11 @@ public class StartScreen : MonoBehaviour
 #else
          Application.Quit();
 #endif
-
         }
         else
         {
+            if (Time.timeScale != 1) Time.timeScale = 1;
+
             SceneManager.LoadScene("StartScreen");
         }
     }

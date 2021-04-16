@@ -45,9 +45,14 @@ public class HUDManager : MonoBehaviour
     public GameObject LoadingScreen;
 
     public GameObject Pausemenu;
+    internal bool isPaused;
 
+    private AudioSource musicplayer;
     void Start()
     {
+        musicplayer = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
+        isPaused = false;
+
         counterText = upgradeCounter.GetComponentInChildren<Text>();
 
         EnemiesKilled = 0;
@@ -78,7 +83,7 @@ public class HUDManager : MonoBehaviour
             BuildTimerText();
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             PauseGame();
         }
@@ -229,12 +234,14 @@ public class HUDManager : MonoBehaviour
         if (!Pausemenu.activeInHierarchy)
         {
             Time.timeScale = 0;
+            isPaused = true;
         }
         else
         {
             Time.timeScale = 1;
+            isPaused = false;
         }
 
-        Pausemenu.SetActive(!Pausemenu.activeInHierarchy);
+        Pausemenu.SetActive(isPaused);
     }
 }
