@@ -14,6 +14,7 @@ public class Inventory : MonoBehaviour
     private WeaponUpgrade upgradeInRange;
     private bool upgradeActive;
     private float UpgradeTimer;
+
     private int UpgradeSeconds;
     private PlayerAttacks pAttacks;
 
@@ -71,6 +72,8 @@ public class Inventory : MonoBehaviour
         if (upgradeActive)
         {
             UpgradeTimer += Time.deltaTime;
+
+            HUD.ChangeCounterOverlay(Time.deltaTime / 5);
 
             if (UpgradeTimer > 1)
             {

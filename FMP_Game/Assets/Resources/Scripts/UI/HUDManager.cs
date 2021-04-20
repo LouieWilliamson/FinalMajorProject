@@ -38,6 +38,9 @@ public class HUDManager : MonoBehaviour
     private bool LevelLoaded;
     public GameObject upgradeCounter;
     private Text counterText;
+    private Image counterOverlay;
+    internal float counterFill;
+
     public Sprite empty;
 
     private GamestateManager gsManager;
@@ -50,10 +53,13 @@ public class HUDManager : MonoBehaviour
     private AudioSource musicplayer;
     void Start()
     {
+        counterFill = 1;
+
         musicplayer = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
         isPaused = false;
 
         counterText = upgradeCounter.GetComponentInChildren<Text>();
+        counterOverlay = upgradeCounter.GetComponent<Image>();
 
         EnemiesKilled = 0;
         enemyPercent = 0;
@@ -224,10 +230,27 @@ public class HUDManager : MonoBehaviour
     public void DisableActiveUpgrade()
     {
         ChangeActiveCounter("5");
+        counterOverlay.fillAmount = 1;
+
         upgradeCounter.SetActive(false);
         activeImage.sprite = empty;
     }
     public void ChangeActiveCounter(string number){ counterText.text = number; }
+    public void ChangeCounterOverlay(float change) 
+    {
+        print("Current Fill: " + counterFill + " | New Fill: " + (counterFill - change));
+
+        counterFill -= change;
+
+        if (counterFill < 0)
+        {
+            counterFill = 0;
+        }
+        if(counterFill > 0)
+        {
+            counterOverlay.fillAmount = counterFill; 
+        }
+    }
     public void PauseGame()
     {
         //if it isnt paused
