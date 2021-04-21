@@ -238,8 +238,6 @@ public class HUDManager : MonoBehaviour
     public void ChangeActiveCounter(string number){ counterText.text = number; }
     public void ChangeCounterOverlay(float change) 
     {
-        print("Current Fill: " + counterFill + " | New Fill: " + (counterFill - change));
-
         counterFill -= change;
 
         if (counterFill < 0)

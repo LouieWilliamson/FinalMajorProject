@@ -84,7 +84,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e191900e6a217194a83cbffa3da7940c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFX: {fileID: 5217362383874555282, guid: ce51c77748f8e524e9ee059689850b60, type: 3}
+  explosionFX: {fileID: 254733750443281398, guid: 5ad501454efee074db1ae24b701c6d36, type: 3}
+  explosionRadius: 1
 --- !u!1 &4625001556551617428
 GameObject:
   m_ObjectHideFlags: 0
