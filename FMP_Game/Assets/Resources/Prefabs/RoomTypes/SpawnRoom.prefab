@@ -5738,82 +5738,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &5905395611330422670
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7303409496971297245}
-  - component: {fileID: 3332580783753806315}
-  - component: {fileID: 5776482539850124391}
-  m_Layer: 0
-  m_Name: DialogueTrigger
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7303409496971297245
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905395611330422670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.049999, y: -1.4100037, z: 159.29184}
-  m_LocalScale: {x: 4, y: 4, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5278947789896529154}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3332580783753806315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905395611330422670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f26c850fe3308045b0755a8a8505f5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogue:
-    name: Guardian
-    sentences:
-    - So, you wish to dive into the underworld and start cleansing it?
-    - "Make sure you have your weapon ready because these demons are brutal.\t"
-    - Well, best of luck new guy!
---- !u!61 &5776482539850124391
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5905395611330422670}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.029166222, y: 0.33140755}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.436121, y: 1.5054893}
-  m_EdgeRadius: 0
 --- !u!1001 &574720574891021092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5875,6 +5799,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 5673205510740018551, guid: 153e954d677ecc343b9129d8d2bf2e43, type: 3}
   m_PrefabInstance: {fileID: 574720574891021092}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2527685436779217594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5278947789896529154}
+    m_Modifications:
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.049999
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.4100037
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 159.29184
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8277627685826946356, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+      propertyPath: m_Name
+      value: DialogueTrigger
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+--- !u!4 &7303409496971297245 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5066207345971233639, guid: dee2a70cfcf5dea428107c9f94124ff9, type: 3}
+  m_PrefabInstance: {fileID: 2527685436779217594}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5278947788896645156
 PrefabInstance:

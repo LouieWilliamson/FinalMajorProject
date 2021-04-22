@@ -10679,6 +10679,47 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sentences.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sent.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.name
+      value: Guardian
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sentences.Array.data[0]
+      value: So, you're the new peacekeeper huh?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sentences.Array.data[1]
+      value: 'You don''t look so tough. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sentences.Array.data[2]
+      value: When you're ready to face the underworld, Press E
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sent.Array.data[0]
+      value: So, you wish to dive into the underworld and start cleansing it?
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sent.Array.data[1]
+      value: "Make sure you have your weapon ready because these demons are brutal.\t"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sent.Array.data[2]
+      value: Well, best of luck new guy!
+      objectReference: {fileID: 0}
+    - target: {fileID: 3332580783753806315, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
+      propertyPath: dialogue.sentences.Array.data[3]
+      value: I'll meet you at the end, just make sure you've killed enough of them
+        by the time you get to me.
+      objectReference: {fileID: 0}
     - target: {fileID: 5278947789413110020, guid: db0415da15cd49146bba3f1d7379020f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.76
