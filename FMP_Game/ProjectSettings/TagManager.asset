@@ -11,6 +11,7 @@ TagManager:
   - Manager
   - EnemyJump
   - Music
+  - EndSpawner
   layers:
   - Default
   - TransparentFX

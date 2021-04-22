@@ -27,6 +27,8 @@ public class WallFace : MonoBehaviour
 
     private AudioManager aManager;
 
+    public LayerMask platformLayer;
+    public float platformDetectionRadius;
     private void Start()
     {
         levelGen = GameObject.FindObjectOfType<LevelGeneration>();
@@ -41,6 +43,19 @@ public class WallFace : MonoBehaviour
         teleportFXactive = false;
         faceActive = false;
         playerTeleported = false;
+
+        Collider2D platformDetection = Physics2D.OverlapCircle(transform.position, platformDetectionRadius, platformLayer);
+        if (platformDetection != null)
+        {
+            print("PLATFORM FOUND AND DELETED");
+            Destroy(platformDetection.gameObject);
+        }
+
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, platformDetectionRadius);
     }
     void Update()
     {

@@ -215,6 +215,9 @@ public class LevelGeneration : MonoBehaviour
             if (transform.position.y >= maxY)
             {
                 stopBuilding = true;
+                //get final room and add the final room script to it
+                Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, roomLayer);
+                roomDetection.gameObject.AddComponent<FinalRoom>();
             }
         }
     }

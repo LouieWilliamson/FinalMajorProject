@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         capsuleCol = GetComponent<CapsuleCollider2D>();
         boxCol = GetComponentInChildren<BoxCollider2D>();
-        wallFace = GameObject.Find("FaceMoveTrigger").GetComponent<WallFace>();
+        wallFace = GameObject.Find("Guardian").GetComponent<WallFace>();
     }
 
     // Update is called once per frame

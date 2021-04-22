@@ -22,6 +22,8 @@ public class RoomType : MonoBehaviour
     private int MaxPickups;
     private int MaxHazards;
 
+    public Transform[] endSpawners;
+
     private void Start()
     {
         NumOfEnemies = 0;
