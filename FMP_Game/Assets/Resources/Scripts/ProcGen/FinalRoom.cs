@@ -31,10 +31,5 @@ public class FinalRoom : MonoBehaviour
         dialogueTrig.dialogue.sentences.Add("3");
         dialogueTrig.dialogue.sentences.Add("4");
         dialogueTrig.dialogue.sentences.Add("5");
-        //print(dialogueTrig.dialogue.sentences.Length);
-        //dialogueTrig.dialogue.sentences[0] = "1";
-        //dialogueTrig.dialogue.sentences[1] = "2";
-        //dialogueTrig.dialogue.sentences[2] = "3";
-        //dialogueTrig.dialogue.sentences[3] = "4";
     }
 }
