@@ -5,7 +5,7 @@ using UnityEngine;
 public class DialogueTrigger : MonoBehaviour
 {
     public Dialogue dialogue;
-
+    public bool SelfDelete;
     public void TriggerDialogue()
     {
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
@@ -15,7 +15,7 @@ public class DialogueTrigger : MonoBehaviour
         if (collision.tag == "Player")
         {
             TriggerDialogue();
-            Destroy(this.gameObject);
+            if (SelfDelete) Destroy(this.gameObject);
         }
     }
 }

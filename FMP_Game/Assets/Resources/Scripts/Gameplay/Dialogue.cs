@@ -10,6 +10,6 @@ public class Dialogue
     //[TextArea(3, 10)]
     //public string[] sentences;
 
-    [TextArea(3, 10)]
+    [TextArea(3, 12)]
     public List<string> sentences = new List<string>();
 }

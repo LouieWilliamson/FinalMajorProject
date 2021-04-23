@@ -10,9 +10,13 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
 
     public Animator anim;
+    private bool isTyping;
+    private string currentSentence;
+    public float timeTilNextLetter;
     void Start()
     {
         sentences = new Queue<string>();
+        isTyping = false;
     }
     public void StartDialogue(Dialogue dialogue)
     {
@@ -31,14 +35,24 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        if (sentences.Count == 0 && !isTyping)
         {
             EndDialogue();
             return;
         }
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+
+        //stops the player being able to continue before text is displayed
+        if (!isTyping)
+        {
+            currentSentence = sentences.Dequeue();
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(currentSentence));
+        }
+        else
+        {
+            SkipTextAnimation();
+        }
+
     }
 
     IEnumerator TypeSentence(string sentence)
@@ -48,8 +62,17 @@ public class DialogueManager : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return null;
+            isTyping = true;
+            yield return new WaitForSeconds(timeTilNextLetter); ;
         }
+
+        isTyping = false;
+    }
+    private void SkipTextAnimation()
+    {
+        isTyping = false;
+        StopAllCoroutines();
+        dialogueText.text = currentSentence;
     }
     private void EndDialogue()
     {

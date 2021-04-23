@@ -22,9 +22,10 @@ public class FinalRoom : MonoBehaviour
 
         Instantiate(wallface, rType.endSpawners[randomSpawn]);
         dialogue = Instantiate(dialogueTrigger, rType.endSpawners[randomSpawn]);
+     
+        dialogueTrig = dialogue.GetComponent<DialogueTrigger>();
+        dialogueTrig.SelfDelete = false;
 
-        dialogueTrig = dialogue.GetComponent<DialogueTrigger>();  
-        
         dialogueTrig.name = "Dialogue";
         dialogueTrig.dialogue.sentences.Add("1");
         dialogueTrig.dialogue.sentences.Add("2");
