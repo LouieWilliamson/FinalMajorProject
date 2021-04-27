@@ -44,18 +44,17 @@ public class HUDManager : MonoBehaviour
     public Sprite empty;
 
     private GamestateManager gsManager;
+    private AudioManager sound;
 
-    public GameObject LoadingScreen;
+    public GameObject fader;
 
     public GameObject Pausemenu;
     internal bool isPaused;
 
-    private AudioSource musicplayer;
     void Start()
     {
         counterFill = 1;
 
-        musicplayer = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
         isPaused = false;
 
         counterText = upgradeCounter.GetComponentInChildren<Text>();
@@ -74,11 +73,13 @@ public class HUDManager : MonoBehaviour
         ChangeOrbCount(0);
 
         gsManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GamestateManager>();
+        sound = gsManager.gameObject.GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        print(counterOverlay.fillAmount);
         if(LevelLoaded && !EnemiesCounted)
         {
             CountEnemies();
@@ -89,7 +90,7 @@ public class HUDManager : MonoBehaviour
             BuildTimerText();
         }
 
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseGame();
         }
@@ -172,8 +173,8 @@ public class HUDManager : MonoBehaviour
     }
     public void SetLevelLoaded()
     {
+        if (!LevelLoaded) fader.GetComponent<Fader>().FadeOut();
         LevelLoaded = true;
-        LoadingScreen.SetActive(false);
     }
     public void EnableHUD() { HUD.SetActive(true); }
     public void IncreaseEnemiesKilled()
@@ -249,20 +250,36 @@ public class HUDManager : MonoBehaviour
             counterOverlay.fillAmount = counterFill; 
         }
     }
+    public void ResetCounterOverlay()
+    {
+        counterOverlay.fillAmount = 1;
+        counterFill = 1;
+    }
     public void PauseGame()
     {
         //if it isnt paused
         if (!Pausemenu.activeInHierarchy)
         {
+            sound.PlaySFX(AudioManager.SFX.Pause);
             Time.timeScale = 0;
             isPaused = true;
         }
         else
         {
+            sound.PlaySFX(AudioManager.SFX.Unpause);
             Time.timeScale = 1;
             isPaused = false;
         }
 
+        sound.SetMusicSnapshot(isPaused);
         Pausemenu.SetActive(isPaused);
+    }
+    public void PlayUIHover()
+    {
+        sound.PlaySFX(AudioManager.SFX.UIHover);
+    }
+    public void PlayUIClick()
+    {
+        sound.PlaySFX(AudioManager.SFX.UIClick);
     }
 }

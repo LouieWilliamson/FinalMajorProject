@@ -45,32 +45,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6c3c5f9c88a3e4d8e72a4a280c77c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausedSnap: {fileID: 3332371307407969744, guid: 9e46cd06147658d49bb5d7282b91cf4a, type: 2}
+  unpausedSnap: {fileID: 1638322978441492890, guid: 9e46cd06147658d49bb5d7282b91cf4a, type: 2}
   SFXList:
-  - {fileID: 8300000, guid: c283841e0d2960842bea0b9d229fefff, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: c25464401586f944eb0a5e6d779094b0, type: 3}
+  - {fileID: 8300000, guid: 07445e14958bc234c96ae15d296416bd, type: 3}
+  - {fileID: 8300000, guid: f7deb7261b98c2f4e926fc69ff385945, type: 3}
+  - {fileID: 8300000, guid: 41ab39928d6d5084fbb590a6203eed20, type: 3}
+  - {fileID: 8300000, guid: 626397f46bd1e0844a71943013049b1c, type: 3}
+  - {fileID: 8300000, guid: ec36063760a8e4c48910fbcfb7b4ebdd, type: 3}
+  - {fileID: 8300000, guid: ecac63c016cf47d428b943e0a969e248, type: 3}
+  - {fileID: 8300000, guid: 4118ccdde5818d440b8ba49952eae599, type: 3}
+  - {fileID: 8300000, guid: f6c9d76adc781cd42b0222d53ff4aa8f, type: 3}
+  - {fileID: 8300000, guid: dd3fa21ef3a635840a7a2c1360625cc0, type: 3}
+  - {fileID: 8300000, guid: 4c07b970eed76e3409b582ac0a3f7992, type: 3}
+  - {fileID: 8300000, guid: c30433a52c642a540b27134818b14bef, type: 3}
+  - {fileID: 8300000, guid: b5ada66506bbb10409e1d9fe9bd47a00, type: 3}
+  - {fileID: 8300000, guid: 60d86f3d844115c4a98cb87ff2138a86, type: 3}
+  - {fileID: 8300000, guid: b7facb69a556148498d43e7fcdfbc4fb, type: 3}
+  - {fileID: 8300000, guid: 7db76c305e0456041aed941d06958049, type: 3}
+  - {fileID: 8300000, guid: 7170331b2f198824ab4e7715d82a2acc, type: 3}
+  - {fileID: 8300000, guid: ef86b7071ef6ce5439d5b9d86986afc6, type: 3}
+  - {fileID: 8300000, guid: 19fac8b787dd8194cab8e0c169030e0b, type: 3}
+  - {fileID: 8300000, guid: a7cce7eff6164a946a7ee7d8855be234, type: 3}
+  - {fileID: 8300000, guid: ab0d0806aff67684eb9b4b4f3618f942, type: 3}
+  - {fileID: 8300000, guid: 002b8ac82b2e46f49b070c27c3cb9eb2, type: 3}
+  - {fileID: 8300000, guid: a2273c07df29ca94f97883e730b1e7c1, type: 3}
   SFXPrefab: {fileID: 4999169379935012459, guid: c8f6e20a791b1d8488b54f07aa43c677, type: 3}
   MusicList:
   - {fileID: 8300000, guid: 731a0f4bee2887d45a6cdc8585acbede, type: 3}
-  - {fileID: 8300000, guid: b21701d9d3f888c4080113b18798f412, type: 3}
+  - {fileID: 8300000, guid: c811c49660b102f428ee1bd02867145b, type: 3}
 --- !u!114 &7541036033839974581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,3 +101,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 0}
   dialogueText: {fileID: 0}
+  anim: {fileID: 0}
+  timeTilNextLetter: 0

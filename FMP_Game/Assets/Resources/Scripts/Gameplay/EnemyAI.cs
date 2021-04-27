@@ -37,6 +37,8 @@ public class EnemyAI : MonoBehaviour
     private bool walkingRight;
     public LayerMask groundLayer;
     public LayerMask platformLayer;
+
+    private AudioManager sound;
     void Start()
     {
         attackToChaseTimer = 0;
@@ -50,6 +52,7 @@ public class EnemyAI : MonoBehaviour
         anim = GetComponent<EnemyAnimations>();
         eAttacks = GetComponent<EnemyAttacks>();
         state = EnemyState.patrolling;
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
     }
 
     void Update()
@@ -227,13 +230,55 @@ public class EnemyAI : MonoBehaviour
             if(attackType <= HeavyAttackChance)
             {
                 anim.HeavyAttackAnim();
+                PlayAttackSound(true);
             }
             else
             {
                 anim.LightAttackAnim();
+                PlayAttackSound(false);
             }
-
             attackTimer = 0;
+        }
+    }
+    private void PlayAttackSound(bool isHeavy)
+    {
+        if (isHeavy)
+        {
+            switch (type)
+            {
+                case EnemyType.sword:
+                    sound.PlaySFX(AudioManager.SFX.SwordAttack2);
+                    break;
+                case EnemyType.archer:
+                    break;
+                case EnemyType.ghost:
+                    break;
+                case EnemyType.mage:
+                    break;
+                case EnemyType.shield:
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (type)
+            {
+                case EnemyType.sword:
+                    sound.PlaySFX(AudioManager.SFX.SwordAttack1);
+                    break;
+                case EnemyType.archer:
+                    break;
+                case EnemyType.ghost:
+                    break;
+                case EnemyType.mage:
+                    break;
+                case EnemyType.shield:
+                    break;
+                default:
+                    break;
+            }
         }
     }
     private void ChasingMovement()

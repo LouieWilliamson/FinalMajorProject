@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class GamestateManager : MonoBehaviour
 {
-    private GameObject winscreen;
     private GameObject deathscreen;
     private Inventory inv;
     private HUDManager hud;
@@ -19,7 +18,6 @@ public class GamestateManager : MonoBehaviour
         playerSpawned = false;
         invSaved = false;
 
-        winscreen = GameObject.Find("Canvas").transform.Find("Winscreen").gameObject;
         deathscreen = GameObject.Find("Canvas").transform.Find("Deathscreen").gameObject;
 
         hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -40,8 +38,7 @@ public class GamestateManager : MonoBehaviour
         }
         else if (gameWon)
         {
-            winscreen.SetActive(true);
-            winscreen.GetComponent<WinScreen>().SetPercent((int)hud.GetEnemyPercent());
+            //enable arrow to exit?
         }
     }
     public void SetPlayerSpawned() { playerSpawned = true; }

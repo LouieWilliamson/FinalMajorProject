@@ -39,8 +39,14 @@ public class Pickup : MonoBehaviour
 
     private PlayerMovement pMove;
     private PlayerAttacks pAttacks;
+
+    private AudioManager sound;
+
+    public GameObject darkOrbPrefab;
     private void Start()
     {
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
+
         currentType = pType;
 
         effectActive = false;
@@ -58,6 +64,7 @@ public class Pickup : MonoBehaviour
         icon = transform.GetChild(0).GetComponent<SpriteRenderer>();
         col = GetComponent<CircleCollider2D>();
         AppearanceSwitch();
+
     }
     private void Update()
     {
@@ -83,10 +90,8 @@ public class Pickup : MonoBehaviour
         switch (pType)
         {
             case PickupType.darkorb:
-                icon.sprite = icons[0];
-                icon.color = orbColor;
-                icon.gameObject.transform.localScale = new Vector3(23, 23, 23);
-                //highlight.color = orbHighlight;
+                Instantiate(darkOrbPrefab, transform.position, transform.rotation);
+                Destroy(this.gameObject);
                 break;
             case PickupType.health:
                 icon.sprite = icons[1];
@@ -119,9 +124,11 @@ public class Pickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            
             player = collision.gameObject;
             BehaviourSwitch();
-            
+            sound.PlaySFX(AudioManager.SFX.CollectItem);
+
             //if it doesnt have a timed effect, then destroy it
             if (pType == PickupType.health || pType == PickupType.darkorb)
             {

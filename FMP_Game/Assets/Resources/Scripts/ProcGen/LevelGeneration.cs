@@ -8,6 +8,7 @@ public class LevelGeneration : MonoBehaviour
 {
     //---------------THIS IS FOR TESTING--------------
     public StartState state;
+    public GameObject DemoEnd;
     //------------------------------------------------
     private enum direction { left, right, up };
     public Transform startRoomSpawn;
@@ -77,11 +78,11 @@ public class LevelGeneration : MonoBehaviour
             }
         }
 
-        if (RoomsDone == rooms.Length)
+        if (RoomsDone == rooms.Length && !LevelFinished)
         {
             LoadTimer += Time.deltaTime;
 
-            if (LoadTimer > 1 && !LevelFinished)
+            if (LoadTimer > 2)
             {
                 LevelFinished = true;
             }
@@ -218,6 +219,7 @@ public class LevelGeneration : MonoBehaviour
                 //get final room and add the final room script to it
                 Collider2D roomDetection = Physics2D.OverlapCircle(transform.position, 1, roomLayer);
                 roomDetection.gameObject.AddComponent<FinalRoom>();
+                roomDetection.gameObject.GetComponent<FinalRoom>().DemoEnd = DemoEnd;
             }
         }
     }

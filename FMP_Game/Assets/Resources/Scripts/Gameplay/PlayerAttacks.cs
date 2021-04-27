@@ -14,7 +14,7 @@ public class PlayerAttacks : MonoBehaviour
     PlayerMovement p_Mvmt;
     private bool hasGun;
     private int GunDamage;
-    private AudioManager sound;
+    internal AudioManager sound;
 
     private bool gunOverheated;
     private float overheatPercent;
@@ -30,7 +30,6 @@ public class PlayerAttacks : MonoBehaviour
     void Start()
     {
         hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
-        //activeUpgrade = Upgrade.Grenade;
 
         sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         isCrouched = false;
@@ -54,12 +53,10 @@ public class PlayerAttacks : MonoBehaviour
             isCooldownActive = false;
             gunOverheated = false;
             overheatPercent = 0;
-            print("cooldown deactivated");
         }
         if (activeUpgrade == Upgrade.None && !isCooldownActive)
         {
             isCooldownActive = true;
-            print("cooldown activated");
         }
 
         if (!hud.isPaused)
@@ -148,6 +145,7 @@ public class PlayerAttacks : MonoBehaviour
     {
         if (collision.tag == "Powerup")
         {
+            sound.PlaySFX(AudioManager.SFX.PickupGun);
             p_Anim.SetGun(true);
             Destroy(collision.gameObject);
             hasGun = true;

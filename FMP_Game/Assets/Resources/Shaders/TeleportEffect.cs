@@ -73,6 +73,7 @@ public class TeleportEffect : MonoBehaviour
     }
     public void Dissapear()
     {
+        pAttack.sound.PlaySFX(AudioManager.SFX.TeleportOut);
         dissapearing = true;
         reappearing = false;
         disappearFXFinished = false;
@@ -80,6 +81,7 @@ public class TeleportEffect : MonoBehaviour
     }
     public void Reappear()
     {
+        pAttack.sound.PlaySFX(AudioManager.SFX.TeleportIn);
         dissapearing = false;
         reappearing = true;
         reappearFXFinished = false;

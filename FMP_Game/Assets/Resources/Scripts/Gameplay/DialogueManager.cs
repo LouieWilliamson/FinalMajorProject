@@ -13,13 +13,22 @@ public class DialogueManager : MonoBehaviour
     private bool isTyping;
     private string currentSentence;
     public float timeTilNextLetter;
+
+    private bool playerSaved;
+    private PlayerMovement player;
+    private AudioManager sound;
     void Start()
     {
         sentences = new Queue<string>();
         isTyping = false;
+        playerSaved = false;
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
     }
     public void StartDialogue(Dialogue dialogue)
     {
+        player.playerActive = false;
+        player.ResetInput();
+
         anim.SetBool("DialogueActive", true);
         nameText.text = dialogue.name;
 
@@ -61,6 +70,8 @@ public class DialogueManager : MonoBehaviour
 
         foreach (char letter in sentence.ToCharArray())
         {
+            int chanceToPlaySFX = Random.Range(1, 5);
+            if (chanceToPlaySFX == 1) sound.PlaySFX(AudioManager.SFX.DialogueSound);
             dialogueText.text += letter;
             isTyping = true;
             yield return new WaitForSeconds(timeTilNextLetter); ;
@@ -76,6 +87,15 @@ public class DialogueManager : MonoBehaviour
     }
     private void EndDialogue()
     {
+        player.playerActive = true;
         anim.SetBool("DialogueActive", false);
+    }
+    public void SavePlayer(GameObject p)
+    {
+        if (!playerSaved)
+        {
+            player = p.GetComponent<PlayerMovement>();
+            playerSaved = true;
+        }
     }
 }

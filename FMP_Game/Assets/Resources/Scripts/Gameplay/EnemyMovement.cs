@@ -27,30 +27,7 @@ public class EnemyMovement : MonoBehaviour
         walkSpeed = speed;
         gravity = 1.7f;
     }
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.K))
-        {
-            Move(false);
-        }
-        if (Input.GetKey(KeyCode.L))
-        {
-            Move(true);
-        }
 
-        //if(!Input.GetKey(KeyCode.K) && !Input.GetKey(KeyCode.L) && !Input.GetKey(KeyCode.Space))
-        //{
-        //    anim.Idle();
-        //    StopHorizontal();
-        //}
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Jump();
-        }
-        
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "EnemyJump")

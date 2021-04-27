@@ -65,6 +65,7 @@ public class bullet : MonoBehaviour
         }
         if (collision.tag == "Environment")
         {
+            p_Attacks.sound.PlaySFX(AudioManager.SFX.HitWall);
             RemoveBullet();
         }
     }

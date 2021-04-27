@@ -10,19 +10,21 @@ public class WeaponUpgrade : MonoBehaviour
     private SpriteRenderer sr;
     private Inventory inv;
     private bool playerSet;
+    private AudioManager sound;
     // Start is called before the first frame update
     void Start()
     {
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         playerSet = false;
         sr = transform.GetChild(0).GetComponent<SpriteRenderer>();
         sr.sprite = UpgradeSprites[(int)type]; //0 None, 1 Cooldown, 2 Laser, 3 Grenade 
         UpdateScale();
 
         Physics2D.IgnoreLayerCollision(13, 11); //upgrade to enemy
-        //Physics2D.IgnoreLayerCollision(13, 12); //upgrade to player
     }
     public void PickupUpgrade()
     {
+        sound.PlaySFX(AudioManager.SFX.CollectItem);
         inv.StoreUpgrade(type, sr.sprite);
         Destroy(this.gameObject);
     }

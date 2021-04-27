@@ -19,6 +19,14 @@ public class Laser : MonoBehaviour
                               
     public ParticleSystem HitFX1;
     public ParticleSystem HitFX2;
+
+    private AudioManager sound;
+    private AudioSource laserLoop;
+    private void Start()
+    {
+        laserLoop = GameObject.Find("LaserLoop").GetComponent<AudioSource>();
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
+    }
     public void ActivateLaser()
     {
         laserEndPoint.localPosition = Vector2.zero;
@@ -27,9 +35,12 @@ public class Laser : MonoBehaviour
 
         GunFX1.Play();
         GunFX2.Play();
+        sound.PlaySFX(AudioManager.SFX.ShootLaser);
     }
     public void DeactivateLaser()
     {
+        laserLoop.Pause();
+        //stop laser loop
         lineRenderer.enabled = false;
         fireLight.enabled = false;
         lineRenderer.SetPosition(1, Vector2.zero);
@@ -41,7 +52,7 @@ public class Laser : MonoBehaviour
     }
     public void UpdateLaser()
     {
-
+        //if laser loop isnt playing, play laser loop
         Vector2 laserEnd = new Vector2(lineRenderer.GetPosition(1).x, 0);
         laserEnd.x += laserFireSpeed * Time.deltaTime;
 
@@ -74,5 +85,7 @@ public class Laser : MonoBehaviour
             if (!HitFX1.isPlaying) HitFX1.Play();
             if (!HitFX2.isPlaying) HitFX2.Play();
         }
+
+        if (!laserLoop.isPlaying) laserLoop.Play();
     }
 }

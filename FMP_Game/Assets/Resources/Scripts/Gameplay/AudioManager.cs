@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     public enum SFX 
     { 
-        Shoot, HitEnemy, HitWall, Jump, 
-        Footstep, Crouch, HitPlayer, PlayerDeath, 
-        EnemyDeath, DarkOrb, Pause, SwordAttack1, //add more enemy attacks
-        SwordAttack2, UIButton, PickupCollected, PickupUsed, 
-        ShootLaser, ShootGrenade, GrenadeExplosion, DialogueSound
+        Shoot, PickupGun, HitEnemy, HitWall, Jump, 
+        HitPlayer, PlayerDeath, 
+        EnemyDeath, CollectItem, Pause, Unpause, SwordAttack1, //add more enemy attacks
+        SwordAttack2, UIHover, UIClick, PickupUsed,
+        ShootLaser, LaserLoop, ShootGrenade, GrenadeExplosion, DialogueSound, TeleportIn, TeleportOut
     };
+
+    public AudioMixerSnapshot pausedSnap;
+    public AudioMixerSnapshot unpausedSnap;
 
     //Sound Effect Enum and Dictionary setup
     public List<AudioClip> SFXList = new List<AudioClip>();
@@ -40,13 +44,28 @@ public class AudioManager : MonoBehaviour
         MusicPlayer.clip = MusicDictionary[m];
         MusicPlayer.Play();
     }
+    public void SetMusicSnapshot(bool isPaused)
+    {
+        if (isPaused)
+        {
+            pausedSnap.TransitionTo(.01f);
+        }
+        else
+        {
+            unpausedSnap.TransitionTo(.01f);
+        }
+    }
+    public void SetMusicPitch(float newPitch)
+    {
+        MusicPlayer.pitch = newPitch;
+    }
     // Start is called before the first frame update
     void Start()
     {
         MusicPlayer = GameObject.FindGameObjectWithTag("Music").GetComponent<AudioSource>();
 
         //SFXDictionary.Add(SFX.PlayerDamage, SFXList[0]);
-        for (int i = 0; i < 1 /*SFXList.Capacity*/; i++)
+        for (int i = 0; i < SFXList.Capacity; i++)
         {
             SFXDictionary.Add((SFX)i, SFXList[i]);
         }

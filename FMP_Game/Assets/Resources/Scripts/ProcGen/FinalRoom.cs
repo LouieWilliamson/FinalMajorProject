@@ -10,6 +10,7 @@ public class FinalRoom : MonoBehaviour
     private GameObject dialogueTrigger;
     private GameObject dialogue;
     private DialogueTrigger dialogueTrig;
+    internal GameObject DemoEnd;
     void Start()
     {
         wallface = (GameObject)Resources.Load("Prefabs/Guardian");
@@ -20,17 +21,21 @@ public class FinalRoom : MonoBehaviour
         // 0 ---> (spawnerNum - 1)
         int randomSpawn = Random.Range(0, rType.endSpawners.Length);
 
-        Instantiate(wallface, rType.endSpawners[randomSpawn]);
+        GameObject wall = Instantiate(wallface, rType.endSpawners[randomSpawn]);
+        WallFace w = wall.GetComponent<WallFace>();
+        w.endOfLevel = true;
+        w.startRoomSpawn = GameObject.Find("PlayerSpawn").GetComponent<Transform>();
+        w.DemoEnd = DemoEnd;
+
         dialogue = Instantiate(dialogueTrigger, rType.endSpawners[randomSpawn]);
      
         dialogueTrig = dialogue.GetComponent<DialogueTrigger>();
         dialogueTrig.SelfDelete = false;
 
-        dialogueTrig.name = "Dialogue";
-        dialogueTrig.dialogue.sentences.Add("1");
-        dialogueTrig.dialogue.sentences.Add("2");
-        dialogueTrig.dialogue.sentences.Add("3");
-        dialogueTrig.dialogue.sentences.Add("4");
-        dialogueTrig.dialogue.sentences.Add("5");
+        dialogueTrig.dialogue.name = "Guardian";
+        dialogueTrig.dialogue.sentences.Add("All finished?");
+        dialogueTrig.dialogue.sentences.Add("You managed to kill a few enemies I guess.");
+        dialogueTrig.dialogue.sentences.Add("You can stay here and keep killing if you want.");
+        dialogueTrig.dialogue.sentences.Add("Or if you're happy to leave now just press E again.");    
     }
 }

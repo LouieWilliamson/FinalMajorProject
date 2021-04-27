@@ -28,8 +28,10 @@ public class Inventory : MonoBehaviour
     private PlayerAnimations anim;
     private HUDManager HUD;
     private GamestateManager gsManager;
+    private bool isDead;
     void Start()
     {
+        isDead = false;
         UpgradeSeconds = 5;
         upgradeActive = false;
         UpgradeTimer = 0;
@@ -54,7 +56,7 @@ public class Inventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0)
+        if (health <= 0 && !isDead)
         {
             Kill();
         }
@@ -73,6 +75,8 @@ public class Inventory : MonoBehaviour
         {
             UpgradeTimer += Time.deltaTime;
 
+            print("Change = " + Time.deltaTime / 5);
+
             HUD.ChangeCounterOverlay(Time.deltaTime / 5);
 
             if (UpgradeTimer > 1)
@@ -84,7 +88,8 @@ public class Inventory : MonoBehaviour
                 if (UpgradeSeconds <= 0)
                 {
                     DisableUpgrade();
-                } 
+                    HUD.ResetCounterOverlay();
+                }
             }
         }
     }
@@ -92,6 +97,7 @@ public class Inventory : MonoBehaviour
     {
         if (amount < 0)
         {
+            pAttacks.sound.PlaySFX(AudioManager.SFX.HitPlayer);
             hitEffect.Enable();
             anim.SetHit();
         }
@@ -117,6 +123,8 @@ public class Inventory : MonoBehaviour
     }
     private void Kill()
     {
+        isDead = true;
+        pAttacks.sound.PlaySFX(AudioManager.SFX.PlayerDeath);
         gsManager.GameOver();
     }
     public void StoreUpgrade(Upgrade newUpgrade, Sprite upgradeSprite)
@@ -133,6 +141,7 @@ public class Inventory : MonoBehaviour
             storedUpgrade = Upgrade.None;
             pAttacks.activeUpgrade = activeUpgrade;
             HUD.UseStoredUpgrade();
+            pAttacks.sound.PlaySFX(AudioManager.SFX.PickupUsed);
         }
     }
     private void DisableUpgrade()

@@ -17,6 +17,7 @@ public class EnemyHealth : MonoBehaviour
     public float deathYchange;
     private HUDManager hud;
     private EnemyAI ai;
+    private AudioManager sound;
     void Start()
     {
         isDead = false;
@@ -27,6 +28,7 @@ public class EnemyHealth : MonoBehaviour
         health = 200;
         hitEffect = GetComponent<HitEffect>();
         ai = GetComponent<EnemyAI>();
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
@@ -47,6 +49,8 @@ public class EnemyHealth : MonoBehaviour
         health += -damage;
         hitEffect.Enable();
         anim.HitAnim();
+        sound.PlaySFX(AudioManager.SFX.HitEnemy);
+
     }
     private void Kill()
     {
@@ -62,6 +66,7 @@ public class EnemyHealth : MonoBehaviour
             rb.gravityScale = 0;
             transform.position = new Vector3(transform.position.x, transform.position.y - deathYchange, transform.position.z);
         }
+        sound.PlaySFX(AudioManager.SFX.EnemyDeath);
         hud.IncreaseEnemiesKilled();
         ai.SetDead();
     }

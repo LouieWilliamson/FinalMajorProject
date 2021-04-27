@@ -11,7 +11,7 @@ public class StartingRoom : MonoBehaviour
     internal GameObject player;
     private Cinemachine.CinemachineVirtualCamera cam;
     private LevelGeneration lvlGenerator;
-    private bool spawnedPlayer;
+    internal bool spawnedPlayer;
     private bool levelLoaded;
     private GameObject[] enemies;
     internal HUDManager HUD;

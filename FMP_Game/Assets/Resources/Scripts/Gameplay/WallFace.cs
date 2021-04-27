@@ -12,6 +12,7 @@ public class WallFace : MonoBehaviour
     private LevelGeneration levelGen;
     private StartingRoom startRoom;
     private Transform roomSpawn;
+    public Transform startRoomSpawn;
     private GameObject player;
     private HUDManager HUD;
     private Parallax parallax;
@@ -20,6 +21,7 @@ public class WallFace : MonoBehaviour
     private Vector3 centred = new Vector3(0, 0, 1);
 
     private bool startRoomSaved;
+    private bool playerSaved;
 
     private PlayerMovement pMove;
     private TeleportEffect teleFX;
@@ -29,6 +31,8 @@ public class WallFace : MonoBehaviour
 
     public LayerMask platformLayer;
     public float platformDetectionRadius;
+    public bool endOfLevel;
+    internal GameObject DemoEnd;
     private void Start()
     {
         levelGen = GameObject.FindObjectOfType<LevelGeneration>();
@@ -39,6 +43,7 @@ public class WallFace : MonoBehaviour
         aManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
 
         startRoomSaved = false;
+        playerSaved = false;
 
         teleportFXactive = false;
         faceActive = false;
@@ -47,10 +52,8 @@ public class WallFace : MonoBehaviour
         Collider2D platformDetection = Physics2D.OverlapCircle(transform.position, platformDetectionRadius, platformLayer);
         if (platformDetection != null)
         {
-            print("PLATFORM FOUND AND DELETED");
             Destroy(platformDetection.gameObject);
         }
-
     }
     private void OnDrawGizmosSelected()
     {
@@ -61,16 +64,24 @@ public class WallFace : MonoBehaviour
     {
         if (levelGen.GetLevelFinished() && !startRoomSaved)
         {
-            startRoomSaved = true;
             startRoom = GameObject.FindObjectOfType<StartingRoom>();
             HUD = startRoom.HUD;
             roomSpawn = startRoom.transform;
-            player = startRoom.player;
-            pMove = player.GetComponent<PlayerMovement>();
-            teleFX = player.GetComponent<TeleportEffect>();
+            startRoomSaved = true;
         }
 
-        if(faceActive && !playerTeleported && startRoomSaved)
+        if (startRoomSaved && !playerSaved)
+        {
+            if (startRoom.spawnedPlayer)
+            {
+                player = startRoom.player;
+                pMove = player.GetComponent<PlayerMovement>();
+                teleFX = player.GetComponent<TeleportEffect>();
+                playerSaved = true;
+            }
+        }
+
+        if (faceActive && !playerTeleported && startRoomSaved)
         {
             if(Input.GetKeyDown(KeyCode.E))
             {
@@ -119,10 +130,19 @@ public class WallFace : MonoBehaviour
     private void TeleportToStart()
     {
         //move player
-        player.transform.position = roomSpawn.position;
+        if (endOfLevel)
+        {
+            player.transform.position = startRoomSpawn.position;
+        }
+        else
+        {
+            player.transform.position = roomSpawn.position;
+        }
+
         //move cams
         vCam.transform.position = player.transform.position;
         mainCam.transform.position = player.transform.position;
+
         //move parallax
         parallax.fg.transform.position = player.transform.position;
 
@@ -133,5 +153,12 @@ public class WallFace : MonoBehaviour
         playerTeleported = true;
 
         aManager.SetMusicTrack(AudioManager.Music.Level1);
+
+        //end message for demo
+        if (endOfLevel)
+        {
+            aManager.SetMusicTrack(AudioManager.Music.MainMenu);
+            DemoEnd.SetActive(true);
+        }
     }
 }

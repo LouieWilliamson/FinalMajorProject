@@ -20,24 +20,12 @@ public class EnemyAttacks : MonoBehaviour
 
     public LayerMask playerLayer;
     // Start is called before the first frame update
-
+    private AudioManager sound;
     void Start()
     {
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         anim = GetComponent<EnemyAnimations>();
         type = GetComponent<EnemyAI>().type;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            LightAttack();
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            HeavyAttack();
-        }
     }
     public void LightAttack()
     {

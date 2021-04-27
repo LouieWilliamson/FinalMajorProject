@@ -16,8 +16,11 @@ public class Grenade : MonoBehaviour
     public Transform EndOfGun;
     //spawn grenade, add force
     public Vector2 grenadeForce;
+
+    private AudioManager sound;
     void Start()
     {
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
         canFire = true;
         shootTimer = 0;
         timeToShoot = 1;
@@ -42,7 +45,7 @@ public class Grenade : MonoBehaviour
         if (canFire)
         {
             grenadeInstance = Instantiate(shell, EndOfGun.position, EndOfGun.rotation);
-
+            sound.PlaySFX(AudioManager.SFX.ShootGrenade);
             if (facingLeft)
             {
                 grenadeInstance.GetComponent<Rigidbody2D>().AddForce(new Vector2(-grenadeForce.x, grenadeForce.y));

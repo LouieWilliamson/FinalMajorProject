@@ -159,13 +159,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded() || TimesJumped < 2)
         {
+            p_Attack.sound.PlaySFX(AudioManager.SFX.Jump);
             m_rb.velocity = Vector2.up * jumpHeight;
             p_Anim.SetJumpAnim();
             TimesJumped++;
         }
 
     }
-    private void StopHorizontal()
+    public void StopHorizontal()
     {
         Vector2 stopHor = new Vector2( 0, m_rb.velocity.y);
         m_rb.velocity = stopHor;
@@ -176,6 +177,13 @@ public class PlayerMovement : MonoBehaviour
         isSPressed = Input.GetKey(KeyCode.S);
         isDPressed = Input.GetKey(KeyCode.D);
         isSpacePressed = Input.GetKeyDown(KeyCode.Space);
+    }
+    public void ResetInput()
+    {
+        isAPressed = false;
+        isSPressed = false;
+        isDPressed = false;
+        isSpacePressed = false;
     }
     private bool isGrounded()
     {

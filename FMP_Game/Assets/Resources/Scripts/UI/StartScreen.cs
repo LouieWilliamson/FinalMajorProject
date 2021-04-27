@@ -12,18 +12,34 @@ public class StartScreen : MonoBehaviour
 
     private AudioSource MusicPlayer;
     public AudioClip menumusic;
+    private AudioManager sound;
     private void Start()
     {
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
         {
+            sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
             MusicPlayer = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
-            MusicPlayer.clip = menumusic;
-            MusicPlayer.Play();
+
+            if (MusicPlayer.clip != menumusic)
+            {
+                MusicPlayer.clip = menumusic;
+                MusicPlayer.Play();
+            }
+
+            sound.SetMusicSnapshot(false);
         }
+    }
+    public void PlayUIClick()
+    {
+        sound.PlaySFX(AudioManager.SFX.UIClick);
+    }
+    public void PlayUIHover()
+    {
+        sound.PlaySFX(AudioManager.SFX.UIHover);
     }
     public void PlayGame()
     {
-        SceneManager.LoadScene("Level-1");
+        GameObject.Find("Fader").GetComponent<Fader>().FadeOut();
     }
     public void OpenControls()
     {
