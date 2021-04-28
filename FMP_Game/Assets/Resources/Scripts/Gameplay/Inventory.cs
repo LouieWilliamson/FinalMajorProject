@@ -75,8 +75,6 @@ public class Inventory : MonoBehaviour
         {
             UpgradeTimer += Time.deltaTime;
 
-            print("Change = " + Time.deltaTime / 5);
-
             HUD.ChangeCounterOverlay(Time.deltaTime / 5);
 
             if (UpgradeTimer > 1)

@@ -7,6 +7,7 @@ public class GamestateManager : MonoBehaviour
     private GameObject deathscreen;
     private Inventory inv;
     private HUDManager hud;
+    private GameObject player;
 
     private bool gameWon;
     private bool gameOver;
@@ -29,10 +30,13 @@ public class GamestateManager : MonoBehaviour
         if (playerSpawned && !invSaved)
         {
             inv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+            player = inv.gameObject;
             invSaved = true;
         }
         if (gameOver)
         {
+            player.GetComponent<PlayerAnimations>().SetDead();
+            player.GetComponent<TeleportEffect>().Dissapear();
             Time.timeScale = 0.5f;
             deathscreen.SetActive(true);
         }

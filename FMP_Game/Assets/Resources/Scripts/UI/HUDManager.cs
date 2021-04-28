@@ -79,7 +79,7 @@ public class HUDManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(counterOverlay.fillAmount);
+
         if(LevelLoaded && !EnemiesCounted)
         {
             CountEnemies();

@@ -54,7 +54,10 @@ public class PlayerAnimations : MonoBehaviour
     {
         m_Anim.SetTrigger("isJumping");
     }
-
+    public void SetDead()
+    {
+        m_Anim.SetTrigger("isDead");
+    }
     public void SetMove()
     {
         m_Anim.SetTrigger("isMoving");

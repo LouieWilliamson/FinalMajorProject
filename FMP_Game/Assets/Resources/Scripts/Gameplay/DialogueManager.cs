@@ -85,7 +85,7 @@ public class DialogueManager : MonoBehaviour
         StopAllCoroutines();
         dialogueText.text = currentSentence;
     }
-    private void EndDialogue()
+    public void EndDialogue()
     {
         player.playerActive = true;
         anim.SetBool("DialogueActive", false);

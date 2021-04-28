@@ -26,6 +26,7 @@ public class WallFace : MonoBehaviour
     private PlayerMovement pMove;
     private TeleportEffect teleFX;
     private bool teleportFXactive;
+    private DialogueManager dManager;
 
     private AudioManager aManager;
 
@@ -41,6 +42,7 @@ public class WallFace : MonoBehaviour
         mainCam = GameObject.Find("Main Camera");
 
         aManager = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
+        dManager = aManager.gameObject.GetComponent<DialogueManager>();
 
         startRoomSaved = false;
         playerSaved = false;
@@ -153,7 +155,7 @@ public class WallFace : MonoBehaviour
         playerTeleported = true;
 
         aManager.SetMusicTrack(AudioManager.Music.Level1);
-
+        dManager.EndDialogue();
         //end message for demo
         if (endOfLevel)
         {

@@ -167,9 +167,9 @@ public class Pickup : MonoBehaviour
                 pAttacks = player.GetComponent<PlayerAttacks>();
                 if (pAttacks == null) pAttacks = player.GetComponentInParent<PlayerAttacks>();
 
-                float damage = player.GetComponent<PlayerAttacks>().GetGunDamage();
+                float damage = pAttacks.GetGunDamage();
                 rawDamage = damage *= damageMultiplier;
-                player.GetComponent<PlayerAttacks>().SetGunDamage((int)Mathf.Round(rawDamage));
+                pAttacks.SetGunDamage((int)Mathf.Round(rawDamage));
                 effectActive = true;
                 break;
             default:
