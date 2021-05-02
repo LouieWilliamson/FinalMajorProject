@@ -27,13 +27,9 @@ public class Pickup : MonoBehaviour
     private float effectDuration;
 
     public Color orbColor;
-    //public Color orbHighlight;
     public Color healthColor;
-    //public Color healthHighlight;
     public Color speedColor;
-    //public Color speedHighlight;
     public Color damageColor;
-    //public Color damageHighlight;
 
     private CircleCollider2D col;
 
@@ -124,7 +120,6 @@ public class Pickup : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            
             player = collision.gameObject;
             BehaviourSwitch();
             sound.PlaySFX(AudioManager.SFX.CollectItem);
@@ -156,7 +151,7 @@ public class Pickup : MonoBehaviour
                 inv.ChangeHealth(healthValue);
                 break;
             case PickupType.speed:
-
+                print("Speed Enabled");
                 pMove = player.GetComponent<PlayerMovement>();
                 if (pMove == null) pMove = player.GetComponentInParent<PlayerMovement>();
 
@@ -182,6 +177,7 @@ public class Pickup : MonoBehaviour
         if(pType == PickupType.speed)
         {
             pMove.speed /= speedMultiplier;
+            print("Speed Disabled");
         }
         else if (pType == PickupType.damage)
         {

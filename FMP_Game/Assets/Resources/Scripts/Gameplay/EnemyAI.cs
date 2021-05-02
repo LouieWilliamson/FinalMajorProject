@@ -29,7 +29,7 @@ public class EnemyAI : MonoBehaviour
     public float seeDistance;
     public float attackDistance;
     private float attackTimer;
-    private float attackTime;
+    public float attackTime;
     public int HeavyAttackChance;
     private float attackToChaseTimer;
 
@@ -42,7 +42,6 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         attackToChaseTimer = 0;
-        attackTime = 2;
         attackTimer = 0;
         walkingRight = true;
         playerSet = false;
@@ -148,13 +147,33 @@ public class EnemyAI : MonoBehaviour
             }
         }
     }
+    private float GetYDifferenceToPlayer()
+    {
+        float playerYdifference = (player.transform.position - transform.position).y;
+
+        float differenceSquared = playerYdifference * playerYdifference;
+
+        playerYdifference = Mathf.Sqrt(differenceSquared);
+
+        return playerYdifference;
+    }
+    private float GetXDifferenceToPlayer()
+    {
+        float playerYdifference = (player.transform.position - transform.position).x;
+
+        float differenceSquared = playerYdifference * playerYdifference;
+
+        playerYdifference = Mathf.Sqrt(differenceSquared);
+
+        return playerYdifference;
+    }
     //Check whether the enemy is facing the player or not
     private bool CheckFacingPlayer()
     {
         bool facingLeft = anim.GetFacingLeft();
 
         float playerDirectionX = (player.transform.position - transform.position).x;
-        bool playerToTheLeft = playerDirectionX <= 0;
+        bool playerToTheLeft = playerDirectionX < 0;//= 0;
 
         if(facingLeft == playerToTheLeft)
         {
@@ -287,7 +306,7 @@ public class EnemyAI : MonoBehaviour
         {
             anim.FlipEnemy();
         }
-        
+
         if (type == EnemyType.ghost)
         {
             //fly towards the player
@@ -305,7 +324,12 @@ public class EnemyAI : MonoBehaviour
                 walkingRight = true;
             }
 
-            if (ChasingCheck())
+            //this stops the enemy flipping when below/above bug
+            if (GetYDifferenceToPlayer() >= 1 && GetXDifferenceToPlayer() <= 1)
+            {
+                eMovement.StopHorizontal();
+            }
+            else if (ChasingCheck())
             {
                 eMovement.Move(walkingRight);
             }
@@ -313,6 +337,7 @@ public class EnemyAI : MonoBehaviour
             {
                 eMovement.StopHorizontal();
             }
+
         }
     }
     private bool ChasingCheck()

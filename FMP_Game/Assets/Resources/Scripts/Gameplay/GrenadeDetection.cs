@@ -13,7 +13,11 @@ public class GrenadeDetection : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy" || collision.tag == "Environment")
+        if (collision.tag == "Enemy")
+        {
+            if(!collision.GetComponent<EnemyHealth>().isDead) Explode();
+        }
+        else if (collision.tag == "Environment")
         {
             Explode();
         }

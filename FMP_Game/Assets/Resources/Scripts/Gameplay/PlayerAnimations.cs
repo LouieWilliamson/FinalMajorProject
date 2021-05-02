@@ -7,11 +7,15 @@ public class PlayerAnimations : MonoBehaviour
     // Start is called before the first frame update
     Animator m_Anim;
     Rigidbody2D m_rb;
+    SpriteRenderer sRend;
 
     internal bool isFacingLeft;
     internal bool isMovingLeft;
+
+    public GameObject tooltip;
     void Start()
     {
+        sRend = GetComponent<SpriteRenderer>();
         m_Anim = GetComponent<Animator>();
         m_rb = GetComponent<Rigidbody2D>();
         m_rb.velocity = Vector2.zero;
@@ -42,7 +46,9 @@ public class PlayerAnimations : MonoBehaviour
 
     private void FlipSprite()
     {
+        //sRend.flipX = !sRend.flipX;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        tooltip.transform.localScale = new Vector3(tooltip.transform.localScale.x * -1, tooltip.transform.localScale.y, tooltip.transform.localScale.z);
     }
 
     public void SetGun(bool hasGun)

@@ -105,7 +105,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 133.13
+  m_SurfaceArc: 130
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 850443bd403dc384fbbf33cac4880f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2.5
   boundaryLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -145,8 +145,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0055252425, y: 0.7023285}
-  m_Size: {x: 1.8371096, y: 0.27020743}
+  m_Offset: {x: 0.0055252407, y: 0.68276626}
+  m_Size: {x: 1.8371097, y: 0.23108295}
   m_Direction: 1
 --- !u!1 &164590835976538720
 GameObject:
@@ -218,7 +218,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 409588039
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 6e672f23a982c4712bbc8b1122ceb423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -300,7 +300,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 409588039
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 6e672f23a982c4712bbc8b1122ceb423, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

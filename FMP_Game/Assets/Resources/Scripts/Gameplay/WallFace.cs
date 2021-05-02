@@ -14,6 +14,7 @@ public class WallFace : MonoBehaviour
     private Transform roomSpawn;
     public Transform startRoomSpawn;
     private GameObject player;
+    private PlayerTooltip pTooltip;
     private HUDManager HUD;
     private Parallax parallax;
     private GameObject vCam;
@@ -79,6 +80,7 @@ public class WallFace : MonoBehaviour
                 player = startRoom.player;
                 pMove = player.GetComponent<PlayerMovement>();
                 teleFX = player.GetComponent<TeleportEffect>();
+                pTooltip = player.GetComponentInChildren<PlayerTooltip>();
                 playerSaved = true;
             }
         }
@@ -93,7 +95,7 @@ public class WallFace : MonoBehaviour
                 }
                 else
                 {
-                    print("YOU NEED YOUR GUN");
+                    pTooltip.SetTipText(PlayerTooltip.TipType.Gun);
                 }
             }
         }

@@ -27,6 +27,9 @@ public class MovingPlatform : MonoBehaviour
     private bool playerInRange;
     public Light2D leftLight;
     public Light2D rightLight;
+
+    private PlayerTooltip pTooltip;
+
     void Start()
     {
         playerInRange = false;
@@ -114,6 +117,8 @@ public class MovingPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInRange = true;
+            GetPlayerTooltip(collision);
+            if (collision.name.Contains("Player")) pTooltip.SetTipText(PlayerTooltip.TipType.YPlatform);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -121,6 +126,20 @@ public class MovingPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInRange = false;
+        }
+    }
+    private void GetPlayerTooltip(Collider2D player)
+    {
+        if (pTooltip == null)
+        {
+            if (player.GetComponentInChildren<PlayerTooltip>() == null)
+            {
+                player.transform.parent.GetComponentInChildren<PlayerTooltip>();
+            }
+            else
+            {
+                pTooltip = player.GetComponentInChildren<PlayerTooltip>();
+            }
         }
     }
 }

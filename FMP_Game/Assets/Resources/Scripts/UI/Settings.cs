@@ -7,24 +7,20 @@ using UnityEngine.Audio;
 public class Settings : MonoBehaviour
 {
     public AudioMixer Mixer;
-
-    public AudioMixerSnapshot paused; //https://youtu.be/7wWNAiWc8ws
-    public AudioMixerSnapshot unpaused;
     public void ToggleFullscreen()
     {
         Screen.fullScreen = !Screen.fullScreen;
-        print("Fullscreen: " + Screen.fullScreen);
     }
     public void MasterVolumeChange(float volume)
     {
-        Mixer.SetFloat("MasterVol", volume);
+        Mixer.SetFloat("MasterVol", Mathf.Log10(volume) * 20);
     }
     public void MusicVolumeChange(float volume)
     {
-        Mixer.SetFloat("MusicVol", volume);
+        Mixer.SetFloat("MusicVol", Mathf.Log10(volume) * 20);
     }
     public void SFXVolumeChange(float volume)
     {
-        Mixer.SetFloat("SFXVol", volume);
+        Mixer.SetFloat("SFXVol", Mathf.Log10(volume) * 20);
     }
 }

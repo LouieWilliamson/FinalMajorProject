@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &961705249790585956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3821939914452771896}
+  m_Layer: 11
+  m_Name: Deadcheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3821939914452771896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961705249790585956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.179, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6015399661572552847}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3993378495472011389
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +134,7 @@ Transform:
   - {fileID: 847805229118751663}
   - {fileID: 801313530064646758}
   - {fileID: 4035048644946892600}
+  - {fileID: 3821939914452771896}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -192,9 +223,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0027030946, y: -0.029668761}
-  m_Size: {x: 0.19185105, y: 0.29984426}
-  m_Direction: 0
+  m_Offset: {x: 0.023341319, y: -0.15627947}
+  m_Size: {x: 0.39517358, y: 0.04662319}
+  m_Direction: 1
 --- !u!95 &6015399661572552841
 Animator:
   serializedVersion: 3
@@ -226,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81d83a1ab26d8ea4395d944c80d1c6d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 2.5
   runMultiplier: 1.5
   jumpHeight: 375
 --- !u!114 &6015399661572552835
@@ -245,6 +276,11 @@ MonoBehaviour:
   ShouldExplode: 0
   deathFXPrefab: {fileID: 5419764051213092338, guid: 8d17c6b52f87a9841926568923d4e0e0, type: 3}
   deathYchange: 0
+  platformLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  deadDetection: {fileID: 3821939914452771896}
+  enemyLight: {fileID: 6849761967460198214}
 --- !u!114 &-4697866845028007109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,6 +301,7 @@ MonoBehaviour:
   rayLength: 20
   seeDistance: 8
   attackDistance: 1
+  attackTime: 0.75
   HeavyAttackChance: 30
   groundLayer:
     serializedVersion: 2

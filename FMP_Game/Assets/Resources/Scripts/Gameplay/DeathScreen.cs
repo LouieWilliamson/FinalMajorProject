@@ -9,10 +9,12 @@ public class DeathScreen : MonoBehaviour
     float respawnTimer;
     float seconds;
     public Text timerText;
-    
+    private AudioManager sound;
     // Start is called before the first frame update
     void Start()
     {
+        sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
+
         respawnTimer = 0;
         seconds = 5;
         timerText.text = "" + seconds;
@@ -35,12 +37,14 @@ public class DeathScreen : MonoBehaviour
         if(seconds <= 0)
         {
             Time.timeScale = 1;
+            sound.SetMusicTrack(AudioManager.Music.MainMenu);
             SceneManager.LoadScene("Level-1");
         }
 
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Time.timeScale = 1;
+            sound.SetMusicTrack(AudioManager.Music.MainMenu);
             SceneManager.LoadScene("StartScreen");
         }
     }

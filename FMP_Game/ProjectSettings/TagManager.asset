@@ -28,7 +28,7 @@ TagManager:
   - Player
   - Upgrade
   - Laser
-  - 
+  - Crouch
   - 
   - 
   - 
@@ -60,6 +60,9 @@ TagManager:
     locked: 0
   - name: Environment
     uniqueID: 409588039
+    locked: 0
+  - name: Icon
+    uniqueID: 3492309605
     locked: 0
   - name: Characters
     uniqueID: 3998726441

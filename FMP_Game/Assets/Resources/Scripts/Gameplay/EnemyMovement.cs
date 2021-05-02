@@ -19,7 +19,6 @@ public class EnemyMovement : MonoBehaviour
     void Start()
     {
         isJumping = false;
-        Physics2D.IgnoreLayerCollision(11, 11);
         walking = true;
         anim = GetComponent<EnemyAnimations>();
         rb = GetComponent<Rigidbody2D>();

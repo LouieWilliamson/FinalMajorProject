@@ -35,6 +35,13 @@ public class PlayerMovement : MonoBehaviour
     WallFace wallFace;
 
     HUDManager hud;
+
+    public Transform crouchCheck;
+    public BoxCollider2D crouchCollider;
+    public LayerMask enemyLayer;
+
+    private bool isOnMovingPlatform;
+    private Rigidbody2D platformRB;
     // Start is called before the first frame update
     void Start()
     {
@@ -115,6 +122,11 @@ public class PlayerMovement : MonoBehaviour
                 hitTimer = 0;
             }
         }
+
+        if (isCrouched)
+        {
+            CheckOnEnemy();
+        }
     }
     private void FixedUpdate()
     {
@@ -131,15 +143,43 @@ public class PlayerMovement : MonoBehaviour
             if(!beenHit)
             {
                 p_Anim.SetIdle();
-                StopHorizontal();
+
+                if (!isOnMovingPlatform)
+                {
+                    StopHorizontal();
+                }
+                else
+                {
+                    m_rb.velocity = new Vector2(platformRB.velocity.x, m_rb.velocity.y);
+                }
             }
         }
+    }
+    public void SetMovingPlatform(bool onPlatform, Rigidbody2D pformRB) 
+    {
+        if (onPlatform)
+        {
+            if (platformRB == null) platformRB = pformRB;
+        }
+        else
+        {
+            platformRB = null;
+        }
+        isOnMovingPlatform = onPlatform; 
     }
     private void MoveLeft()
     {
         if (!isCrouched)
         {
-            m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
+            if (!isOnMovingPlatform)
+            {
+                m_rb.velocity = new Vector2(-speed, m_rb.velocity.y);
+            }
+            else
+            {
+                float velocityX = -speed + platformRB.velocity.x;
+                m_rb.velocity = new Vector2(velocityX, m_rb.velocity.y);
+            }
             p_Anim.SetMove();
         }
         p_Anim.isMovingLeft = true;
@@ -149,7 +189,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!isCrouched)
         {
-            m_rb.velocity = new Vector2(speed, m_rb.velocity.y);
+            if (!isOnMovingPlatform)
+            {
+                m_rb.velocity = new Vector2(speed, m_rb.velocity.y);
+            }
+            else
+            {
+                float velocityX = speed + platformRB.velocity.x;
+                m_rb.velocity = new Vector2(velocityX, m_rb.velocity.y);
+            }
+
             p_Anim.SetMove();
         }
         p_Anim.isMovingLeft = false;
@@ -185,6 +234,15 @@ public class PlayerMovement : MonoBehaviour
         isDPressed = false;
         isSpacePressed = false;
     }
+    private void CheckOnEnemy()
+    {
+        Collider2D enemyDetection = Physics2D.OverlapCircle(crouchCheck.position, 1, enemyLayer);
+
+        if (enemyDetection != null)
+        {
+            Physics2D.IgnoreCollision(crouchCollider, enemyDetection);
+        }
+    }
     private bool isGrounded()
     {
         Vector2 direction = Vector2.down;
@@ -192,8 +250,6 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(jumpFrom.position, direction, rayLength, groundLayer);
         RaycastHit2D hit2 = Physics2D.Raycast(jumpFrom.position, direction, rayLength, platformLayer);
         
-        Debug.DrawRay(jumpFrom.position, direction, Color.green, 10);
-
         if (hit.collider != null || hit2.collider != null)
         {
             TimesJumped = 0;

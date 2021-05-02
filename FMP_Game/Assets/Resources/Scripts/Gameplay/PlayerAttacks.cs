@@ -19,6 +19,7 @@ public class PlayerAttacks : MonoBehaviour
     private bool gunOverheated;
     private float overheatPercent;
     public float cooldownAmount;
+    public float heatPerBullet;
     private bool isCooldownActive;
 
     //upgrades
@@ -116,14 +117,13 @@ public class PlayerAttacks : MonoBehaviour
     {
         CheckCooldown();
         
-        //if (gunOverheated) do the code below
         if (!gunOverheated)
         {
             bullet = Instantiate(bulletPrefab, EndOfGun.position, EndOfGun.rotation);
             bullet.GetComponent<bullet>().SetDirection(!p_Anim.isFacingLeft);
             sound.PlaySFX(AudioManager.SFX.Shoot);
 
-            if(isCooldownActive) overheatPercent += 33f;
+            if(isCooldownActive) overheatPercent += heatPerBullet;
         }
     }
     private void CheckCooldown()

@@ -145,7 +145,7 @@ public class HUDManager : MonoBehaviour
         {
             Hours = "0" + HH;
         }
-        RunTime.text = Hours + ":" + Minutes + ":" + Seconds;
+        RunTime.text = Hours + " : " + Minutes + " : " + Seconds;
     }
     public void ChangeMaxHealth(int newMaxHealth)
     {

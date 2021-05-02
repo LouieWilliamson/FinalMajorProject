@@ -46,7 +46,6 @@ public class SpawnPlatform : MonoBehaviour
 
         platformInstance = (GameObject)Instantiate(Platforms[randomPlatform], transform.position, Quaternion.identity);
         platformInstance.transform.parent = transform; //parent the spawned tile to this
-        Physics2D.IgnoreLayerCollision(10, 10);
         Room.AddPlatform();
     }
     private void SpawnOrb()

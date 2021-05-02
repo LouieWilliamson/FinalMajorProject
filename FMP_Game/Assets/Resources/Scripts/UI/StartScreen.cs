@@ -13,12 +13,15 @@ public class StartScreen : MonoBehaviour
     private AudioSource MusicPlayer;
     public AudioClip menumusic;
     private AudioManager sound;
+    public Material teleportMat;
+
     private void Start()
     {
         if(SceneManager.GetActiveScene() == SceneManager.GetSceneByName("StartScreen"))
         {
             sound = GameObject.FindGameObjectWithTag("Manager").GetComponent<AudioManager>();
             MusicPlayer = GameObject.Find("MusicPlayer").GetComponent<AudioSource>();
+            teleportMat.SetFloat("EffectProgress", 2.5f);
 
             if (MusicPlayer.clip != menumusic)
             {

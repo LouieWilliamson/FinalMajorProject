@@ -68,14 +68,18 @@ public class Laser : MonoBehaviour
 
         if(enemyRay)
         {
-            laserEndPoint.position = enemyRay.point;
-            lineRenderer.SetPosition(1, laserEndPoint.localPosition);
-
-            if (!HitFX1.isPlaying) HitFX1.Play();
-            if (!HitFX2.isPlaying) HitFX2.Play();
-
             EnemyHealth eHealth = enemyRay.collider.gameObject.GetComponent<EnemyHealth>();
-            eHealth.ApplyDamage(eHealth.health);
+
+            if (!eHealth.isDead)
+            {
+                laserEndPoint.position = enemyRay.point;
+                lineRenderer.SetPosition(1, laserEndPoint.localPosition);
+
+                if (!HitFX1.isPlaying) HitFX1.Play();
+                if (!HitFX2.isPlaying) HitFX2.Play();
+
+                eHealth.ApplyDamage(eHealth.health);
+            }
         }
         if (environmentRay)
         {

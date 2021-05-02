@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class EnemyHealth : MonoBehaviour
 {
     // Start is called before the first frame update
     public int health;
-    private bool isDead;
+    internal bool isDead;
     public bool ShouldExplode;
     private HitEffect hitEffect;
     public GameObject deathFXPrefab;
@@ -18,8 +19,14 @@ public class EnemyHealth : MonoBehaviour
     private HUDManager hud;
     private EnemyAI ai;
     private AudioManager sound;
+
+    public LayerMask platformLayer;
+    public Transform deadDetection;
+    public Light2D enemyLight;
+    private SpriteRenderer sRend;
     void Start()
     {
+        sRend = GetComponent<SpriteRenderer>();
         isDead = false;
         hud = GameObject.Find("Canvas").GetComponent<HUDManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -42,15 +49,31 @@ public class EnemyHealth : MonoBehaviour
                 isDead = true;
             }
         }
+        if (isDead)
+        {
+            CheckIfOnPlatform();
+        }
     }
+    private void CheckIfOnPlatform()
+    {
+        Collider2D roomDetection = Physics2D.OverlapCircle(deadDetection.position, 1, platformLayer);
+        
+        bool onPlatform = roomDetection != null;
 
+        if (onPlatform)
+        {
+            Physics2D.IgnoreCollision(gameObject.GetComponent<PolygonCollider2D>(), roomDetection);
+        }
+    }
     public void ApplyDamage(int damage)
     {
-        health += -damage;
-        hitEffect.Enable();
-        anim.HitAnim();
-        sound.PlaySFX(AudioManager.SFX.HitEnemy);
-
+        if (!isDead)
+        {
+            health += -damage;
+            hitEffect.Enable();
+            anim.HitAnim();
+            sound.PlaySFX(AudioManager.SFX.HitEnemy);
+        }
     }
     private void Kill()
     {
@@ -61,11 +84,13 @@ public class EnemyHealth : MonoBehaviour
         }
         else
         {
+            rb.AddForce(new Vector2(0, 20));
             anim.DeadAnim();
-            col.enabled = false;
-            rb.gravityScale = 0;
-            transform.position = new Vector3(transform.position.x, transform.position.y - deathYchange, transform.position.z);
+            enemyLight.enabled = false;
+            sRend.sortingLayerName = "Environment";
+            sRend.sortingOrder = 6;
         }
+
         sound.PlaySFX(AudioManager.SFX.EnemyDeath);
         hud.IncreaseEnemiesKilled();
         ai.SetDead();

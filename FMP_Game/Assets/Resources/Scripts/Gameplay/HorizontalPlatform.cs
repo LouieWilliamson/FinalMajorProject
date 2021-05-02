@@ -30,6 +30,10 @@ public class HorizontalPlatform : MonoBehaviour
 
     public Light2D leftLight;
     public Light2D rightLight;
+
+    private PlayerMovement pMove;
+    private PlayerTooltip pTooltip;
+
     void Start()
     {
         playerInRange = false;
@@ -117,6 +121,10 @@ public class HorizontalPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInRange = true;
+            GetPlayerReferences(collision);
+            pMove.SetMovingPlatform(true, rb);
+
+            if (collision.name.Contains("Player")) pTooltip.SetTipText(PlayerTooltip.TipType.XPlatform);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -124,6 +132,32 @@ public class HorizontalPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInRange = false;
+            pMove.SetMovingPlatform(false, rb);
+        }
+    }
+    private void GetPlayerReferences(Collider2D player)
+    {
+        if (pMove == null)
+        {
+            if (player.GetComponent<PlayerMovement>() == null)
+            {
+                pMove = player.GetComponentInChildren<PlayerMovement>();
+            }
+            else
+            {
+                pMove = player.GetComponent<PlayerMovement>();
+            }
+        }
+        if (pTooltip == null)
+        {
+            if (player.GetComponentInChildren<PlayerTooltip>() == null)
+            {
+                player.transform.parent.GetComponentInChildren<PlayerTooltip>();
+            }
+            else
+            {
+                pTooltip = player.GetComponentInChildren<PlayerTooltip>();
+            }
         }
     }
 }
