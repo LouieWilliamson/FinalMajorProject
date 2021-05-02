@@ -16,8 +16,10 @@ public class EnemyMovement : MonoBehaviour
 
     private bool walking;
     private float gravity;
+    internal bool isDead;
     void Start()
     {
+        isDead = false;
         isJumping = false;
         walking = true;
         anim = GetComponent<EnemyAnimations>();
@@ -31,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
     {
         if (collision.tag == "EnemyJump")
         {
-            Jump();
+            if (!isDead) Jump();
         }
     }
     public void SetWalking(bool isWalking)

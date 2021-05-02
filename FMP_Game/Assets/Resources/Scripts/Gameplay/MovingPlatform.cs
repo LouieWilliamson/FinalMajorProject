@@ -134,7 +134,7 @@ public class MovingPlatform : MonoBehaviour
         {
             if (player.GetComponentInChildren<PlayerTooltip>() == null)
             {
-                player.transform.parent.GetComponentInChildren<PlayerTooltip>();
+                pTooltip = player.transform.parent.GetComponentInChildren<PlayerTooltip>();
             }
             else
             {

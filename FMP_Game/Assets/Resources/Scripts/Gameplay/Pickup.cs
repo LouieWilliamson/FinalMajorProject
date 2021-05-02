@@ -151,7 +151,6 @@ public class Pickup : MonoBehaviour
                 inv.ChangeHealth(healthValue);
                 break;
             case PickupType.speed:
-                print("Speed Enabled");
                 pMove = player.GetComponent<PlayerMovement>();
                 if (pMove == null) pMove = player.GetComponentInParent<PlayerMovement>();
 
@@ -177,7 +176,6 @@ public class Pickup : MonoBehaviour
         if(pType == PickupType.speed)
         {
             pMove.speed /= speedMultiplier;
-            print("Speed Disabled");
         }
         else if (pType == PickupType.damage)
         {

@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     public GameObject deathFXPrefab;
     private GameObject deathFX;
     private EnemyAnimations anim;
+    private EnemyMovement eMove;
     private PolygonCollider2D col;
     private Rigidbody2D rb;
     public float deathYchange;
@@ -32,6 +33,8 @@ public class EnemyHealth : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<PolygonCollider2D>();
         anim = GetComponent<EnemyAnimations>();
+        eMove = GetComponent<EnemyMovement>();
+
         health = 200;
         hitEffect = GetComponent<HitEffect>();
         ai = GetComponent<EnemyAI>();
@@ -90,7 +93,7 @@ public class EnemyHealth : MonoBehaviour
             sRend.sortingLayerName = "Environment";
             sRend.sortingOrder = 6;
         }
-
+        eMove.isDead = true;
         sound.PlaySFX(AudioManager.SFX.EnemyDeath);
         hud.IncreaseEnemiesKilled();
         ai.SetDead();

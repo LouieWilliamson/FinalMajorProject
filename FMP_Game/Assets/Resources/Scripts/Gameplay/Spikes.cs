@@ -53,7 +53,6 @@ public class Spikes : MonoBehaviour
     }
     private void BouncePlayer()
     {
-
         //apply bounce
         Rigidbody2D rb = player.GetComponent<Rigidbody2D>();
         if (rb == null) rb = player.GetComponentInParent<Rigidbody2D>();

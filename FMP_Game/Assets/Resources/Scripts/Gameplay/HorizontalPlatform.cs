@@ -141,7 +141,7 @@ public class HorizontalPlatform : MonoBehaviour
         {
             if (player.GetComponent<PlayerMovement>() == null)
             {
-                pMove = player.GetComponentInChildren<PlayerMovement>();
+                pMove = player.GetComponentInParent<PlayerMovement>();
             }
             else
             {
@@ -152,7 +152,7 @@ public class HorizontalPlatform : MonoBehaviour
         {
             if (player.GetComponentInChildren<PlayerTooltip>() == null)
             {
-                player.transform.parent.GetComponentInChildren<PlayerTooltip>();
+                pTooltip = player.transform.parent.GetComponentInChildren<PlayerTooltip>();
             }
             else
             {
