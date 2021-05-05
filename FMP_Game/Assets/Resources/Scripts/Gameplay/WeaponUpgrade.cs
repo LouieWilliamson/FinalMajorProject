@@ -36,9 +36,9 @@ public class WeaponUpgrade : MonoBehaviour
             {
                 inv = collision.gameObject.GetComponent<Inventory>();
                 if (inv == null) inv = collision.gameObject.GetComponentInParent<Inventory>();
-                GetPlayerTooltip(collision);
                 playerSet = true;
             }
+            GetPlayerTooltip(collision);
             inv.InUnpgradeRange(this);
             pTooltip.SetTipText(PlayerTooltip.TipType.Upgrade);
         }

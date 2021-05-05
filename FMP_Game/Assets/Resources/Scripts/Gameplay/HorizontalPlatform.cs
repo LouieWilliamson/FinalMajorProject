@@ -132,6 +132,7 @@ public class HorizontalPlatform : MonoBehaviour
         if (collision.tag == "Player")
         {
             playerInRange = false;
+            GetPlayerReferences(collision);
             pMove.SetMovingPlatform(false, rb);
         }
     }
